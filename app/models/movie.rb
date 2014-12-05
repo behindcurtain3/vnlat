@@ -36,7 +36,6 @@ class Movie < ActiveRecord::Base
     presence: true,
     numericality: { only_integer: true, greater_than_or_equal_to: 1900 }
       
-  attr_accessible :poster_file_name
   has_attached_file :poster, styles: {
     thumb: '100x100>',
     medium: '300x300>'
