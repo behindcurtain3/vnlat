@@ -36,6 +36,13 @@ class Movie < ActiveRecord::Base
     presence: true,
     numericality: { only_integer: true, greater_than_or_equal_to: 1900 }
       
+  has_attached_file :poster, styles: {
+    thumb: '100x100>',
+    medium: '300x300>'
+  }
+  
+  # Validate the attached image is image/jpg, image/png, etc
+  validates_attachment_content_type :poster, :content_type => /\Aimage\/.*\Z/
       
   def slug_candidates
     [

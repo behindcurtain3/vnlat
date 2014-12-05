@@ -1,3 +1,5 @@
+<%= image_tag @movie.poster.url(:medium) %>
+
 <h3><%= @movie.title.upcase %><small>&nbsp;(<%= @movie.year %>)
 <% if user_signed_in? %>
   <%= link_to t('movie.edit'), edit_movie_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205083159) do
+ActiveRecord::Schema.define(version: 20141205224145) do
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 20141205083159) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
   end
 
   add_index "movies", ["slug"], name: "index_movies_on_slug", unique: true
