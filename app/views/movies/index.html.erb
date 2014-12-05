@@ -1,0 +1,9 @@
+<h3><%= t('movie.find') %></h3>
+
+<ul class="movie-list">
+<% @movies.each do |movie| %>
+
+  <%= render 'quick', movie: movie %>
+
+<% end %>
+</ul>

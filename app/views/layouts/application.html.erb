@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t :brand %><% if content_for? :title %>: <%= yield :title %><% end %></title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-static-top navbar-no-curves clear-bottom">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-secondary"> 
+			<span class="fa-bars"></span>
+		</button> 
+		<strong><%= link_to t(:brand), root_path, :class => "navbar-brand" %></strong>
+	</div>
+	<div class="navbar-collapse collapse navbar-inverse-collapse" id="navbar-secondary">
+	  <ul class="nav navbar-nav">
+  		<li><%= link_to movies_path do %><%= t('nav.all') %>&nbsp;<span class="fa fa-film"></span><% end %></li>
+	  	<li><%= link_to about_path do %><%= t('nav.about') %><% end %></li>
+		  <% if user_signed_in? %>
+		    <li><%= link_to t('nav.new'), new_movie_path %></li>
+		  <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+			<% if user_signed_in? %>
+				<li><%= link_to user_path(current_user) do %><span class="fa fa-user"></span>&nbsp; <%= current_user.email %><% end %></li>
+				<li><%= link_to destroy_user_session_path, method: :delete, :title => t('nav.logout') do %><span class="fa fa-sign-out"></span><% end %></li>
+			<% else %>
+				<li><%= link_to new_user_session_path do %><span class="fa fa-sign-in"></span>&nbsp; <%= t 'nav.login' %><% end %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<div class="container-fluid content">
+	<div class="row-fluid clearfix">
+		<div class="col-md-12 column">
+			<%= yield %>
+		</div>
+	</div>
+</div>
+</body>
+</html>
