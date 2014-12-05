@@ -25,12 +25,12 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.0.4'
 gem 'less-rails-bootstrap'
+gem 'therubyracer', :platforms => :ruby, :require => 'v8'
 
 group :development do
     gem 'sqlite3'
     gem 'spring'
     gem 'annotate'
-    gem 'therubyracer', :platforms => :ruby, :require => 'v8'
 end
 
 group :production do
