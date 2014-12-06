@@ -31,7 +31,7 @@ body {
 .navbar>div>strong>a,
 .navbar>div>div>a,
 .navbar>div>ul>li>a {
-    font-family: 'EB Garamond';
+    font-family: 'Oswald';
 }
 
 /* Titles */
@@ -54,9 +54,7 @@ h3 {
 }
 
 .movie-item {
-    float: left;
     margin-right: 15px;
-    padding-top: 3px;
 }
 
 .movie-list {

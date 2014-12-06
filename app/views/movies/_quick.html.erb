@@ -1,4 +1,7 @@
 <li>
+    <div class="pull-left movie-poster">
+        <%= image_tag movie.poster.url(:thumb) %>
+    </div>
     <div class="movie-item">
         <strong><%= link_to movie.title.upcase, movie_path(movie) %> <small>(<%= movie.year %>)</small></strong>
     </div>
