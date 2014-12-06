@@ -67,3 +67,11 @@ h3 {
 .movie-list>li {
     margin-bottom: 5px;
 }
+
+.movie-title {
+    margin-top: 0;    
+}
+
+.movie-poster {
+    margin-right: 10px;
+}

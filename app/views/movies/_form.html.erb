@@ -33,6 +33,7 @@
     <div class="form-group">
       <%= f.label :poster, :class => "col-lg-2 control-label" %>
       <div class="col-lg-10">
+        <%= image_tag @movie.poster.url(:thumb) %>
         <%= f.file_field :poster %>  
         <span class="help-block"></span>
       </div>
