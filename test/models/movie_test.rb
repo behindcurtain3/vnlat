@@ -2,25 +2,30 @@
 #
 # Table name: movies
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  year       :integer
-#  avg_v      :integer
-#  avg_n      :integer
-#  avg_l      :integer
-#  avg_at     :integer
-#  g_v        :integer
-#  g_n        :integer
-#  g_l        :integer
-#  g_at       :integer
-#  j_v        :integer
-#  j_n        :integer
-#  j_l        :integer
-#  j_at       :integer
-#  g_comments :string(255)
-#  j_comments :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id                  :integer          not null, primary key
+#  title               :string(255)
+#  year                :integer
+#  avg_v               :integer
+#  avg_n               :integer
+#  avg_l               :integer
+#  avg_at              :integer
+#  g_v                 :integer
+#  g_n                 :integer
+#  g_l                 :integer
+#  g_at                :integer
+#  j_v                 :integer
+#  j_n                 :integer
+#  j_l                 :integer
+#  j_at                :integer
+#  g_comments          :string(255)
+#  j_comments          :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  slug                :string(255)
+#  poster_file_name    :string(255)
+#  poster_content_type :string(255)
+#  poster_file_size    :integer
+#  poster_updated_at   :datetime
 #
 
 require 'test_helper'
