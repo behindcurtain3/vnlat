@@ -32,6 +32,7 @@ class Movie < ActiveRecord::Base
   extend FriendlyId
   before_save :update_averages
   
+  acts_as_taggable
   friendly_id :slug_candidates, use: :slugged
   
   validates :title,

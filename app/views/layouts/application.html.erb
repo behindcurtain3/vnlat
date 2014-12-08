@@ -19,7 +19,7 @@
 	</div>
 	<div class="navbar-collapse collapse navbar-inverse-collapse" id="navbar-secondary">
 	  <ul class="nav navbar-nav">
-  		<li><%= link_to movies_path do %><%= t('nav.all') %>&nbsp;<span class="fa fa-film"></span><% end %></li>
+  		<li><%= link_to movies_path do %><%= t('nav.all') %><% end %></li>
 	  	<li><%= link_to about_path do %><%= t('nav.about') %><% end %></li>
 		  <% if user_signed_in? %>
 		    <li><%= link_to t('nav.new'), new_movie_path %></li>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
 
+  get 'tags/:tag', to: 'movies#index', as: :tag
   get 'about' => "pages#about"
   root 'movies#index'
   # The priority is based upon order of creation: first created -> highest priority.

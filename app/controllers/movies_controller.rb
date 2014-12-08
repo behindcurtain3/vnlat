@@ -5,7 +5,12 @@ class MoviesController < ApplicationController
   respond_to :html
 
   def index
-    @movies = Movie.all
+    if params[:tag]
+      @movies = Movie.tagged_with(params[:tag])  
+    else
+      @movies = Movie.all
+    end
+    
     respond_with(@movies)
   end
 
@@ -43,6 +48,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:title, :year, :poster, :j_v, :j_n, :j_l, :j_at, :g_v, :g_n, :g_l, :g_at)
+      params.require(:movie).permit(:title, :year, :poster, :tag_list, :j_v, :j_n, :j_l, :j_at, :g_v, :g_n, :g_l, :g_at)
     end
 end
