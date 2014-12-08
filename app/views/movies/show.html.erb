@@ -10,8 +10,17 @@
 </h3>
 
 <%= render 'buttons', movie: @movie %>
+<button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" title="<%= t('help.title') %>" data-content="<%= t('help.description') %>">
+  <i class="fa fa-question-circle"></i>
+</button>
 <br />
 <div class="tag-list">
   <strong>Tags: </strong>
   <%= raw @movie.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 </div>
+
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+</script>

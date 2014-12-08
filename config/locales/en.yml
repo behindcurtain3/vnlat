@@ -21,6 +21,9 @@
 
 en:
   brand: "VNLAT"
+  help:
+    description: "Each category is rated on a 0-10 scale. A 0 means a total absence of that content from the movie, while a 10 respresents excessive use."
+    title: "How it works"
   movie:
     v: "V"
     n: "N"
