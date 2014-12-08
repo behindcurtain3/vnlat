@@ -29,6 +29,10 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.4.2)
       activerecord (>= 3.2, < 5)
+    acts_as_api (0.4.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      rack (>= 1.1.0)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -173,6 +177,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
+  acts_as_api
   annotate
   aws-sdk
   coffee-rails (~> 4.0.0)

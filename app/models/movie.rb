@@ -33,6 +33,7 @@ class Movie < ActiveRecord::Base
   before_save :update_averages
   
   acts_as_taggable
+  acts_as_api
   friendly_id :slug_candidates, use: :slugged
   
   validates :title,
@@ -51,13 +52,29 @@ class Movie < ActiveRecord::Base
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :poster, :content_type => /\Aimage\/.*\Z/
       
+  api_accessible :public do |template|
+    template.add :slug, as: :id
+    template.add :title
+    template.add :year
+    template.add :thumb, as: :thumbnail
+    template.add :medium, as: :poster
+    template.add :avg_v, as: :v
+    template.add :avg_n, as: :n
+    template.add :avg_l, as: :l
+    template.add :avg_at, as: :at
+  end    
+
+  api_accessible :detailed, extend: :public do |template|
+    template.add :tag_list
+  end
+      
   def slug_candidates
     [
       :title,
       [:title, :year]
     ]
   end
-  
+
   private
   
     def update_averages
@@ -113,5 +130,13 @@ class Movie < ActiveRecord::Base
       else
         self.avg_at = ((self.g_at + self.j_at) / 2).ceil
       end
+    end
+    
+    def thumb
+      self.poster.url(:thumb)
+    end
+    
+    def medium
+      self.poster.url(:medium)
     end
 end

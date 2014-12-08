@@ -20,6 +20,7 @@ gem 'therubyracer', :platforms => :ruby, :require => 'v8'
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts_as_api'
 
 group :development do
     gem 'sqlite3'
