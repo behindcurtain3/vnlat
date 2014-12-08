@@ -7,12 +7,14 @@ class Api::V1::MoviesController < ApplicationController
 
     respond_to do |format|
       format.json { render_for_api :public, :json => @movies, :root => :movies, :meta => meta_data }
+      format.xml { render_for_api :public, :xml => @movies, :root => :movies, :meta => meta_data }
     end
   end
 
   def show
     respond_to do |format|
       format.json { render_for_api :detailed, :json => @movie }
+      format.xml { render_for_api :detailed, :xml => @movie }
     end
   end
 

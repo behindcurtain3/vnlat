@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :movies, only: [:show, :index]
+      resources :movies, only: [:show, :index], defaults: { format: 'json' }
     end
     
     get 'v:api/*path', :to => redirect("/api/v1/%{path}")
