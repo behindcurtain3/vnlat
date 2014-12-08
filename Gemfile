@@ -21,6 +21,7 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_api'
+gem 'will_paginate-bootstrap'
 
 group :development do
     gem 'sqlite3'

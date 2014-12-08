@@ -2,7 +2,7 @@ class Api::V1::MoviesController < ApplicationController
   before_action :set_movie, only: [:show]
 
   def index
-    @movies = Movie.all
+    @movies = Movie.paginate(:page => params[:page])
     meta_data = { :page => params[:page], :total => Movie.count }
 
     respond_to do |format|
