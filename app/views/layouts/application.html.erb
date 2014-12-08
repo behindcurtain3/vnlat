@@ -17,7 +17,7 @@
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-secondary"> 
 			<span class="fa-bars"></span>
 		</button> 
-		<strong><%= link_to t(:brand), root_path, :class => "navbar-brand" %></strong>
+		<strong><%= link_to t('brand'), root_path, :class => "navbar-brand" %></strong>
 	</div>
 	<div class="navbar-collapse collapse navbar-inverse-collapse" id="navbar-secondary">
 	  <ul class="nav navbar-nav">
@@ -44,5 +44,12 @@
 		</div>
 	</div>
 </div>
+<footer class="footer navbar-fixed-bottom">
+  <div class="container">
+    <p class="text-center">
+    	<small>&copy; VNLAT.org 2014 - <%= link_to t('nav.about_normal'), about_path %></small>
+    </p>
+  </div>
+</footer>
 </body>
 </html>

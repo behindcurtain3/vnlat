@@ -1,4 +1,4 @@
-<h3><% if params[:tag] %>MOVIES WITH <%= params[:tag].upcase %><% else %><%= t('movie.find') %><% end %></h3>
+<h3><% if params[:tag] %><%= t('movie.tag') %> <%= params[:tag].upcase %><% else %><%= t('movie.find') %><% end %></h3>
 
 <ul class="movie-list">
 <% @movies.each do |movie| %>

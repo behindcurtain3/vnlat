@@ -1,7 +1,7 @@
 <div>
   <%= form_for(@movie) do |f| %>
   <fieldset>
-    <legend><% if f.object.new_record? %>NEW<% else %>EDIT<% end%> MOVIE</legend>
+    <legend><% if f.object.new_record? %><%= t('movie.form.new') %><% else %><%= t('movie.form.edit') %><% end%> <%= t('movie.form.resource') %></legend>
     <% if @movie.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -17,7 +17,7 @@
     <div class="form-group">
       <%= f.label :title, :class => "col-lg-2 control-label" %>
       <div class="col-lg-10">
-        <%= f.text_field :title, :autofocus => true, :class => "form-control", :placeholder => "Title" %>
+        <%= f.text_field :title, :autofocus => true, :class => "form-control", :placeholder => t('movie.title') %>
         <span class="help-block"></span>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="form-group">
       <%= f.label :year, :class => "col-lg-2 control-label" %>
       <div class="col-lg-10">
-        <%= f.number_field :year, :class => "form-control", :placeholder => "Year" %>
+        <%= f.number_field :year, :class => "form-control", :placeholder => t('movie.year') %>
         <span class="help-block"></span>
       </div>
     </div>
@@ -42,7 +42,7 @@
     <div class="form-group">
       <%= f.label :tag_list, :class => "col-lg-2 control-label" %>
       <div class="col-lg-10">
-  				<%= f.text_field :tag_list, :class => "form-control", :placeholder => "Tags" %>
+  				<%= f.text_field :tag_list, :class => "form-control", :placeholder => t('movie.tags') %>
   				<span class="help-block"></span>
       </div>
   	</div>
@@ -120,7 +120,7 @@
   
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <%= f.submit 'Save', :class => "btn btn-primary" %>
+        <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
       </div>
     </div>
   </fieldset>

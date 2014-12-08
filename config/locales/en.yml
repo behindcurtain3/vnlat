@@ -4,6 +4,11 @@ en:
     description: "Each category is rated on a 0-10 scale. 0 represents a total absence of that content from the movie, while a 10 respresents excessive use."
     title: "How it works"
   movie:
+    form:
+      new: "NEW"
+      edit: "EDIT"
+      resource: "MOVIE"
+      save: "Save"
     v: "V"
     n: "N"
     l: "L"
@@ -14,11 +19,14 @@ en:
     title: "Title"
     violence: "Violence"
     year: "Year"
+    tags: "Tags"
     edit: "EDIT"
     find: "FIND A MOVIE RATING"
+    tag: "MOVIES WITH"
     rating_explanation: "Each movie is rated in four categories from 0-10. A 0 means absolutely none of that categories content is present in the movie, while a 10 represents a strong presence throughout the movie." 
   nav:
     about: "ABOUT"
+    about_normal: "About"
     all: "BROWSE"
     home: "Home"
     login: "login"
