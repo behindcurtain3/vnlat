@@ -56,12 +56,12 @@ class Movie < ActiveRecord::Base
     template.add :slug, as: :id
     template.add :title
     template.add :year
+    template.add :avg_v, as: :V
+    template.add :avg_n, as: :N
+    template.add :avg_l, as: :L
+    template.add :avg_at, as: :AT
     template.add :thumb, as: :thumbnail
     template.add :medium, as: :poster
-    template.add :avg_v, as: :v
-    template.add :avg_n, as: :n
-    template.add :avg_l, as: :l
-    template.add :avg_at, as: :at
   end    
 
   api_accessible :detailed, extend: :public do |template|
