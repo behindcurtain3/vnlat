@@ -27,6 +27,16 @@
 		    <li><%= link_to t('nav.new'), new_movie_path %></li>
 		  <% end %>
     </ul>
+    <div class="col-sm-3 col-md-3 nav navbar-nav">
+    	<%= search_form_for @q, url: movies_path, :class => "navbar-form" do |f| %>
+      <div class="input-group">
+      	<%= f.search_field :title_cont, :class => "form-control input-sm", :placeholder => "Search" %>
+        <div class="input-group-btn">
+            <button class="btn btn-default btn-sm" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+      <% end %>
+    </div>
     <ul class="nav navbar-nav navbar-right">
 			<% if user_signed_in? %>
 				<li><%= link_to root_path do %><span class="fa fa-user"></span>&nbsp; <%= current_user.email %><% end %></li>

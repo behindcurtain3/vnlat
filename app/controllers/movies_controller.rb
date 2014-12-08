@@ -6,7 +6,9 @@ class MoviesController < ApplicationController
 
   def index
     if params[:tag]
-      @movies = Movie.tagged_with(params[:tag])  
+      @movies = Movie.tagged_with(params[:tag])
+    elsif params[:q]
+      @movies = @q.result(distinct: true)
     else
       @movies = Movie.all
     end
