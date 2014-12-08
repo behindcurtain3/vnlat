@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
       @movies = Movie.all
     end
     
-    @movies = @movies.paginate(:page => params[:page], :per_page => 1)
+    @movies = @movies.paginate(:page => params[:page], :per_page => 10)
     
     respond_with(@movies)
   end
