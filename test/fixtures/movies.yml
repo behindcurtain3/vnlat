@@ -31,7 +31,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 gladiator:
-  title: Gladiator
+  title: "Gladiator"
   year: 2000
   avg_v: 1
   avg_n: 1

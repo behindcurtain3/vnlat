@@ -4,9 +4,11 @@
   <title><%= t :brand %><% if content_for? :title %>: <%= yield :title %><% end %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -24,6 +26,7 @@
 		  <% if user_signed_in? %>
 		    <li><%= link_to t('nav.new'), new_movie_path %></li>
 		  <% end %>
+		  <li><%= link_to root_path do %><span class="fa fa-film"></span><% end %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
 			<% if user_signed_in? %>
