@@ -1,0 +1,19 @@
+<h3><%= @user.email.upcase %> RATINGS</h3>
+
+<ul class="movie-list">
+<% if @ratings.any? %>
+  <% @ratings.each do |rating| %>
+    <%= render 'shared/quick', movie: rating.movie %>
+  <% end %>
+<% else %>
+  <li><p>No ratings found</p></li>
+<% end %>
+</ul>
+
+<%= will_paginate @ratings, renderer: BootstrapPagination::Rails %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>

@@ -6,7 +6,7 @@
         <strong><%= link_to movie.title.upcase, movie_path(movie) %> <small>(<%= movie.year %>)</small></strong>
     </div>
     <div class="ratings">
-        <%= render 'buttons', movie: movie, sm: true %>
+        <%= render 'shared/buttons', movie: movie, sm: true %>
     </div>
     <div class="clearfix"></div>
 </li>

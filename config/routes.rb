@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
+  resources :users, only: [:show]
 
   get 'tags/:tag', to: 'movies#index', as: :tag
   get 'about' => "pages#about"

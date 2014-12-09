@@ -3,7 +3,7 @@
 <ul class="movie-list">
 <% if @movies.any? %>
 <% @movies.each do |movie| %>
-  <%= render 'quick', movie: movie %>
+  <%= render 'shared/quick', movie: movie %>
 <% end %>
 <% else %>
 <li><p>No movies found</p></li>
