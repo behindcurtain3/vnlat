@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :movies
+  resources :movies do
+    resources :ratings, only: [:new, :create, :edit, :update, :destroy]
+  end
 
   namespace :api do
     namespace :v1 do

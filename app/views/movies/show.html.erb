@@ -13,6 +13,14 @@
 <button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" title="<%= t('help.title') %>" data-content="<%= t('help.description') %>">
   <i class="fa fa-question-circle"></i>
 </button>
+<% if user_signed_in? %>
+<% if current_user.rated?(@movie) %>
+<%= link_to 'Edit Rating', edit_movie_rating_path(@movie, @rating), :class => "btn btn-primary" %>
+<%= link_to 'Delete Rating', movie_rating_path(@movie, @rating), :method => :delete, :class => "btn btn-primary" %>
+<% else %>
+<%= link_to 'Rate', new_movie_rating_path(@movie), :class => "btn btn-primary" %>
+<% end %>
+<% end %>
 <br />
 <div class="tag-list">
   <strong>Tags: </strong>

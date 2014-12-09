@@ -22,4 +22,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  has_many :ratings
+  
+  def rated?(movie)
+    ratings.exists?(:movie_id => movie.id)
+  end
 end

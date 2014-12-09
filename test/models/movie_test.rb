@@ -9,16 +9,6 @@
 #  avg_n               :integer
 #  avg_l               :integer
 #  avg_at              :integer
-#  g_v                 :integer
-#  g_n                 :integer
-#  g_l                 :integer
-#  g_at                :integer
-#  j_v                 :integer
-#  j_n                 :integer
-#  j_l                 :integer
-#  j_at                :integer
-#  g_comments          :string(255)
-#  j_comments          :string(255)
 #  created_at          :datetime
 #  updated_at          :datetime
 #  slug                :string(255)
@@ -53,5 +43,5 @@ class MovieTest < ActiveSupport::TestCase
     @movie.year = 1899
     assert_not @movie.valid?
   end
-
+  
 end

@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: ratings
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  movie_id   :integer
+#  v          :integer
+#  n          :integer
+#  l          :integer
+#  at         :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+
+one:
+  user_id: 1
+  movie_id: 1
+  v: 1
+  n: 1
+  l: 1
+  at: 1

@@ -1,7 +1,7 @@
 en:
   brand: "VNLAT"
   help:
-    description: "Each category is rated on a 0-10 scale. 0 represents a total absence of that content from the movie, while a 10 respresents excessive use."
+    description: "Each category is rated on a 0-5 scale. 0 represents a total absence of that content from the movie, while a 5 respresents excessive use."
     title: "How it works"
   movie:
     form:
@@ -24,7 +24,7 @@ en:
     find: "FIND A MOVIE RATING"
     tag: "MOVIES WITH"
     search: "RESULTS FOR"
-    rating_explanation: "Each movie is rated in four categories from 0-10. A 0 means absolutely none of that categories content is present in the movie, while a 10 represents a strong presence throughout the movie." 
+    rating_explanation: "Each movie is rated in four categories from 0-5. A 0 means absolutely none of that categories content is present in the movie, while a 5 represents a strong presence throughout the movie." 
   nav:
     about: "ABOUT"
     about_normal: "About"
@@ -33,3 +33,8 @@ en:
     login: "login"
     logout: "logout"
     new: "ADD A MOVIE"
+  rating:
+    form:
+      new: "NEW RATING FOR"
+      edit: "EDIT RATING FOR"
+      save: "Save"

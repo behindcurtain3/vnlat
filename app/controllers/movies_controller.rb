@@ -19,6 +19,9 @@ class MoviesController < ApplicationController
   end
 
   def show
+    if user_signed_in? and current_user.rated?(@movie)
+      @rating = current_user.ratings.where(:movie_id => @movie.id).first
+    end
     respond_with(@movie)
   end
 

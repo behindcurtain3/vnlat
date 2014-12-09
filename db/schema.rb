@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206082910) do
+ActiveRecord::Schema.define(version: 20141209071749) do
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -20,16 +20,6 @@ ActiveRecord::Schema.define(version: 20141206082910) do
     t.integer  "avg_n"
     t.integer  "avg_l"
     t.integer  "avg_at"
-    t.integer  "g_v"
-    t.integer  "g_n"
-    t.integer  "g_l"
-    t.integer  "g_at"
-    t.integer  "j_v"
-    t.integer  "j_n"
-    t.integer  "j_l"
-    t.integer  "j_at"
-    t.string   "g_comments"
-    t.string   "j_comments"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
@@ -41,6 +31,20 @@ ActiveRecord::Schema.define(version: 20141206082910) do
 
   add_index "movies", ["slug"], name: "index_movies_on_slug", unique: true
   add_index "movies", ["title"], name: "index_movies_on_title"
+
+  create_table "ratings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.integer  "v"
+    t.integer  "n"
+    t.integer  "l"
+    t.integer  "at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["movie_id"], name: "index_ratings_on_movie_id"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

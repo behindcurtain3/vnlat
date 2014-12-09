@@ -1,0 +1,56 @@
+<div>
+  <%= form_for [@movie, @rating] do |f| %>
+  <fieldset>
+    <legend><% if f.object.new_record? %><%= t('rating.form.new') %><% else %><%= t('rating.form.edit') %><% end%> <%= link_to @movie.title.upcase, movie_path(@movie) %></legend>
+    <% if @rating.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this movie from being saved:</h2>
+  
+        <ul>
+        <% @rating.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="form-group">
+      <%= f.label t('movie.violence'), :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= f.number_field :v, :class => "form-control", :placeholder => t('movie.violence') %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label t('movie.nudity'), :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= f.number_field :n, :class => "form-control", :placeholder => t('movie.nudity') %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label t('movie.language'), :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= f.number_field :l, :class => "form-control", :placeholder => t('movie.language') %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label t('movie.adult'), :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= f.number_field :at, :class => "form-control", :placeholder => t('movie.adult') %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <%= f.submit t('rating.form.save'), :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+  <% end %>
+</div>
