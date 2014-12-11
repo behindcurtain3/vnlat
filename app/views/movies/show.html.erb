@@ -24,7 +24,7 @@
 <br />
 <div class="tag-list">
   <strong>Tags: </strong>
-  <%= raw @movie.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  <%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, tag_path(t) }.join(', ') %>
 </div>
 
 <script type="text/javascript">
