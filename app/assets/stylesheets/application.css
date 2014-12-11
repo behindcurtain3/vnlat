@@ -78,3 +78,7 @@ h3 {
 .tag-list {
     margin-top: 15px;
 }
+
+.tag-list-sm {
+    margin-top: 6px;
+}

@@ -8,5 +8,11 @@
     <div class="ratings">
         <%= render 'shared/buttons', movie: movie, sm: true %>
     </div>
+    <% unless movie.tag_list.blank? %>
+    <div class="tag-list-sm">
+        <strong>Tags: </strong>
+        <%= raw movie.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    </div>
+    <% end %>
     <div class="clearfix"></div>
 </li>
