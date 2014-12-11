@@ -35,13 +35,19 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-    @movie.save
-    respond_with(@movie)
+    if @movie.save
+      respond_with(@movie)
+    else
+      render action: 'new'
+    end
   end
 
   def update
-    @movie.update(movie_params)
-    respond_with(@movie)
+    if @movie.update(movie_params)
+      respond_with(@movie)
+    else
+      render action: 'edit'
+    end
   end
 
   def destroy
