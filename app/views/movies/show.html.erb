@@ -2,7 +2,7 @@
   <%= image_tag @movie.poster.url(:medium), alt: @movie.title, class: "img-responsive" %>
 </div>
 <div class="col-sm-10">
-  <h3 class="movie-title"><%= @movie.title.upcase %><small>&nbsp;(<%= @movie.year %>)
+  <h3 class="movie-title"><%= @movie.title.upcase %> <small>&nbsp;(<%= @movie.year %>)
   <% if user_signed_in? %>
     <%= link_to t('movie.edit'), edit_movie_path %>
   <% end %>
