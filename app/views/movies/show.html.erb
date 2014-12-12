@@ -1,7 +1,7 @@
-<div class="col-sm-2">
-  <%= image_tag @movie.poster.url(:medium), alt: @movie.title, class: "img-responsive" %>
+<div class="col-sm-3">
+  <%= image_tag @movie.poster.url, alt: @movie.title, class: "img-responsive" %>
 </div>
-<div class="col-sm-10">
+<div class="col-sm-9">
   <h3 class="movie-title"><%= @movie.title.upcase %> <small>&nbsp;(<%= @movie.year %>)
   <% if user_signed_in? %>
     <%= link_to t('movie.edit'), edit_movie_path %>
@@ -23,7 +23,7 @@
   <% end %>
   <br />
   <div class="tag-list">
-    <strong>Tags: </strong>
+    <h4><strong>TAGS</strong></h4>
     <%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, tag_path(t) }.join(', ') %>
   </div>
 </div>
