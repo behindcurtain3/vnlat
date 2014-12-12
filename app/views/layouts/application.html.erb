@@ -15,13 +15,13 @@
 <body>
 <div class="navbar navbar-inverse navbar-static-top navbar-no-curves clear-bottom" role="navigation">
 	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-secondary"> 
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-primary"> 
 			<span class="sr-only">Menu</span>
 			<span class="fa fa-bars"></span>
 		</button> 
 		<strong><%= link_to t('brand'), root_path, :class => "navbar-brand" %></strong>
 	</div>
-	<div class="navbar-collapse collapse navbar-inverse-collapse" id="navbar-secondary">
+	<div class="navbar-collapse collapse navbar-inverse-collapse" id="navbar-primary">
 	  <ul class="nav navbar-nav">
   		<li><%= link_to movies_path do %><%= t('nav.all') %><% end %></li>
 	  	<li><%= link_to about_path do %><%= t('nav.about') %><% end %></li>

@@ -37,7 +37,7 @@ class Movie < ActiveRecord::Base
       
   has_attached_file :poster, styles: {
       thumb: '100x100>',
-      medium: '300x300>'
+      medium: '317x317>'
     },
     s3_protocol: 'https'
   

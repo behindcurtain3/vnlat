@@ -9,7 +9,7 @@
         <%= render 'shared/buttons', movie: movie, sm: true %>
     </div>
     <% unless movie.tag_list.blank? %>
-    <div class="tag-list-sm">
+    <div class="tag-list-sm visible-lg visible-md">
         <strong>Tags: </strong>
         <%= raw movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, tag_path(t) }.join(', ') %>
     </div>
