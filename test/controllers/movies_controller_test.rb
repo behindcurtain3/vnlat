@@ -2,6 +2,8 @@ require 'test_helper'
 
 class MoviesControllerTest < ActionController::TestCase
   setup do
+    @user = users(:one)
+    sign_in @user
     @movie = movies(:gladiator)
   end
 
