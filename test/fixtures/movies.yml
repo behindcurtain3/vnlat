@@ -27,3 +27,4 @@ gladiator:
   avg_n: 1
   avg_l: 1
   avg_at: 1
+  summary: "My blank summary"

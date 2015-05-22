@@ -9,6 +9,8 @@ en:
       edit: "EDIT"
       resource: "MOVIE"
       save: "Save"
+    information:
+      summary: "SUMMARY"
     v: "V"
     n: "N"
     l: "L"
@@ -24,6 +26,7 @@ en:
     find: "FIND A MOVIE RATING"
     tag: "MOVIES WITH"
     search: "RESULTS FOR"
+    summary: "Summary"
     rating_explanation: "Each movie is rated in four categories from 0-5. A 0 means absolutely none of that categories content is present in the movie, while a 5 represents a strong presence throughout the movie." 
   nav:
     about: "ABOUT"

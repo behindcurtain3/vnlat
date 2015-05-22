@@ -34,6 +34,9 @@ class Movie < ActiveRecord::Base
   validates :year,
     presence: true,
     numericality: { only_integer: true, greater_than_or_equal_to: 1900 }
+    
+  validates :summary,
+    presence: true
       
   has_attached_file :poster, styles: {
       thumb: '100x100>',

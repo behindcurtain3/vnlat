@@ -44,4 +44,9 @@ class MovieTest < ActiveSupport::TestCase
     assert_not @movie.valid?
   end
   
+  test "summary should be present" do
+    @movie.summary = ''
+    assert_not @movie.valid?
+  end
+  
 end
