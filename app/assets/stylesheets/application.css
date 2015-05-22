@@ -65,6 +65,11 @@ h3 {
 	letter-spacing: 1px;
 }
 
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 .ratings {
     margin-left: 15px;
 }

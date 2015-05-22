@@ -1,59 +1,42 @@
-<div class="btn-group<% unless local_assigns.has_key?(:sm) %> hidden-xs<% end %>" role="group" aria-label="<%= t('movie.violence') %>">
-  <button type="button" class="btn btn-success<% if local_assigns.has_key?(:sm) %> btn-xs<% end %>" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.violence') %>"><%= t 'movie.v' %></button>
-  <button type="button" class="btn btn-default<% if local_assigns.has_key?(:sm) %> btn-xs<% end %>"><strong><%= movie.avg_v %></strong></button>
+<% if local_assigns.has_key?(:sm) %>
+<div class="btn-group" role="group" aria-label="<%= t('movie.violence') %>">
+  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.violence') %>"><%= t 'movie.v' %></button>
+  <button type="button" class="btn btn-default btn-xs"><strong><%= movie.avg_v %></strong></button>
 </div>
 
-<div class="btn-group<% unless local_assigns.has_key?(:sm) %> hidden-xs<% end %>" role="group" aria-label="<%= t('movie.nudity') %>">
-  <button type="button" class="btn btn-success<% if local_assigns.has_key?(:sm) %> btn-xs<% end %>" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.nudity') %>"><%= t 'movie.n' %></button>
-  <button type="button" class="btn btn-default<% if local_assigns.has_key?(:sm) %> btn-xs<% end %>"><strong><%= movie.avg_n %></strong></button>
+<div class="btn-group" role="group" aria-label="<%= t('movie.nudity') %>">
+  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.nudity') %>"><%= t 'movie.n' %></button>
+  <button type="button" class="btn btn-default btn-xs"><strong><%= movie.avg_n %></strong></button>
 </div>
 
-<div class="btn-group<% unless local_assigns.has_key?(:sm) %> hidden-xs<% end %>" role="group" aria-label="<%= t('movie.language') %>">
-  <button type="button" class="btn btn-success<% if local_assigns.has_key?(:sm) %> btn-xs<% end %>" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.language') %>"><%= t 'movie.l' %></button>
-  <button type="button" class="btn btn-default<% if local_assigns.has_key?(:sm) %> btn-xs<% end %>"><strong><%= movie.avg_l %></strong></button>
+<div class="btn-group" role="group" aria-label="<%= t('movie.language') %>">
+  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.language') %>"><%= t 'movie.l' %></button>
+  <button type="button" class="btn btn-default btn-xs"><strong><%= movie.avg_l %></strong></button>
 </div>
 
-<div class="btn-group<% unless local_assigns.has_key?(:sm) %> hidden-xs<% end %>" role="group" aria-label="<%= t('movie.adult') %>">
-  <button type="button" class="btn btn-success<% if local_assigns.has_key?(:sm) %> btn-xs<% end %>" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.adult') %>"><%= t 'movie.at' %></button>
-  <button type="button" class="btn btn-default<% if local_assigns.has_key?(:sm) %> btn-xs<% end %>"><strong><%= movie.avg_at %></strong></button>
+<div class="btn-group" role="group" aria-label="<%= t('movie.adult') %>">
+  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.adult') %>"><%= t 'movie.at' %></button>
+  <button type="button" class="btn btn-default btn-xs"><strong><%= movie.avg_at %></strong></button>
 </div>
-
-<% unless local_assigns.has_key?(:sm) %>
-<div class="visible-xs">
-  <div class="btn-group btn-group-justified rating-mobile" role="group" aria-label="<%= t('movie.violence') %>">
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-success" title="<%= t('movie.violence') %>"><%= t 'movie.violence' %></button>
-    </div>
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default"><strong><%= movie.avg_v %></strong></button>
-    </div>
-  </div>
-
-  <div class="btn-group btn-group-justified rating-mobile" role="group" aria-label="<%= t('movie.nudity') %>">
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-success" title="<%= t('movie.nudity') %>"><%= t 'movie.nudity' %></button>
-    </div>
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default"><strong><%= movie.avg_n %></strong></button>
-    </div>
-  </div>
-
-  <div class="btn-group btn-group-justified rating-mobile" role="group" aria-label="<%= t('movie.language') %>">
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-success" title="<%= t('movie.language') %>"><%= t 'movie.language' %></button>
-    </div>
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default"><strong><%= movie.avg_l %></strong></button>
-    </div>
-  </div>
-
-  <div class="btn-group btn-group-justified rating-mobile" role="group" aria-label="<%= t('movie.adult') %>">
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-success" title="<%= t('movie.adult') %>"><%= t 'movie.adult' %></button>
-    </div>
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default"><strong><%= movie.avg_at %></strong></button>
-    </div>
-  </div>  
-</div>
+<% else %>
+<table class="table table-hover table-condensed">
+  <tbody>
+    <tr>
+      <td><%= t 'movie.violence' %></td>
+      <td><%= movie.avg_v %></td>
+    </tr>
+    <tr>
+      <td><%= t 'movie.nudity' %></td>
+      <td><%= movie.avg_n %></td>
+    </tr>
+    <tr>
+      <td><%= t 'movie.language' %></td>
+      <td><%= movie.avg_l %></td>
+    </tr>
+    <tr>
+      <td><%= t 'movie.adult' %></td>
+      <td><%= movie.avg_at %></td>
+    </tr>
+  </tbody>
+</table>
 <% end %>

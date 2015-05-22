@@ -1,29 +1,112 @@
 <div class="col-sm-3">
   <%= image_tag @movie.poster.url, alt: @movie.title, class: "img-responsive" %>
 </div>
-<div class="col-sm-9">
-  <h3 class="movie-title"><%= @movie.title.upcase %> <small>&nbsp;(<%= @movie.year %>)
+<div class="col-sm-6">
+  <h2 class="movie-title"><b><%= @movie.title.upcase %></b> <small>&nbsp;<%= @movie.year %>
   <% if user_signed_in? %>
     <%= link_to t('movie.edit'), edit_movie_path %>
   <% end %>
   </small>
-  </h3>
+  </h2>
+  <hr/>
   
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+      <h4>DIRECTOR</h4>
+      <img class="img-rounded" src="http://www3.pictures.zimbio.com/gi/George+Miller+Happy+Feet+Two+European+Premiere+_W8LkxUekaZl.jpg" height="125"><br />
+      George Miller
+    </div>
+    <div class="col-xs-12 col-sm-10">
+      <h4>STARS</h4>
+      <ul class="list-inline">
+        <li><img class="img-rounded" src="http://static.cinemagia.ro/img/db/actor/01/73/99/tom-hardy-512795l.jpg" height="125"><br />
+        Tom Hardy</li>
+        <li>
+          <img class="img-rounded" src="http://www.myself.de/var/myself/storage/images/schoen-gesund/beauty-tipps-themen/oscars-2013-make-up/charlize-theron/784039-1-ger-DE/charlize-theron_m400x.jpg" height="125"><br />
+          Charlize Theron
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <blockquote class="well blockquote-reverse">
+    <p>Oh what a day, what a lovely day!</p>
+    <footer>Nux</footer>
+  </blockquote>
+  
+  <h4>SUMMARY</h4>
+  <p>In a stark desert landscape where humanity is broken, two rebels just might be able to restore order: Max, a man of action and of few words, and Furiosa, a woman of action who is looking to make it back to her childhood homeland.</p>
+  
+  <h4>CAST</h4>
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <td>Tom Hardy</td>
+        <td class="text-center">Max Rockatansky</td>
+      </tr>
+      <tr>
+        <td>Charlize Theron</td>
+        <td class="text-center">Imperator Furiosa</td>
+      </tr>
+      <tr>
+        <td>Nicholas Hoult</td>
+        <td class="text-center">Nux</td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+<div class="col-sm-3">
+  <h4>RATINGS
+    <% if user_signed_in? %>
+      <small>
+      <% if current_user.rated?(@movie) %>
+        <%= link_to 'EDIT', edit_movie_rating_path(@movie, @rating) %>
+        <%= link_to 'DELETE', movie_rating_path(@movie, @rating), :method => :delete %>
+      <% else %>
+        <%= link_to 'RATE', new_movie_rating_path(@movie) %>
+      <% end %>
+      </small>
+    <% end %>
+  </h4>
   <%= render 'shared/buttons', movie: @movie %>
-  <button class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" title="<%= t('help.title') %>" data-content="<%= t('help.description') %>">
-    <i class="fa fa-question-circle"></i>
-  </button>
-  <% if user_signed_in? %>
-  <% if current_user.rated?(@movie) %>
-  <%= link_to 'Edit Rating', edit_movie_rating_path(@movie, @rating), :class => "btn btn-primary" %>
-  <%= link_to 'Delete Rating', movie_rating_path(@movie, @rating), :method => :delete, :class => "btn btn-primary" %>
-  <% else %>
-  <%= link_to 'Rate', new_movie_rating_path(@movie), :class => "btn btn-primary" %>
-  <% end %>
-  <% end %>
-  <br />
+  
+  <h4>BOX OFFICE</h4>
+  <table class="table table-hover table-condensed">
+    <tr>
+      <td>US</td>
+      <td class="text-right">$187,705,427</td>
+    </tr>
+    <tr>
+      <td>Foreign</td>
+      <td class="text-right">$269,935,000</td>
+    </tr>
+    <tr>
+      <td>Worldwide</td>
+      <td class="text-right">$457,640,427</td>
+    </tr>
+  </table>
+  
+  <h4>
+    <a href="#review" aria-controls="review" role="tab" data-toggle="tab">REVIEW</a>
+    - 
+    <a href="#trailer" aria-controls="trailer" role="tab" data-toggle="tab">TRAILER</a>
+  </h4>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="review">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4fk9yPZX_NM" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="trailer">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hEJnMQG9ev8" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  
   <div class="tag-list">
-    <h4><strong>TAGS</strong></h4>
+    <h4>TAGS</h4>
     <%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, tag_path(t) }.join(', ') %>
   </div>
 </div>
