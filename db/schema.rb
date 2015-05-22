@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522194736) do
+ActiveRecord::Schema.define(version: 20150522213054) do
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -32,6 +32,25 @@ ActiveRecord::Schema.define(version: 20150522194736) do
 
   add_index "movies", ["slug"], name: "index_movies_on_slug", unique: true
   add_index "movies", ["title"], name: "index_movies_on_title"
+
+  create_table "people", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "display_name"
+    t.date     "born"
+    t.date     "died"
+    t.string   "twitter"
+    t.text     "biography"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "promo_file_name"
+    t.string   "promo_content_type"
+    t.integer  "promo_file_size"
+    t.datetime "promo_updated_at"
+  end
+
+  add_index "people", ["slug"], name: "index_people_on_slug", unique: true
 
   create_table "ratings", force: true do |t|
     t.integer  "user_id"

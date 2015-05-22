@@ -36,6 +36,22 @@ en:
     login: "login"
     logout: "logout"
     new: "ADD A MOVIE"
+  person:
+    biography: "Biography"
+    born: "Born On"
+    died: "Died On"
+    display_name: "Display Name"
+    first_name: "First Name"
+    form:
+      new: "NEW"
+      edit: "EDIT"
+      resource: "PERSON"
+      save: "Save"
+    information:
+      biography: "BIOGRAPHY"
+    last_name: "Last Name"
+    promo: "Promo"
+    
   rating:
     form:
       new: "NEW RATING FOR"

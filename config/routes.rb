@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     resources :ratings, only: [:new, :create, :edit, :update, :destroy]
   end
 
+  resources :people do
+  end
+
   namespace :api do
     namespace :v1 do
       resources :movies, only: [:show, :index], defaults: { format: 'json' }

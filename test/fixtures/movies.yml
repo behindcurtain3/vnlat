@@ -16,6 +16,7 @@
 #  poster_content_type :string(255)
 #  poster_file_size    :integer
 #  poster_updated_at   :datetime
+#  summary             :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

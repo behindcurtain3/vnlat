@@ -1,0 +1,19 @@
+<div class="col-sm-3">
+  <%= image_tag @person.promo.url, alt: @person.name, class: "img-responsive" %>
+</div>
+<div class="col-sm-6">
+  <h2 class="person-title"><b><%= @person.name.upcase %></b>
+  <% if user_signed_in? %>
+    <small>
+      <%= link_to t('movie.edit'), edit_movie_path %>  
+    </small>
+  <% end %>
+  </h2>
+  <hr/>
+  
+  <h4><%= t 'person.information.biography' %></h4>
+  <p><%= @person.biography %></p>
+  
+</div>
+<div class="col-sm-3">
+</div>

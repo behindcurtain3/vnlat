@@ -1,0 +1,81 @@
+<div>
+  <%= form_for(@person) do |f| %>
+  <fieldset>
+    <legend><% if f.object.new_record? %><%= t('person.form.new') %><% else %><%= t('person.form.edit') %><% end%> <%= t('person.form.resource') %></legend>
+    <% if @person.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+  
+        <ul>
+        <% @person.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="form-group">
+      <%= f.label :first_name, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= f.text_field :first_name, :autofocus => true, :class => "form-control", :placeholder => t('person.first_name') %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :last_name, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= f.text_field :last_name, :class => "form-control", :placeholder => t('person.last_name') %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :display_name, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= f.number_field :display_name, :class => "form-control", :placeholder => t('person.display_name') %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :promo, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= image_tag @person.promo.url(:thumb) %>
+        <%= f.file_field :promo %>  
+        <span class="help-block"></span>
+      </div>
+    </div>
+  	
+  	<div class="form-group">
+      <%= f.label :biography, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+  				<%= f.text_area :biography, :class => "form-control", :placeholder => t('person.biography') %>
+  				<span class="help-block"></span>
+      </div>
+  	</div>
+  	
+  	<div class="form-group">
+      <%= f.label :born, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+  				<%= f.date_field :born, :class => "form-control", :placeholder => t('person.born') %>
+  				<span class="help-block"></span>
+      </div>
+  	</div>
+  	
+  	<div class="form-group">
+      <%= f.label :died, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+  				<%= f.date_field :died, :class => "form-control", :placeholder => t('person.died') %>
+  				<span class="help-block"></span>
+      </div>
+  	</div>
+  
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <%= f.submit t('person.form.save'), :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+  <% end %>
+</div>
