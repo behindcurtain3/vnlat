@@ -107,3 +107,11 @@ hr {
 .tag-list-sm {
     margin-top: 6px;
 }
+
+#custom-nav {
+    -webkit-box-shadow: 4px 4px 4px #111;
+    -moz-box-shadow:    4px 4px 4px #111;
+    box-shadow:         2px 2px 2px #111;
+    z-index:999;
+    margin-bottom: 10px;
+}

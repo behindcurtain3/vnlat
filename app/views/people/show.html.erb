@@ -5,7 +5,7 @@
   <h2 class="person-title"><b><%= @person.name.upcase %></b>
   <% if user_signed_in? %>
     <small>
-      <%= link_to t('movie.edit'), edit_movie_path %>  
+      <%= link_to t('person.form.edit'), edit_person_path %>  
     </small>
   <% end %>
   </h2>
