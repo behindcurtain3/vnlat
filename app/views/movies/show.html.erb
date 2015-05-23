@@ -40,18 +40,12 @@
   <h4>CAST</h4>
   <table class="table table-hover">
     <tbody>
+      <% @movie.characters.order("importance ASC").each do | character | %>
       <tr>
-        <td>Tom Hardy</td>
-        <td class="text-center">Max Rockatansky</td>
+        <td><%= link_to character.person.name, person_path(character.person) %></td>
+        <td class="text-center"><%= character.name %></td>
       </tr>
-      <tr>
-        <td>Charlize Theron</td>
-        <td class="text-center">Imperator Furiosa</td>
-      </tr>
-      <tr>
-        <td>Nicholas Hoult</td>
-        <td class="text-center">Nux</td>
-      </tr>
+      <% end %>
     </tbody>
   </table>
   
