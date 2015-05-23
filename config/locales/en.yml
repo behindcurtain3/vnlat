@@ -10,6 +10,7 @@ en:
       resource: "MOVIE"
       save: "Save"
     information:
+      cast: "CAST"
       summary: "SUMMARY"
     v: "V"
     n: "N"

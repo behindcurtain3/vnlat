@@ -30,17 +30,20 @@
   </div>
   
   <blockquote class="well blockquote-reverse">
-    <p>Oh what a day, what a lovely day!</p>
+    <p>
+      <span class="fa fa-quote-left pull-left fa-lg"></span>
+      Oh what a day, what a lovely day!
+    </p>
     <footer>Nux</footer>
   </blockquote>
   
   <h4><%= t 'movie.information.summary' %></h4>
   <p><%= @movie.summary %></p>
   
-  <h4>CAST</h4>
+  <h4><%= t 'movie.information.cast' %></h4>
   <table class="table table-hover">
     <tbody>
-      <% @movie.characters.order("importance ASC").each do | character | %>
+      <% @movie.characters.ranked.each do | character | %>
       <tr>
         <td><%= link_to character.person.name, person_path(character.person) %></td>
         <td class="text-center"><%= character.name %></td>
