@@ -16,4 +16,22 @@
   
 </div>
 <div class="col-sm-3">
+    <h4>QUICK INFO</h4>
+    <table class="table table-hover table-condensed">
+    <tr>
+      <td>Born</td>
+      <td class="text-right"><%= time_tag @person.born %></td>
+    </tr>
+    <% if @person.died.nil? %>
+    <tr>
+      <td>Age</td>
+      <td class="text-right"><%= @person.age %></td>
+    </tr>
+    <% else %>
+    <tr>
+      <td>Died</td>
+      <td class="text-right"><%= time_tag @person.died %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

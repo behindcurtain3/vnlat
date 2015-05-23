@@ -47,4 +47,11 @@ class Person < ActiveRecord::Base
       return self.display_name
     end
   end
+  
+  def age
+    now = DateTime.now
+    age = now.year - self.born.year
+    age -= 1 if(now.yday < self.born.yday)
+    age
+  end
 end
