@@ -27,7 +27,7 @@
     </div>
   </div>
   
-  <blockquote class="well blockquote-reverse">
+  <blockquote class="blockquote-reverse">
     <p>
       <span class="fa fa-quote-left pull-left fa-lg"></span>
       Oh what a day, what a lovely day!
@@ -52,7 +52,7 @@
   
 </div>
 <div class="col-sm-3">
-  <h4>RATINGS
+  <h4><%= t 'movie.information.ratings' %>
     <% if user_signed_in? %>
       <small class='pull-right'>
       <% if current_user.rated?(@movie) %>
@@ -66,7 +66,7 @@
   </h4>
   <%= render 'shared/buttons', movie: @movie %>
   
-  <h4>BOX OFFICE</h4>
+  <h4><%= t 'movie.information.boxoffice' %></h4>
   <table class="table table-hover table-condensed">
     <tr>
       <td>US</td>
@@ -83,9 +83,9 @@
   </table>
   
   <h4>
-    <a href="#review" aria-controls="review" role="tab" data-toggle="tab">REVIEW</a>
+    <a href="#review" aria-controls="review" role="tab" data-toggle="tab"><%= t 'movie.information.reviews' %></a>
     - 
-    <a href="#trailer" aria-controls="trailer" role="tab" data-toggle="tab">TRAILER</a>
+    <a href="#trailer" aria-controls="trailer" role="tab" data-toggle="tab"><%= t 'movie.information.trailers' %></a>
   </h4>
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="review">
@@ -101,7 +101,7 @@
   </div>
   
   <div class="tag-list">
-    <h4>TAGS</h4>
+    <h4><%= t 'movie.information.tags' %></h4>
     <%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, tag_path(t) }.join(', ') %>
   </div>
 </div>
