@@ -26,6 +26,7 @@ class Person < ActiveRecord::Base
   
   has_many :characters
   has_many :movies, through: :characters
+  has_many :directed, class_name: 'Movie', foreign_key: 'director_id'
   
   has_attached_file :promo, styles: {
       thumb: '125x125>',

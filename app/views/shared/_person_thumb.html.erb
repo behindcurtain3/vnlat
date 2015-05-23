@@ -1,0 +1,2 @@
+<%= link_to person_path(person) do %><%= image_tag person.promo.url(:thumb), alt: person.name, class: "img-rounded", height: '125' %><% end %><br />
+<%= link_to person.name, person_path(person) %>

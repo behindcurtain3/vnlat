@@ -11,6 +11,8 @@ en:
       save: "Save"
     information:
       cast: "CAST"
+      director: "DIRECTOR"
+      stars: "STARS"
       summary: "SUMMARY"
     v: "V"
     n: "N"

@@ -12,17 +12,15 @@
   
   <div class="row">
     <div class="col-xs-12 col-sm-2">
-      <h4>DIRECTOR</h4>
-      <img class="img-rounded" src="http://www3.pictures.zimbio.com/gi/George+Miller+Happy+Feet+Two+European+Premiere+_W8LkxUekaZl.jpg" height="125"><br />
-      George Miller
+      <h4><%= t 'movie.information.director' %></h4>
+      <%= render 'shared/person_thumb', person: @movie.director %>
     </div>
     <div class="col-xs-12 col-sm-10">
-      <h4>STARS</h4>
+      <h4><%= t 'movie.information.stars' %></h4>
       <ul class="list-inline">
         <% @movie.stars.limit(6).each do | actor | %>
           <li>
-            <%= link_to person_path(actor) do %><%= image_tag actor.promo.url(:thumb), alt: actor.name, class: "img-rounded", height: '125' %><% end %><br />
-            <%= link_to actor.name, person_path(actor) %>
+            <%= render 'shared/person_thumb', person: actor %>
           </li>
         <% end %>
       </ul>
