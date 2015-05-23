@@ -24,6 +24,8 @@ class Movie < ActiveRecord::Base
   before_save :update_averages
   
   has_many :ratings
+  has_many :characters
+  has_many :actors, through: :characters, source: :person
   
   acts_as_taggable
   acts_as_api

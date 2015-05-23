@@ -24,6 +24,9 @@ class Person < ActiveRecord::Base
   
   friendly_id :slug_candidates, use: :slugged
   
+  has_many :characters
+  has_many :movies, through: :characters
+  
   has_attached_file :promo, styles: {
       thumb: '125x125>',
       medium: '450x450>'
