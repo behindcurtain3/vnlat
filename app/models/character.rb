@@ -15,7 +15,7 @@ class Character < ActiveRecord::Base
   belongs_to :person
   belongs_to :movie
   
-  scope :ranked, -> { order('importance ASC') }
+  scope :ranked, -> { order('importance ASC, name') }
   scope :alphabetical, -> { order('name') }
   
   validates :person,
