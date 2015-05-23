@@ -26,6 +26,7 @@ class Movie < ActiveRecord::Base
   has_many :ratings
   has_many :characters
   has_many :actors, through: :characters, source: :person
+  has_many :stars, -> { order("importance ASC").limit(6) }, through: :characters, source: :person
   
   acts_as_taggable
   acts_as_api
