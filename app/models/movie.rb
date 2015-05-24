@@ -78,10 +78,15 @@ class Movie < ActiveRecord::Base
     template.add :avg_at, as: :AT
     template.add :thumb, as: :thumbnail
     template.add :medium, as: :poster
-  end    
+  end
 
   api_accessible :detailed, extend: :public do |template|
     template.add :tag_list
+    template.add :director
+    template.add :summary
+    template.add :boxoffice_us
+    template.add :boxoffice_foreign
+    template.add :boxoffice_worldwide
   end
       
   def slug_candidates
