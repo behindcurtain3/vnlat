@@ -2,10 +2,13 @@ module ApiV1::Movie
   extend ActiveSupport::Concern
   included do
 
-    api_accessible :public do |t|
+    api_accessible :simple do |t|
       t.add :slug, as: :id
       t.add :title
       t.add :year
+    end
+
+    api_accessible :public, extend: :simple do |t|
       t.add :avg_v, as: :V
       t.add :avg_n, as: :N
       t.add :avg_l, as: :L

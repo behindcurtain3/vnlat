@@ -2,9 +2,12 @@ module ApiV1::Person
   extend ActiveSupport::Concern
   included do
 
-    api_accessible :public do |t|
+    api_accessible :simple do |t|
       t.add :slug, as: :id
       t.add :name
+    end
+
+    api_accessible :public, extend: :simple do |t|
       t.add :born
       t.add :age
       t.add :died
@@ -14,11 +17,7 @@ module ApiV1::Person
     api_accessible :detailed, extend: :public do |t|
       t.add :biography
       t.add :twitter
-    end
-    
-    api_accessible :simple do |t|
-      t.add :slug, as: :id
-      t.add :name
+      t.add :movies, template: :simple
     end
     
   end
