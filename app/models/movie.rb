@@ -38,6 +38,7 @@ class Movie < ActiveRecord::Base
   
   acts_as_taggable
   acts_as_api
+  include ApiV1::Movie
   friendly_id :slug_candidates, use: :slugged
   
   validates :title,
@@ -67,27 +68,6 @@ class Movie < ActiveRecord::Base
   
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :poster, :content_type => /\Aimage\/.*\Z/
-      
-  api_accessible :public do |template|
-    template.add :slug, as: :id
-    template.add :title
-    template.add :year
-    template.add :avg_v, as: :V
-    template.add :avg_n, as: :N
-    template.add :avg_l, as: :L
-    template.add :avg_at, as: :AT
-    template.add :thumb, as: :thumbnail
-    template.add :medium, as: :poster
-  end
-
-  api_accessible :detailed, extend: :public do |template|
-    template.add :tag_list
-    template.add :director
-    template.add :summary
-    template.add :boxoffice_us
-    template.add :boxoffice_foreign
-    template.add :boxoffice_worldwide
-  end
       
   def slug_candidates
     [

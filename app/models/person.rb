@@ -24,6 +24,7 @@ class Person < ActiveRecord::Base
   extend FriendlyId
   
   acts_as_api
+  include ApiV1::Person
   friendly_id :slug_candidates, use: :slugged
   
   has_many :characters
@@ -40,20 +41,6 @@ class Person < ActiveRecord::Base
   
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :promo, :content_type => /\Aimage\/.*\Z/
-  
-  api_accessible :public do |template|
-    template.add :slug, as: :id
-    template.add :name
-    template.add :born
-    template.add :age
-    template.add :died
-    template.add :promo, as: :promo
-  end
-  
-  api_accessible :detailed, extend: :public do |template|
-    template.add :biography
-    template.add :twitter
-  end
   
   def slug_candidates
     [

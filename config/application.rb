@@ -26,5 +26,7 @@ module Workspace
         ENV[key.to_s] = value
       end if File.exists?(env_file)
     end
+    
+    config.autoload_paths += %W(#{config.root}/app/representations)
   end
 end
