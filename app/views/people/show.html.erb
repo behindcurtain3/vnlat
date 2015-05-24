@@ -20,12 +20,12 @@
     <table class="table table-hover table-condensed">
     <tr>
       <td>Born</td>
-      <td class="text-right"><%= time_tag @person.born %></td>
+      <td class="text-right"><%= if @person.born.nil? then 'Unknown' else time_tag @person.born end  %></td>
     </tr>
     <% if @person.died.nil? %>
     <tr>
       <td>Age</td>
-      <td class="text-right"><%= @person.age %></td>
+      <td class="text-right"><%= if @person.born.nil? then 'Unknown' else @person.age end %></td>
     </tr>
     <% else %>
     <tr>
