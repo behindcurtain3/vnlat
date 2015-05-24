@@ -44,6 +44,15 @@ class Movie < ActiveRecord::Base
     
   validates :summary,
     presence: true
+    
+  validates :boxoffice_us,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    
+  validates :boxoffice_foreign,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    
+  validates :boxoffice_worldwide,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
       
   has_attached_file :poster, styles: {
       thumb: '100x100>',

@@ -70,15 +70,15 @@
   <table class="table table-hover table-condensed">
     <tr>
       <td>US</td>
-      <td class="text-right">$187,705,427</td>
+      <td class="text-right"><%= number_to_currency @movie.boxoffice_us, precision: 0 %></td>
     </tr>
     <tr>
       <td>Foreign</td>
-      <td class="text-right">$269,935,000</td>
+      <td class="text-right"><%= number_to_currency @movie.boxoffice_foreign, precision: 0 %></td>
     </tr>
     <tr>
       <td>Worldwide</td>
-      <td class="text-right">$457,640,427</td>
+      <td class="text-right"><%= number_to_currency @movie.boxoffice_worldwide, precision: 0 %></td>
     </tr>
   </table>
   
