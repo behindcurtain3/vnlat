@@ -17,6 +17,10 @@
 #  poster_file_size    :integer
 #  poster_updated_at   :datetime
 #  summary             :text
+#  director_id         :integer
+#  boxoffice_us        :integer
+#  boxoffice_foreign   :integer
+#  boxoffice_worldwide :integer
 #
 
 class Movie < ActiveRecord::Base
@@ -25,6 +29,7 @@ class Movie < ActiveRecord::Base
   
   has_many :ratings
   has_many :characters
+  has_many :quotes
   has_many :actors, through: :characters, source: :person
   has_many :ranked_characters, -> { ranked }, :class_name => 'Character'
   has_many :stars, through: :ranked_characters, source: :person

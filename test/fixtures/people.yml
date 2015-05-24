@@ -17,6 +17,7 @@
 #  promo_content_type :string(255)
 #  promo_file_size    :integer
 #  promo_updated_at   :datetime
+#  name               :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

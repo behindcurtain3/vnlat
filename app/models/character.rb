@@ -14,6 +14,7 @@
 class Character < ActiveRecord::Base
   belongs_to :person
   belongs_to :movie
+  has_many :quotes
   
   scope :ranked, -> { order('importance ASC, name') }
   scope :alphabetical, -> { order('name') }

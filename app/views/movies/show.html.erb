@@ -27,13 +27,15 @@
     </div>
   </div>
   
+  <% if @movie.quotes.count > 0 %>
   <blockquote class="blockquote-reverse">
     <p>
       <span class="fa fa-quote-left pull-left fa-lg"></span>
-      Oh what a day, what a lovely day!
+      <%= @movie.quotes.first.text %>
     </p>
-    <footer>Nux</footer>
+    <footer><%= @movie.quotes.first.character.name %></footer>
   </blockquote>
+  <% end %>
   
   <h4><%= t 'movie.information.summary' %></h4>
   <p><%= @movie.summary %></p>
