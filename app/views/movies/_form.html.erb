@@ -38,6 +38,15 @@
         <span class="help-block"></span>
       </div>
     </div>
+    
+    <div class="form-group">
+      <%= f.label :director, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+        <%= f.hidden_field :director_id %>
+        <%= f.autocomplete_field :director, autocomplete_person_name_movies_path, :id_element => '#movie_director_id', :class => "form-control", :value => (@movie.director.name unless @movie.director.nil?) %>
+        <span class="help-block"></span>
+      </div>
+    </div>
   
     <div class="form-group">
       <%= f.label :tag_list, :class => "col-lg-2 control-label" %>

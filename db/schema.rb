@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524050115) do
+ActiveRecord::Schema.define(version: 20150524063331) do
 
   create_table "characters", force: true do |t|
     t.integer  "person_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150524050115) do
     t.string   "promo_content_type"
     t.integer  "promo_file_size"
     t.datetime "promo_updated_at"
+    t.string   "name"
   end
 
   add_index "people", ["slug"], name: "index_people_on_slug", unique: true

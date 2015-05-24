@@ -7,6 +7,7 @@ en:
     boxoffice_us: "Box Office US"
     boxoffice_foreign: "Box Office Foreign"
     boxoffice_worldwide: "Box Office Worldwide"
+    director: "Director"
     form:
       new: "NEW"
       edit: "EDIT"

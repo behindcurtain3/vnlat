@@ -28,6 +28,8 @@ class Person < ActiveRecord::Base
   has_many :movies, through: :characters
   has_many :directed, class_name: 'Movie', foreign_key: 'director_id'
   
+  before_save :update_name
+  
   has_attached_file :promo, styles: {
       thumb: '125x125>',
       medium: '450x450>'
@@ -44,11 +46,11 @@ class Person < ActiveRecord::Base
     ]
   end
   
-  def name
+  def update_name
     if self.display_name.blank?
-      return self.first_name + " " + self.last_name
+      self.name = self.first_name + " " + self.last_name
     else
-      return self.display_name
+      self.name = self.display_name
     end
   end
   
