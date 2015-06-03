@@ -61,7 +61,7 @@ class Movie < ActiveRecord::Base
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
       
   has_attached_file :poster, styles: {
-      thumb: '100x100>',
+      thumb: '125x125>',
       medium: '450x450>'
     },
     s3_protocol: 'https'

@@ -18,6 +18,7 @@ class Character < ActiveRecord::Base
   
   scope :ranked, -> { order('importance ASC, name') }
   scope :alphabetical, -> { order('name') }
+  scope :by_year, -> { includes(:movie).order('movies.year DESC') }
   
   validates :person,
     presence: true

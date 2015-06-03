@@ -61,8 +61,11 @@ en:
       save: "Save"
     information:
       biography: "BIOGRAPHY"
+      filmography: "FILMOGRAPHY"
+      popular: "POPULAR FILMS"
     last_name: "Last Name"
     promo: "Promo"
+    twitter: "Twitter"
     
   rating:
     form:
