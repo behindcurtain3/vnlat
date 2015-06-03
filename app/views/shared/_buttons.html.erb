@@ -22,20 +22,44 @@
 <table class="table table-hover table-condensed">
   <tbody>
     <tr>
-      <td><%= t 'movie.violence' %></td>
-      <td><%= movie.avg_v %></td>
+      <td class="col-xs-5 col-sm-4"><%= t 'movie.violence' %></td>
+      <td class="col-xs-7 col-sm-8">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= movie.avg_v %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (movie.avg_v == 0) ? 10 : movie.avg_v * 20 %>%;">
+            <%= movie.avg_v %>    
+          </div>
+        </div>
+      </td>
     </tr>
     <tr>
-      <td><%= t 'movie.nudity' %></td>
-      <td><%= movie.avg_n %></td>
+      <td class="col-xs-5 col-sm-4"><%= t 'movie.nudity' %></td>
+      <td class="col-xs-7 col-sm-8">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= movie.avg_n %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (movie.avg_n == 0) ? 10 : movie.avg_n * 20 %>%;">
+            <%= movie.avg_n %>    
+          </div>
+        </div>
+      </td>
     </tr>
     <tr>
-      <td><%= t 'movie.language' %></td>
-      <td><%= movie.avg_l %></td>
+      <td class="col-xs-5 col-sm-4"><%= t 'movie.language' %></td>
+      <td class="col-xs-7 col-sm-8">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= movie.avg_l %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (movie.avg_l == 0) ? 10 :movie.avg_l * 20 %>%;">
+            <%= movie.avg_l %>    
+          </div>
+        </div>
+      </td>
     </tr>
     <tr>
-      <td><%= t 'movie.adult' %></td>
-      <td><%= movie.avg_at %></td>
+      <td class="col-xs-5 col-sm-4"><%= t 'movie.adult' %></td>
+      <td class="col-xs-7 col-sm-8">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= movie.avg_at %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (movie.avg_at == 0) ? 10 :movie.avg_at * 20 %>%;">
+            <%= movie.avg_at %>    
+          </div>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

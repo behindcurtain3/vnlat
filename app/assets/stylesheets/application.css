@@ -116,3 +116,7 @@ hr {
     z-index:999;
     margin-bottom: 10px;
 }
+
+.progress {
+    margin-bottom: 0px;
+}

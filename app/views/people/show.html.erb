@@ -28,10 +28,20 @@
     <tbody>
       <% @person.characters.by_year.each do | character | %>
       <tr>
-        <td class="col-md-1"><%= link_to movie_path(character.movie) do %><%= image_tag character.movie.poster.url(:thumb), alt: character.movie.title, class: "img-rounded", height: '40' %><% end %></td>
-        <td class="col-md-6"><%= link_to character.movie.title, movie_path(character.movie) %></td>
-        <td class="col-md-2"><%= character.movie.year %></td>
-        <td class="col-md-3 text-center"><%= character.name %></td>
+        <td>
+          <div class="media">
+            <div class="media-left media-top">
+              <%= link_to movie_path(character.movie) do %>
+                <%= image_tag character.movie.poster.url(:thumb), alt: character.movie.title, class: "img-rounded", height: '40' %>
+              <% end %>
+            </div>
+            <div class="media-body">
+              <%= link_to character.movie.title, movie_path(character.movie) %>
+            </div>
+          </div>
+        </td>
+        <td><%= character.movie.year %></td>
+        <td class="text-center"><%= character.name %></td>
       </tr>
       <% end %>
     </tbody>
