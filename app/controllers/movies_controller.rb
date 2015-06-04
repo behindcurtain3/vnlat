@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show, :boxoffice]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice]
   autocomplete :person, :name
 
   respond_to :html
@@ -63,6 +63,10 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
+    respond_with(@movie)
+  end
+  
+  def boxoffice
     respond_with(@movie)
   end
 

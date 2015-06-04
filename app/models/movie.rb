@@ -75,6 +75,10 @@ class Movie < ActiveRecord::Base
       [:title, :year]
     ]
   end
+  
+  def domestic_rank
+    return Movie.where('boxoffice_us > ' + self.boxoffice_us.to_s).order('boxoffice_us DESC').count + 1
+  end
 
   def update_averages
     count = self.ratings.count
