@@ -1,13 +1,15 @@
 <%= render 'header' %>
 
-  <div class="well">
-    <h4>US: <%= number_to_currency @movie.boxoffice_us, precision: 0 %> <span class="label label-success">#<%= @movie.domestic_rank %></span></h4>
+  <div class="">
+    <h4>US: <%= number_to_currency @movie.boxoffice_us, precision: 0 %> Rank: <%= @movie.domestic_rank %></h4>
   </div>
-  <div class="well">
-    <h4>Foreign: <%= number_to_currency @movie.boxoffice_foreign, precision: 0 %> <span class="label label-success">#<%= @movie.domestic_rank %></span></h4>
+  <div class="">
+    <h4>Foreign: <%= number_to_currency @movie.boxoffice_foreign, precision: 0 %> Rank: <%= @movie.foreign_rank %></h4>
   </div>
-  <div class="well">
-    <h4>Worldwide: <%= number_to_currency @movie.boxoffice_worldwide, precision: 0 %> <span class="label label-success">#<%= @movie.domestic_rank %></span></h4>
+  <div class="">
+    <h4>Worldwide: <%= number_to_currency @movie.boxoffice_worldwide, precision: 0 %> Rank: <%= @movie.worldwide_rank %></h4>
   </div>
 
 </div>
+
+<%= render 'sidebar' %>

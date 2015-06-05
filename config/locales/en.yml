@@ -23,6 +23,10 @@ en:
       summary: "SUMMARY"
       tags: "TAGS"
       trailers: "TRAILER"
+    sidebar:
+      boxoffice: "Box Office Results"
+      home: "Home"
+      quicklinks: "MOVIE INFO"
     v: "V"
     n: "N"
     l: "L"

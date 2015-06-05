@@ -117,7 +117,7 @@
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @brand-primary;
+@component-active-bg:       #262626;//@brand-primary;
 
 //** Width of the `border` for generating carets that indicator dropdowns.
 @caret-width-base:          4px;
@@ -657,20 +657,20 @@
 //##
 
 //** Background color on `.list-group-item`
-@list-group-bg:                 #fff;
+@list-group-bg:                 #141414;
 //** `.list-group-item` border color
-@list-group-border:             #ddd;
+@list-group-border:             darken(@list-group-bg, 7%);
 //** List group border radius
 @list-group-border-radius:      @border-radius-base;
 
 //** Background color of single list items on hover
-@list-group-hover-bg:           #f5f5f5;
+@list-group-hover-bg:           #262626;
 //** Text color of active list items
 @list-group-active-color:       @component-active-color;
 //** Background color of active list items
 @list-group-active-bg:          @component-active-bg;
 //** Border color of active list elements
-@list-group-active-border:      @list-group-active-bg;
+@list-group-active-border:      darken(@list-group-active-bg, 7%);
 //** Text color for content within active list items
 @list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
 
@@ -681,7 +681,7 @@
 //** Text color for content within disabled list items
 @list-group-disabled-text-color: @list-group-disabled-color;
 
-@list-group-link-color:         #555;
+@list-group-link-color:         lighten(@list-group-active-bg, 40%);
 @list-group-link-hover-color:   @list-group-link-color;
 @list-group-link-heading-color: #333;
 
@@ -748,7 +748,7 @@
 //
 //##
 
-@well-bg:                     @ps-well-bg;
+@well-bg:                     #141414;//@ps-well-bg;
 @well-border:                 darken(@well-bg, 7%);
 
 

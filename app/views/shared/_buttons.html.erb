@@ -22,8 +22,8 @@
 <table class="table table-hover table-condensed">
   <tbody>
     <tr>
-      <td class="col-xs-5 col-sm-4"><%= t 'movie.violence' %></td>
-      <td class="col-xs-7 col-sm-8">
+      <td class="col-xs-5 col-sm-5"><%= t 'movie.violence' %></td>
+      <td class="col-xs-7 col-sm-7">
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= movie.avg_v %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (movie.avg_v == 0) ? 10 : movie.avg_v * 20 %>%;">
             <%= movie.avg_v %>    

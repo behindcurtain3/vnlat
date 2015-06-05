@@ -8,4 +8,6 @@ Guidelines
 - - 3: Foul language is present in the movie. However, it is not considered a central theme of the movie or excessively used.
 - - 4: Foul language is used throughout the movie. It may also be used in conjuction with violence, nudity, and/or adult themes.
 - - 5: Foul language is used throughout the movie. It may be central to the theme of the movie, used for shock value and/or excessively crude.
-- 
+
+
+Have a remote modal form for easily creating a new person on the cast editing page.

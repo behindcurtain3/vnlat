@@ -120,3 +120,11 @@ hr {
 .progress {
     margin-bottom: 0px;
 }
+
+.poster {
+    margin-bottom: 10px;
+}
+
+.person-thumb-item {
+    max-width: 85px;
+}

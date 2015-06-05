@@ -79,6 +79,14 @@ class Movie < ActiveRecord::Base
   def domestic_rank
     return Movie.where('boxoffice_us > ' + self.boxoffice_us.to_s).order('boxoffice_us DESC').count + 1
   end
+  
+  def foreign_rank
+    return Movie.where('boxoffice_foreign > ' + self.boxoffice_foreign.to_s).order('boxoffice_foreign DESC').count + 1
+  end
+  
+  def worldwide_rank
+    return Movie.where('boxoffice_worldwide > ' + self.boxoffice_worldwide.to_s).order('boxoffice_worldwide DESC').count + 1
+  end
 
   def update_averages
     count = self.ratings.count
