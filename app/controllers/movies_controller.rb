@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :boxoffice]
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice, :edit_cast, :update_cast]
   autocomplete :person, :name
 
   respond_to :html
@@ -69,6 +69,15 @@ class MoviesController < ApplicationController
   def boxoffice
     respond_with(@movie)
   end
+  
+  def edit_cast
+    @new = Character.new
+    respond_with(@movie)
+  end
+  
+  def update_cast
+    
+  end
 
   private
     def set_movie
@@ -76,6 +85,9 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:title, :year, :poster, :director_id, :summary, :tag_list, :boxoffice_us, :boxoffice_foreign, :boxoffice_worldwide, :j_v, :j_n, :j_l, :j_at, :g_v, :g_n, :g_l, :g_at)
+      params.require(:movie).permit(:title, :year, :poster, :director_id, :summary, 
+        :tag_list, :boxoffice_us, :boxoffice_foreign, :boxoffice_worldwide, 
+        :j_v, :j_n, :j_l, :j_at, :g_v, :g_n, :g_l, :g_at,
+        characters_attributes: [:id, :name, :person_id, :movie_id, :_destroy])
     end
 end

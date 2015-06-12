@@ -4,11 +4,14 @@ Rails.application.routes.draw do
     get :autocomplete_person_name, :on => :collection
     member do
       get :boxoffice
+      get :edit_cast
     end
   end
 
   resources :people do
   end
+
+  resources :characters
 
   namespace :api do
     namespace :v1 do

@@ -80,3 +80,5 @@ en:
       new: "NEW RATING FOR"
       edit: "EDIT RATING FOR"
       save: "Save"
+  character:
+    name: "Name"

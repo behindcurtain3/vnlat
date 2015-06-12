@@ -35,6 +35,7 @@ class Movie < ActiveRecord::Base
   has_many :stars, through: :ranked_characters, source: :person
   
   belongs_to :director, class_name: 'Person'
+  accepts_nested_attributes_for :characters, allow_destroy: true
   
   acts_as_taggable
   acts_as_api
