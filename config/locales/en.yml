@@ -4,6 +4,10 @@ en:
     description: "Each category is rated on a 0-5 scale. 0 represents a total absence of that content from the movie, while a 5 respresents excessive use."
     title: "How it works"
   movie:
+    boxoffice:
+      us: "US"
+      foreign: "Foreign"
+      worldwide: "Worldwide"
     boxoffice_us: "Box Office US"
     boxoffice_foreign: "Box Office Foreign"
     boxoffice_worldwide: "Box Office Worldwide"
