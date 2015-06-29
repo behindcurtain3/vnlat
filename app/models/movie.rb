@@ -21,6 +21,7 @@
 #  boxoffice_us        :integer
 #  boxoffice_foreign   :integer
 #  boxoffice_worldwide :integer
+#  runtime             :time
 #
 
 class Movie < ActiveRecord::Base

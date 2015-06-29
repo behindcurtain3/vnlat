@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524075319) do
+ActiveRecord::Schema.define(version: 20150629223820) do
 
   create_table "characters", force: true do |t|
     t.integer  "person_id"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20150524075319) do
     t.integer  "boxoffice_us"
     t.integer  "boxoffice_foreign"
     t.integer  "boxoffice_worldwide"
+    t.integer  "runtime"
+    t.string   "mpaa"
   end
 
   add_index "movies", ["director_id"], name: "index_movies_on_director_id"

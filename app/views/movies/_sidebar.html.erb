@@ -1,6 +1,64 @@
 <div class="col-sm-3">
-  <div class="list-group">
-    <%= link_to t('movie.sidebar.home'), movie_path(@movie), class: 'list-group-item active' %>
-    <%= link_to t('movie.sidebar.boxoffice'), boxoffice_movie_path(@movie), class: 'list-group-item' %>
+  <h4><%= t 'movie.information.general' %>
+    <% if user_signed_in? %>
+      <small class='pull-right'>
+      <% if current_user.rated?(@movie) %>
+        <%= link_to 'EDIT', edit_movie_rating_path(@movie, @rating) %>
+        <%= link_to 'DELETE', movie_rating_path(@movie, @rating), :method => :delete %>
+      <% else %>
+        <%= link_to 'RATE', new_movie_rating_path(@movie) %>
+      <% end %>
+      </small>
+    <% end %>
+  </h4>
+  <table class="table table-hover table-condensed">
+    <tr>
+      <td>Run time</td>
+      <td><%= @movie.runtime %> minutes</td>
+    </tr>
+    <tr>
+      <td>MPAA Rating</td>
+      <td><%= @movie.mpaa %></td>
+    </tr>
+  </table>
+  <%= render 'shared/buttons', movie: @movie %>
+  
+  <h4><%= link_to t('movie.information.boxoffice'), boxoffice_movie_path(@movie) %></h4>
+  <table class="table table-hover table-condensed">
+    <tr>
+      <td>US</td>
+      <td class="text-right"><%= number_to_currency @movie.boxoffice_us, precision: 0 %></td>
+    </tr>
+    <tr>
+      <td>Foreign</td>
+      <td class="text-right"><%= number_to_currency @movie.boxoffice_foreign, precision: 0 %></td>
+    </tr>
+    <tr>
+      <td>Worldwide</td>
+      <td class="text-right"><%= number_to_currency @movie.boxoffice_worldwide, precision: 0 %></td>
+    </tr>
+  </table>
+  
+  <h4>
+    <a href="#review" aria-controls="review" role="tab" data-toggle="tab"><%= t 'movie.information.reviews' %></a>
+    - 
+    <a href="#trailer" aria-controls="trailer" role="tab" data-toggle="tab"><%= t 'movie.information.trailers' %></a>
+  </h4>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="review">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4fk9yPZX_NM" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="trailer">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hEJnMQG9ev8" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  
+  <div class="tag-list">
+    <h4><%= t 'movie.information.tags' %></h4>
+    <%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, tag_path(t) }.join(', ') %>
   </div>
 </div>
