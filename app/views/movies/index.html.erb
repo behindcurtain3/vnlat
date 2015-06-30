@@ -1,9 +1,11 @@
 <h3><% if params[:genre] %><%= params[:genre].upcase %> <%= t('movie.tag') %> <% elsif params[:q] and params[:q][:title_cont] %><%= t('movie.search') %> <%= params[:q][:title_cont].upcase %><% else %><%= t('movie.find') %><% end %></h3>
 
-<ul class="movie-list">
+<ul class="movie-list list-inline">
 <% if @movies.any? %>
 <% @movies.each do |movie| %>
-  <%= render 'shared/quick', movie: movie %>
+  <li class="thumb-wrap">
+    <%= render 'shared/movie_thumb', movie: movie%>
+  </li>
 <% end %>
 <% else %>
 <li><p>No movies found</p></li>
