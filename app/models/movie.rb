@@ -54,17 +54,17 @@ class Movie < ActiveRecord::Base
     presence: true,
     numericality: { only_integer: true, greater_than_or_equal_to: 1900 }
     
-  validates :summary,
-    presence: true
-    
   validates :boxoffice_us,
-    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 },
+    allow_nil: true
     
   validates :boxoffice_foreign,
-    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 },
+    allow_nil: true
     
   validates :boxoffice_worldwide,
-    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 },
+    allow_nil: true
       
   has_attached_file :poster, styles: {
       thumb: '125x125>',
