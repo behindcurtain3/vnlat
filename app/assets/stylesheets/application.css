@@ -92,7 +92,8 @@ hr {
     margin-bottom: 5px;
 }
 
-.movie-title {
+.movie-title,
+.person-title {
     margin-top: 0;    
 }
 
@@ -125,6 +126,37 @@ hr {
     margin-bottom: 10px;
 }
 
-.person-thumb-item {
-    max-width: 85px;
+.person-thumb-wrap {
+    position: relative;
+    height: 125px;
+    width: 86px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-bottom: 5px;
+}
+
+.person-thumb-description {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 4px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    color: #fff;
+    
+    
+    visibility: hidden;
+    opacity: 0;
+    
+    /*remove comment if you want a gradual transition between states
+    -webkit-transition: visibility opacity 0.2s;
+*/
+}
+
+.person-thumb-wrap:hover .person-thumb-description {
+  visibility: visible;
+  opacity: 1;
 }

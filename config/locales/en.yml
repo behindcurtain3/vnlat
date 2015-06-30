@@ -78,6 +78,7 @@ en:
       resource: "PERSON"
       save: "Save"
     information:
+      general: "INFORMATION"
       biography: "BIOGRAPHY"
       filmography: "FILMOGRAPHY"
       popular: "POPULAR FILMS"
