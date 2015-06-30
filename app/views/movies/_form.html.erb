@@ -81,6 +81,14 @@
   	</div>
   	
   	<div class="form-group">
+      <%= f.label :released, :class => "col-lg-2 control-label" %>
+      <div class="col-lg-10">
+  				<%= f.date_field :released, :class => "form-control", :placeholder => t('movie.released') %>
+  				<span class="help-block"></span>
+      </div>
+  	</div>
+  	
+  	<div class="form-group">
       <label class="col-lg-2 control-label" for="movie_boxoffice_us"><%= t 'movie.boxoffice_us' %></label>
       <div class="col-lg-10">
         <div class="input-group margin-bottom-sm">

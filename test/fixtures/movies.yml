@@ -23,6 +23,7 @@
 #  boxoffice_worldwide :integer
 #  runtime             :integer
 #  mpaa                :string(255)
+#  released            :date
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
