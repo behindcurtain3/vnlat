@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-2">
       <h4><%= t 'movie.information.director' %></h4>
-      <div class="person-thumb-wrap media-left media-top">
+      <div class="thumb-wrap media-left media-top">
         <%= render 'shared/person_thumb', person: @movie.director %>
       </div>
     </div>
@@ -11,7 +11,7 @@
       <h4><%= t 'movie.information.stars' %></h4>
       <ul class="list-inline">
         <% @movie.stars.limit(6).each do | actor | %>
-          <li class="person-thumb-wrap media-left media-top">
+          <li class="thumb-wrap media-left media-top">
             <%= render 'shared/person_thumb', person: actor %>
           </li>
         <% end %>

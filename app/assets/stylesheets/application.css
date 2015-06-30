@@ -126,7 +126,7 @@ hr {
     margin-bottom: 10px;
 }
 
-.person-thumb-wrap {
+.thumb-wrap {
     position: relative;
     height: 125px;
     width: 86px;
@@ -135,7 +135,7 @@ hr {
     margin-bottom: 5px;
 }
 
-.person-thumb-description {
+.thumb-description {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -156,7 +156,7 @@ hr {
 */
 }
 
-.person-thumb-wrap:hover .person-thumb-description {
+.thumb-wrap:hover .thumb-description {
   visibility: visible;
   opacity: 1;
 }
