@@ -108,6 +108,10 @@ class Movie < ActiveRecord::Base
       update_at count  
     end
   end
+  
+  def any_boxoffice?
+    return self.boxoffice_us.present? || self.boxoffice_foreign.present? || self.boxoffice_worldwide.present?
+  end
 
   private
   

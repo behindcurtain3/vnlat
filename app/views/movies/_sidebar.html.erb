@@ -67,6 +67,7 @@
   </tbody>
   </table>
   
+  <% if @movie.any_boxoffice? %>
   <h4><%= link_to t('movie.information.boxoffice'), boxoffice_movie_path(@movie) %></h4>
   <table class="table table-hover table-condensed">
     <tr>
@@ -82,6 +83,7 @@
       <td class="text-right"><%= @movie.boxoffice_worldwide.present? ? number_to_currency(@movie.boxoffice_worldwide, precision: 0) : t('movie.unknown') %></td>
     </tr>
   </table>
+  <% end %>
   
   <% if @movie.trailers.any? %>
   <h4><%= t 'movie.information.trailers' %></h4>
