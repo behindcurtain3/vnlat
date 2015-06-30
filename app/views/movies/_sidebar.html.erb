@@ -60,6 +60,10 @@
         </div>
       </td>
     </tr>
+    <tr>
+      <td class="col-xs-5 col-sm-5"><%= t 'movie.genre' %></td>
+      <td class="col-xs-7 col-sm-7"><%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, genre_path(t) }.join(', ') %></td>
+    </tr>
   </tbody>
   </table>
   
@@ -86,13 +90,11 @@
   </div>
   <% end %>
   
+  <% if @movie.reviews.any? %>
   <h4><%= t 'movie.information.reviews' %></h4>
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4fk9yPZX_NM" allowfullscreen></iframe>
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @movie.reviews.first.code %>" allowfullscreen></iframe>
   </div>
-
-  <div class="tag-list">
-    <h4><%= t 'movie.information.tags' %></h4>
-    <%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, tag_path(t) }.join(', ') %>
-  </div>
+  <% end %>
+  
 </div>

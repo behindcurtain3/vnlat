@@ -36,6 +36,7 @@ class Movie < ActiveRecord::Base
   has_many :ranked_characters, -> { ranked }, :class_name => 'Character'
   has_many :stars, through: :ranked_characters, source: :person
   has_many :trailers
+  has_many :reviews
   
   belongs_to :director, class_name: 'Person'
   accepts_nested_attributes_for :characters, allow_destroy: true

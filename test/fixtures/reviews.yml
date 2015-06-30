@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: reviews
+#
+#  id         :integer          not null, primary key
+#  movie_id   :integer
+#  code       :string(255)
+#  active     :boolean
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie_id: 
+  code: MyString
+  active: false
+
+two:
+  movie_id: 
+  code: MyString
+  active: false
