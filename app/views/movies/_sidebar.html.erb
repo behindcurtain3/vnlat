@@ -17,10 +17,6 @@
       <td class="col-xs-7 col-sm-7 text-right"><%= @movie.runtime.present? ? t('movie.runtime.data', :length => @movie.runtime) : t('movie.unknown') %></td>
     </tr>
     <tr>
-      <td class="col-xs-5 col-sm-5"><%= t 'movie.information.mpaa' %></td>
-      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.mpaa.present? ? @movie.mpaa : t('movie.unknown') %></td>
-    </tr>
-    <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.information.released' %></td>
       <td class="col-xs-7 col-sm-7 text-right"><%= @movie.released.present? ? time_tag(@movie.released) : t('movie.unknown') %></td>
     </tr>
@@ -63,6 +59,10 @@
           </div>
         </div>
       </td>
+    </tr>
+    <tr>
+      <td class="col-xs-5 col-sm-5"><%= t 'movie.information.mpaa' %></td>
+      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.mpaa.present? ? @movie.mpaa : t('movie.unknown') %></td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.genre' %></td>
