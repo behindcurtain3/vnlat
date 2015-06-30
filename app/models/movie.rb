@@ -21,7 +21,8 @@
 #  boxoffice_us        :integer
 #  boxoffice_foreign   :integer
 #  boxoffice_worldwide :integer
-#  runtime             :time
+#  runtime             :integer
+#  mpaa                :string(255)
 #
 
 class Movie < ActiveRecord::Base
@@ -34,6 +35,7 @@ class Movie < ActiveRecord::Base
   has_many :actors, through: :characters, source: :person
   has_many :ranked_characters, -> { ranked }, :class_name => 'Character'
   has_many :stars, through: :ranked_characters, source: :person
+  has_many :trailers
   
   belongs_to :director, class_name: 'Person'
   accepts_nested_attributes_for :characters, allow_destroy: true

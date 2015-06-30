@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629223820) do
+ActiveRecord::Schema.define(version: 20150629235005) do
 
   create_table "characters", force: true do |t|
     t.integer  "person_id"
@@ -116,6 +116,16 @@ ActiveRecord::Schema.define(version: 20150629223820) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "trailers", force: true do |t|
+    t.integer  "movie_id"
+    t.string   "code"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "trailers", ["movie_id"], name: "index_trailers_on_movie_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

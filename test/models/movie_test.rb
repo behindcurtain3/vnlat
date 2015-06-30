@@ -21,7 +21,8 @@
 #  boxoffice_us        :integer
 #  boxoffice_foreign   :integer
 #  boxoffice_worldwide :integer
-#  runtime             :time
+#  runtime             :integer
+#  mpaa                :string(255)
 #
 
 require 'test_helper'

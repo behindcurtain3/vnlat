@@ -1,6 +1,6 @@
 <div class="col-sm-3">
   <h4><%= t 'movie.information.general' %>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @rating.present? %>
       <small class='pull-right'>
       <% if current_user.rated?(@movie) %>
         <%= link_to 'EDIT', edit_movie_rating_path(@movie, @rating) %>
@@ -13,50 +13,84 @@
   </h4>
   <table class="table table-hover table-condensed">
     <tr>
-      <td>Run time</td>
-      <td><%= @movie.runtime %> minutes</td>
+      <td class="col-xs-5 col-sm-5"><%= t 'movie.information.runtime' %></td>
+      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.runtime.present? ? t('movie.runtime.data', :length => @movie.runtime) : t('movie.unknown') %></td>
     </tr>
     <tr>
-      <td>MPAA Rating</td>
-      <td><%= @movie.mpaa %></td>
+      <td class="col-xs-5 col-sm-5"><%= t 'movie.information.mpaa' %></td>
+      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.mpaa.present? ? @movie.mpaa : t('movie.unknown') %></td>
     </tr>
+    <tr>
+      <td class="col-xs-5 col-sm-5"><%= t 'movie.violence' %></td>
+      <td class="col-xs-7 col-sm-7">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_v %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_v == 0) ? 10 : @movie.avg_v * 20 %>%;">
+            <%= @movie.avg_v %>    
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-xs-5 col-sm-4"><%= t 'movie.nudity' %></td>
+      <td class="col-xs-7 col-sm-8">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_n %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_n == 0) ? 10 : @movie.avg_n * 20 %>%;">
+            <%= @movie.avg_n %>    
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-xs-5 col-sm-4"><%= t 'movie.language' %></td>
+      <td class="col-xs-7 col-sm-8">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_l %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_l == 0) ? 10 : @movie.avg_l * 20 %>%;">
+            <%= @movie.avg_l %>    
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-xs-5 col-sm-4"><%= t 'movie.adult' %></td>
+      <td class="col-xs-7 col-sm-8">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_at %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_at == 0) ? 10 : @movie.avg_at * 20 %>%;">
+            <%= @movie.avg_at %>    
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
   </table>
-  <%= render 'shared/buttons', movie: @movie %>
   
   <h4><%= link_to t('movie.information.boxoffice'), boxoffice_movie_path(@movie) %></h4>
   <table class="table table-hover table-condensed">
     <tr>
-      <td>US</td>
-      <td class="text-right"><%= number_to_currency @movie.boxoffice_us, precision: 0 %></td>
+      <td><%= t 'movie.boxoffice.us' %></td>
+      <td class="text-right"><%= @movie.boxoffice_us.present? ? number_to_currency(@movie.boxoffice_us, precision: 0) : t('movie.unknown') %></td>
     </tr>
     <tr>
-      <td>Foreign</td>
-      <td class="text-right"><%= number_to_currency @movie.boxoffice_foreign, precision: 0 %></td>
+      <td><%= t 'movie.boxoffice.foreign' %></td>
+      <td class="text-right"><%= @movie.boxoffice_foreign.present? ? number_to_currency(@movie.boxoffice_foreign, precision: 0) : t('movie.unknown') %></td>
     </tr>
     <tr>
-      <td>Worldwide</td>
-      <td class="text-right"><%= number_to_currency @movie.boxoffice_worldwide, precision: 0 %></td>
+      <td><%= t 'movie.boxoffice.worldwide' %></td>
+      <td class="text-right"><%= @movie.boxoffice_worldwide.present? ? number_to_currency(@movie.boxoffice_worldwide, precision: 0) : t('movie.unknown') %></td>
     </tr>
   </table>
   
-  <h4>
-    <a href="#review" aria-controls="review" role="tab" data-toggle="tab"><%= t 'movie.information.reviews' %></a>
-    - 
-    <a href="#trailer" aria-controls="trailer" role="tab" data-toggle="tab"><%= t 'movie.information.trailers' %></a>
-  </h4>
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="review">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4fk9yPZX_NM" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="trailer">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hEJnMQG9ev8" allowfullscreen></iframe>
-      </div>
-    </div>
+  <% if @movie.trailers.any? %>
+  <h4><%= t 'movie.information.trailers' %></h4>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @movie.trailers.first.code %>" allowfullscreen></iframe>
   </div>
+  <% end %>
   
+  <h4><%= t 'movie.information.reviews' %></h4>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4fk9yPZX_NM" allowfullscreen></iframe>
+  </div>
+
   <div class="tag-list">
     <h4><%= t 'movie.information.tags' %></h4>
     <%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, tag_path(t) }.join(', ') %>
