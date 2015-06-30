@@ -34,7 +34,7 @@
   </blockquote>
   <% end %>
   
-  <h4><%= t 'movie.information.cast' %></h4>
+  <h4><%= t 'movie.information.cast' %><% if user_signed_in? %><small> - <%= link_to 'Edit', edit_cast_movie_path(@movie) %></small><% end %></h4>
   <table class="table table-hover">
     <tbody>
       <% @movie.characters.ranked.each do | character | %>

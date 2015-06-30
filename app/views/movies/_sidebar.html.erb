@@ -1,12 +1,12 @@
 <div class="col-sm-3">
   <h4><%= t 'movie.information.general' %>
     <% if user_signed_in? && @rating.present? %>
-      <small class='pull-right'>
+      <small> - 
       <% if current_user.rated?(@movie) %>
-        <%= link_to 'EDIT', edit_movie_rating_path(@movie, @rating) %>
-        <%= link_to 'DELETE', movie_rating_path(@movie, @rating), :method => :delete %>
+        <%= link_to t('movie.edit'), edit_movie_rating_path(@movie, @rating) %>
+        - <%= link_to t('movie.delete'), movie_rating_path(@movie, @rating), :method => :delete %>
       <% else %>
-        <%= link_to 'RATE', new_movie_rating_path(@movie) %>
+        <%= link_to t('movie.rate'), new_movie_rating_path(@movie) %>
       <% end %>
       </small>
     <% end %>
@@ -19,6 +19,10 @@
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.information.released' %></td>
       <td class="col-xs-7 col-sm-7 text-right"><%= @movie.released.present? ? time_tag(@movie.released) : t('movie.unknown') %></td>
+    </tr>
+    <tr>
+      <td class="col-xs-5 col-sm-5"><%= t 'movie.information.mpaa' %></td>
+      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.mpaa.present? ? @movie.mpaa : t('movie.unknown') %></td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.violence' %></td>
@@ -59,10 +63,6 @@
           </div>
         </div>
       </td>
-    </tr>
-    <tr>
-      <td class="col-xs-5 col-sm-5"><%= t 'movie.information.mpaa' %></td>
-      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.mpaa.present? ? @movie.mpaa : t('movie.unknown') %></td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.genre' %></td>

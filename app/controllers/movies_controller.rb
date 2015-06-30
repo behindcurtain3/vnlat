@@ -6,8 +6,8 @@ class MoviesController < ApplicationController
   respond_to :html
 
   def index
-    if params[:tag]
-      @movies = Movie.tagged_with(params[:tag])
+    if params[:genre]
+      @movies = Movie.tagged_with(params[:genre])
     elsif params[:q]
       @movies = @q.result(distinct: true)
     else

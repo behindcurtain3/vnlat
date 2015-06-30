@@ -4,7 +4,7 @@
 <div class="<%= local_assigns.has_key?(:full) ? 'col-sm-9' : 'col-sm-6' %> well">
   <h2 class="movie-title"><b><%= @movie.title.upcase %></b> <small>&nbsp;<%= @movie.year %>
   <% if user_signed_in? %>
-    <%= link_to t('movie.edit'), edit_movie_path, class: 'pull-right' %>
+    - <%= link_to t('movie.edit'), edit_movie_path %>
   <% end %>
   </small>
   </h2>

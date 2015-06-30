@@ -1,4 +1,4 @@
-<h3><% if params[:tag] %><%= t('movie.tag') %> <%= params[:tag].upcase %><% elsif params[:q] and params[:q][:title_cont] %><%= t('movie.search') %> <%= params[:q][:title_cont].upcase %><% else %><%= t('movie.find') %><% end %></h3>
+<h3><% if params[:genre] %><%= params[:genre].upcase %> <%= t('movie.tag') %> <% elsif params[:q] and params[:q][:title_cont] %><%= t('movie.search') %> <%= params[:q][:title_cont].upcase %><% else %><%= t('movie.find') %><% end %></h3>
 
 <ul class="movie-list">
 <% if @movies.any? %>
