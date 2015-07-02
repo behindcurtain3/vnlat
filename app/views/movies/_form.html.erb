@@ -1,7 +1,9 @@
 <div>
   <%= form_for(@movie) do |f| %>
   <fieldset>
-    <legend><% if f.object.new_record? %><%= t('movie.form.new') %><% else %><%= t('movie.form.edit') %><% end%> <%= t('movie.form.resource') %></legend>
+    <% if f.object.new_record? %>
+      <legend><%= t('movie.form.new') %> <%= t('movie.form.resource') %></legend>
+    <% end %>
     <% if @movie.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -15,24 +17,24 @@
     <% end %>
     
     <div class="form-group">
-      <%= f.label :title, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :title, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
         <%= f.text_field :title, :autofocus => true, :class => "form-control", :placeholder => t('movie.title') %>
         <span class="help-block"></span>
       </div>
     </div>
   
     <div class="form-group">
-      <%= f.label :year, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :year, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
         <%= f.number_field :year, :class => "form-control", :placeholder => t('movie.year') %>
         <span class="help-block"></span>
       </div>
     </div>
     
     <div class="form-group">
-      <%= f.label :poster, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :poster, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
         <%= image_tag @movie.poster.url(:thumb) %>
         <%= f.file_field :poster %>  
         <span class="help-block"></span>
@@ -40,8 +42,8 @@
     </div>
     
     <div class="form-group">
-      <%= f.label :director, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :director, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
         <%= f.hidden_field :director_id %>
         <%= f.autocomplete_field :director, autocomplete_person_name_movies_path, :id_element => '#movie_director_id', :class => "form-control", :value => (@movie.director.name unless @movie.director.nil?) %>
         <span class="help-block"></span>
@@ -49,48 +51,48 @@
     </div>
   
     <div class="form-group">
-      <%= f.label :tag_list, t('movie.genre'), :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :tag_list, t('movie.genre'), :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
   				<%= f.text_field :tag_list, :class => "form-control", :placeholder => t('movie.genre') %>
   				<span class="help-block"></span>
       </div>
   	</div>
   	
   	<div class="form-group">
-      <%= f.label :summary, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :summary, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
   				<%= f.text_area :summary, :class => "form-control", :placeholder => t('movie.summary') %>
   				<span class="help-block"></span>
       </div>
   	</div>
   	
   	<div class="form-group">
-      <%= f.label :runtime, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :runtime, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
   				<%= f.number_field :runtime, :class => "form-control", :placeholder => t('movie.runtime.description') %>
   				<span class="help-block"></span>
       </div>
   	</div>
   	
   	<div class="form-group">
-      <%= f.label :mpaa, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :mpaa, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
   				<%= f.text_field :mpaa, :class => "form-control", :placeholder => t('movie.mpaa') %>
   				<span class="help-block"></span>
       </div>
   	</div>
   	
   	<div class="form-group">
-      <%= f.label :released, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+      <%= f.label :released, :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
   				<%= f.date_field :released, :class => "form-control", :placeholder => t('movie.released') %>
   				<span class="help-block"></span>
       </div>
   	</div>
   	
   	<div class="form-group">
-      <label class="col-lg-2 control-label" for="movie_boxoffice_us"><%= t 'movie.boxoffice_us' %></label>
-      <div class="col-lg-10">
+      <label class="col-sm-3 control-label" for="movie_boxoffice_us"><%= t 'movie.boxoffice_us' %></label>
+      <div class="col-sm-9">
         <div class="input-group margin-bottom-sm">
           <span class="input-group-addon"><i class="fa fa-usd fa-fw"></i></span>
   				<%= f.number_field :boxoffice_us, :class => "form-control", :placeholder => t('movie.boxoffice_us') %>
@@ -100,8 +102,8 @@
   	</div>
   	
   	<div class="form-group">
-      <label class="col-lg-2 control-label" for="movie_boxoffice_foreign"><%= t 'movie.boxoffice_foreign' %></label>
-      <div class="col-lg-10">
+      <label class="col-sm-3 control-label" for="movie_boxoffice_foreign"><%= t 'movie.boxoffice_foreign' %></label>
+      <div class="col-sm-9">
         <div class="input-group margin-bottom-sm">
           <span class="input-group-addon"><i class="fa fa-usd fa-fw"></i></span>
   				<%= f.number_field :boxoffice_foreign, :class => "form-control", :placeholder => t('movie.boxoffice_foreign') %>
@@ -111,8 +113,8 @@
   	</div>
   	
   	<div class="form-group">
-  	  <label class="col-lg-2 control-label" for="movie_boxoffice_worldwide"><%= t 'movie.boxoffice_worldwide' %></label>
-      <div class="col-lg-10">
+  	  <label class="col-sm-3 control-label" for="movie_boxoffice_worldwide"><%= t 'movie.boxoffice_worldwide' %></label>
+      <div class="col-sm-9">
         <div class="input-group margin-bottom-sm">
           <span class="input-group-addon"><i class="fa fa-usd fa-fw"></i></span>
   				<%= f.number_field :boxoffice_worldwide, :class => "form-control", :placeholder => t('movie.boxoffice_worldwide') %>
@@ -122,7 +124,7 @@
   	</div>
   
     <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
+      <div class="col-sm-9 col-sm-offset-3">
         <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
       </div>
     </div>

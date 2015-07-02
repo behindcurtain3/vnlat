@@ -1,5 +1,10 @@
 <div class="col-sm-3">
   <%= image_tag @movie.poster.url, alt: @movie.title, class: "img-responsive poster" %>
+  <% unless current_page?(:controller => 'movies', :action => 'show') %>
+    <div class="text-center">
+      <h4><%= link_to 'Movie Home', movie_path(@movie), :class => "" %></h4>
+    </div>
+  <% end %>
 </div>
 <div class="<%= local_assigns.has_key?(:full) ? 'col-sm-9' : 'col-sm-6' %> well">
   <h2 class="movie-title"><b><%= @movie.title.upcase %></b> <small>&nbsp;<%= @movie.year %>

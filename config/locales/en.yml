@@ -20,6 +20,7 @@ en:
     information:
       boxoffice: "BOX OFFICE"
       cast: "CAST"
+      crew: "CREW"
       director: "DIRECTOR"
       general: "INFORMATION"
       mpaa: "Rated"

@@ -21,7 +21,7 @@
   
   <div>
     <h4><%= t 'movie.information.summary' %></h4>
-    <p><%= @movie.summary %></p>
+    <p><%= @movie.summary.blank? ? 'Currently unavailable' : @movie.summary %></p>
   </div>
   
   <% if @movie.quotes.count > 0 %>
@@ -34,7 +34,7 @@
   </blockquote>
   <% end %>
   
-  <h4><%= t 'movie.information.cast' %><% if user_signed_in? %><small> - <%= link_to 'Edit', edit_cast_movie_path(@movie) %></small><% end %></h4>
+  <h4><%= t 'movie.information.cast' %></h4>
   <table class="table table-hover">
     <tbody>
       <% @movie.characters.ranked.each do | character | %>

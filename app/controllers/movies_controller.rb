@@ -32,6 +32,7 @@ class MoviesController < ApplicationController
   end
 
   def edit
+    @new = Character.new
   end
 
   def create
@@ -55,7 +56,7 @@ class MoviesController < ApplicationController
 
   def update
     if @movie.update(movie_params)
-      respond_with(@movie)
+      redirect_to edit_movie_path(@movie)
     else
       render action: 'edit'
     end

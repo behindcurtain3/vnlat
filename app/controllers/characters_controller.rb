@@ -19,7 +19,7 @@ class CharactersController < ApplicationController
   def create
     @character = Character.new(character_params)
     if @character.save
-      redirect_to edit_cast_movie_path(@character.movie)
+      redirect_to edit_movie_path(@character.movie)
     else
       render action: 'new'
     end
@@ -27,7 +27,7 @@ class CharactersController < ApplicationController
 
   def update
     if @character.update(character_params)
-      redirect_to edit_cast_movie_path(@character.movie)
+      redirect_to edit_movie_path(@character.movie)
     else
       render action: 'edit'
     end
