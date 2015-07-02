@@ -28,7 +28,9 @@ class Person < ActiveRecord::Base
   friendly_id :slug_candidates, use: :slugged
   
   has_many :characters
+  has_many :crews
   has_many :movies, through: :characters
+  has_many :production_credits, through: :crews, source: :movie
   has_many :directed, class_name: 'Movie', foreign_key: 'director_id'
   
   before_save :update_name
@@ -50,6 +52,15 @@ class Person < ActiveRecord::Base
   validates :last_name,
     presence: true,
     :if => 'display_name.blank?'
+  
+  def credits
+    self.movies + self.jobs
+  end
+  
+  def movies_or_credits
+    return self.movies unless self.movies.blank?
+    return self.production_credits
+  end
   
   def slug_candidates
     [

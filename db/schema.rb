@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630023223) do
+ActiveRecord::Schema.define(version: 20150702194426) do
 
   create_table "characters", force: true do |t|
     t.integer  "person_id"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 20150630023223) do
 
   add_index "characters", ["movie_id"], name: "index_characters_on_movie_id"
   add_index "characters", ["person_id"], name: "index_characters_on_person_id"
+
+  create_table "crews", force: true do |t|
+    t.integer  "movie_id"
+    t.integer  "person_id"
+    t.string   "role"
+    t.integer  "importance", default: 0
+    t.boolean  "featured"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "crews", ["movie_id"], name: "index_crews_on_movie_id"
+  add_index "crews", ["person_id"], name: "index_crews_on_person_id"
 
   create_table "movies", force: true do |t|
     t.string   "title"

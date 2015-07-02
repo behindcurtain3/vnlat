@@ -4,7 +4,7 @@
     <div class="col-xs-12 col-sm-2">
       <h4><%= t 'movie.attr.director' %></h4>
       <div class="thumb-wrap media-left media-top">
-        <%= render 'shared/person_thumb', person: @movie.director %>
+        <%= render 'shared/person_thumb', person: @movie.workers.where("role = ? AND featured = ?", "Director", true).first %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-10">
@@ -39,7 +39,7 @@
     <tbody>
       <% @movie.characters.ranked.each do | character | %>
       <tr>
-        <td>
+        <td class="col-sm-6">
           <div class="media">
             <div class="media-left media-top">
               <%= link_to person_path(character.person) do %>
@@ -53,6 +53,33 @@
         </td>
         <td class="text-center"><%= character.name %></td>
       </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <h4><%= t 'movie.attr.crew' %></h4>
+  <table class="table table-hover">
+    <tbody>
+      <% @movie.crews.group_by(&:person).each_pair do | person, roles | %>
+        <tr>
+          <td class="col-sm-6">
+            <div class="media">
+              <div class="media-left media-top">
+                <%= link_to person_path(person) do %>
+                  <%= image_tag person.promo.url(:thumb), alt: person.name, class: "", height: '45' %>
+                <% end %>
+              </div>
+              <div class="media-body">
+                <%= link_to person.name, person_path(person) %>
+              </div>
+            </div>
+          </td>
+          <td class="text-center">
+            <% roles.each_with_index do |role, i| %>
+              <%= role.role %><%= ', ' unless i == roles.size - 1 %>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

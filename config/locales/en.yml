@@ -94,6 +94,7 @@ en:
       boxoffice_us: "US"
       boxoffice_foreign: "Foreign"
       boxoffice_worldwide: "Worldwide"
+      crews: "Production Credits"
       earnings: "Career Film Gross"
       general: "Information"
       biography: "Biography"
@@ -110,6 +111,8 @@ en:
       save: "Save"
   character:
     name: "Name"
+  crew:
+    role: "Role"
   trailer:
     code: "Code"
   quote:

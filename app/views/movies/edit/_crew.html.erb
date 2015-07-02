@@ -1,16 +1,73 @@
 <%= form_for @movie do |f| %>
+  <table class="table table-condensed">
+    <tr>
+      <th>Person</th>
+      <th>Role</th>
+      <th class="col-sm-1">Order</th>
+      <th class="col-sm-1">Featured</th>
+      <th>Delete</th>
+    </tr>
+    <% @movie.crews.each do |crew| %>
+      <%= f.fields_for :crews, crew do |crews_form| %>
+        <tr>
+          <td><%= crews_form.hidden_field :person_id, :id => 'person_id_' + crew.id.to_s %>
+          <%= crews_form.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#person_id_' + crew.id.to_s, :class => "form-control", :value => (crew.person.name unless crew.person.nil?) %></td>
+          <td><%= crews_form.text_field :role, :class => "form-control", :placeholder => t('crew.role') %></td>
+          <td><%= crews_form.number_field :importance, :class => "form-control" %></td>
+          <td class="text-center"><%= crews_form.check_box :featured %></td>
+          <td class="text-center"><%= crews_form.check_box :_destroy %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    
+    <tr>
+      <td colspan="5">
+        <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<h4>ADD NEW CREW MEMBER</h4>
+<%= form_for(@crew) do |f| %>
   <fieldset>
+    <%= f.hidden_field :movie_id, :value => @movie.id %>
+    
     <div class="form-group">
-      <%= f.label :director, :class => "col-lg-2 control-label" %>
-      <div class="col-lg-10">
-        <%= f.hidden_field :director_id %>
-        <%= f.autocomplete_field :director, autocomplete_person_name_movies_path, :id_element => '#movie_director_id', :class => "form-control", :value => (@movie.director.name unless @movie.director.nil?) %>
+      <%= f.label :person, 'Person', :class => "col-lg-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.hidden_field :person_id %>
+        <%= f.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#crew_person_id', :class => "form-control", :value => (@crew.person.name unless @crew.person.nil?) %>
         <span class="help-block"></span>
       </div>
     </div>
     
     <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
+      <%= f.label :role, 'Role', :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :role, :class => "form-control" %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :importance, 'Order', :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :importance, :class => "form-control" %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :featured, 'Featured Director', :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.check_box :featured, :checked => false %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
         <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
       </div>
     </div>

@@ -32,8 +32,10 @@ class Movie < ActiveRecord::Base
   
   has_many :ratings
   has_many :characters
+  has_many :crews
   has_many :quotes
   has_many :actors, through: :characters, source: :person
+  has_many :workers, through: :crews, source: :person
   has_many :ranked_characters, -> { ranked }, :class_name => 'Character'
   has_many :stars, through: :ranked_characters, source: :person
   has_many :trailers
@@ -41,6 +43,7 @@ class Movie < ActiveRecord::Base
   
   belongs_to :director, class_name: 'Person'
   accepts_nested_attributes_for :characters, allow_destroy: true
+  accepts_nested_attributes_for :crews, allow_destroy: true
   accepts_nested_attributes_for :trailers, allow_destroy: true
   accepts_nested_attributes_for :reviews, allow_destroy: true
   accepts_nested_attributes_for :quotes, allow_destroy: true

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :characters
+  resources :crews, only: [:create]
   resources :trailers, only: [:create, :update, :destroy]
   resources :reviews, only: [:create]
   resources :quotes, only: [:create]
