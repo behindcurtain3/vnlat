@@ -7,7 +7,7 @@
         <th>Importance</th>
         <th>Delete</th>
       </tr>
-      <% @movie.characters.each do |character| %>
+      <% @movie.characters.ranked.each do |character| %>
         <%= f.fields_for :characters, character do |characters_form| %>
           <tr>
             <td><%= characters_form.hidden_field :person_id, :id => 'person_id_' + character.id.to_s %>
