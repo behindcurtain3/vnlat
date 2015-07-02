@@ -13,7 +13,7 @@
   
   <h4><%= t 'person.information.popular' %></h4>
   <ul class="list-inline">
-    <% @person.movies.limit(6).each do | movie | %>
+    <% @person.movies.popular.limit(6).each do | movie | %>
       <li class="thumb-wrap">
         <%= render 'shared/movie_thumb', movie: movie %>
       </li>

@@ -77,6 +77,8 @@ class Movie < ActiveRecord::Base
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :poster, :content_type => /\Aimage\/.*\Z/
       
+  scope :popular, -> { order('boxoffice_worldwide DESC') }
+      
   def slug_candidates
     [
       :title,
