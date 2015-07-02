@@ -90,17 +90,13 @@
   <% end %>
   
   <% if @movie.trailers.any? %>
-  <h4><%= t 'movie.attr.trailers_featured' %></h4>
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @movie.trailers.first.code %>" allowfullscreen></iframe>
-  </div>
+  <h4><%= t 'movie.attr.trailers_featured' %><small> - <%= link_to t('movies.view_all'), trailers_movie_path(@movie) %></small></h4>
+  <%= render 'shared/video', embed: @movie.trailers.first %>
   <% end %>
   
   <% if @movie.reviews.any? %>
-  <h4><%= t 'movie.attr.reviews_featured' %></h4>
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @movie.reviews.first.code %>" allowfullscreen></iframe>
-  </div>
+  <h4><%= t 'movie.attr.reviews_featured' %><small> - <%= link_to t('movies.view_all'), reviews_movie_path(@movie) %></small></h4>
+  <%= render 'shared/video', embed: @movie.reviews.first %>
   <% end %>
   
 </div>

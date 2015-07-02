@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     get :autocomplete_person_name, :on => :collection
     member do
       get :boxoffice
-      get :edit_cast
+      get :trailers
+      get :reviews
     end
   end
 

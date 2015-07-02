@@ -17,7 +17,7 @@ Todo
 ----
 
 - Quotes add/edit/delete
-- View all trailers and reviews for a movie
+- ~~View all trailers and reviews for a movie~~
 - Box office charts
 - Fix how crew members work and add their movies to their profile page
 - Reorder popular films list based on movies overall gross

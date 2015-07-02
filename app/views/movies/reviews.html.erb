@@ -1,0 +1,12 @@
+<%= render 'header' %>
+
+  <% if @movie.reviews.any? %>
+    <% @movie.reviews.each do |review| %>
+      <%= render 'shared/video', embed: review %>
+    <% end %>
+  <% else %>
+    <p>No reviews are currently available.</p>
+  <% end %>
+</div>
+
+<%= render 'sidebar' %>

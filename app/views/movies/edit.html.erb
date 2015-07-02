@@ -126,9 +126,7 @@
               <%= f.fields_for :trailers, trailer do |trailers_form| %>
                 <tr>
                   <td>
-                    <div class="embed-responsive embed-responsive-16by9">
-                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= trailer.code %>" allowfullscreen></iframe>
-                    </div>
+                    <%= render 'shared/video', embed: trailer %>
                   </td>
                   <td><%= trailers_form.text_field :code, :class => "form-control", :placeholder => t('trailer.code') %></td>
                   <td class="text-center"><%= trailers_form.check_box :active %></td>
@@ -189,9 +187,7 @@
               <%= f.fields_for :reviews, review do |reviews_form| %>
                 <tr>
                   <td>
-                    <div class="embed-responsive embed-responsive-16by9">
-                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= review.code %>" allowfullscreen></iframe>
-                    </div>
+                    <%= render 'shared/video', embed: review %>
                   </td>
                   <td><%= reviews_form.text_field :code, :class => "form-control", :placeholder => t('trailer.code') %></td>
                   <td class="text-center"><%= reviews_form.check_box :active %></td>

@@ -1,0 +1,12 @@
+<%= render 'header' %>
+
+  <% if @movie.trailers.any? %>
+    <% @movie.trailers.each do |trailer| %>
+      <%= render 'shared/video', embed: trailer %>
+    <% end %>
+  <% else %>
+    <p>No trailers are currently available.</p>
+  <% end %>
+</div>
+
+<%= render 'sidebar' %>

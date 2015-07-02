@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :boxoffice]
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice, :edit_cast, :update_cast]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice, :trailers, :reviews]
   autocomplete :person, :name
 
   respond_to :html
@@ -73,13 +73,12 @@ class MoviesController < ApplicationController
     respond_with(@movie)
   end
   
-  def edit_cast
-    @new = Character.new
+  def trailers
     respond_with(@movie)
   end
   
-  def update_cast
-    
+  def reviews
+    respond_with(@movie)
   end
 
   private

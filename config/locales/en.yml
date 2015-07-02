@@ -68,6 +68,7 @@ en:
     search: "RESULTS FOR"
     tag: "MOVIES"
     unknown: "Unknown"
+    view_all: "View All"
   nav:
     about: "ABOUT"
     about_normal: "About"
