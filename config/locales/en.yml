@@ -97,3 +97,5 @@ en:
       save: "Save"
   character:
     name: "Name"
+  trailer:
+    code: "Code"

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :characters
+  resources :trailers, only: [:create, :update, :destroy]
 
   namespace :api do
     namespace :v1 do
