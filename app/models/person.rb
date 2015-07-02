@@ -34,8 +34,9 @@ class Person < ActiveRecord::Base
   before_save :update_name
   
   has_attached_file :promo, styles: {
-      thumb: '125x125>',
-      medium: '450x450>'
+      thumb: '85x125>',
+      medium: '450x450>',
+      large: '669x1000#'
     },
     s3_protocol: 'https'
   

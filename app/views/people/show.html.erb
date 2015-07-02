@@ -1,5 +1,5 @@
 <div class="col-sm-3">
-  <%= image_tag @person.promo.url, alt: @person.name, class: "img-responsive" %>
+  <%= image_tag @person.promo.url(:large), alt: @person.name, class: "img-responsive" %>
 </div>
 <div class="col-sm-6 well">
   <h2 class="person-title"><b><%= @person.name.upcase %></b>
