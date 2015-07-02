@@ -1,5 +1,5 @@
 <% if local_assigns.has_key?(:movie) && !movie.nil? %>
-  <%= link_to movie_path(movie) do %><%= image_tag movie.poster.url(:thumb), alt: movie.title, class: "img-rounded", height: '125', width: '86' %><% end %>
+  <%= link_to movie_path(movie) do %><%= image_tag movie.poster.url(:thumb), alt: movie.title, class: "img-rounded", height: '125', width: '85' %><% end %>
   <p class="thumb-description"><%= link_to movie.title, movie_path(movie) %></p>
 <% else %>
   <%= image_tag 'missing-thumb.png', alt: "Unknown", class: "img-rounded", height: '125' %><br />
