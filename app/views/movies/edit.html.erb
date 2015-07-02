@@ -1,237 +1,47 @@
 <%= render 'header', full: true %>
-  <br>
+  <p>
   <ul id="edit_cast_tabs" class="nav nav-pills" role="tablist">
     <li class="presesntation active">
-      <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t 'movie.information.general' %></a>
+      <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t 'movie.attr.information' %></a>
     </li>
     <li class="presesntation">
-      <a href="#cast" aria-controls="cast" role="tab" data-toggle="tab"><%= t 'movie.information.cast' %></a>
+      <a href="#cast" aria-controls="cast" role="tab" data-toggle="tab"><%= t 'movie.attr.cast' %></a>
     </li>
     <li class="presesntation">
-      <a href="#crew" aria-controls="crew" role="tab" data-toggle="tab"><%= t 'movie.information.crew' %></a>
+      <a href="#crew" aria-controls="crew" role="tab" data-toggle="tab"><%= t 'movie.attr.crew' %></a>
     </li>
     <li class="presesntation">
-      <a href="#trailers" aria-controls="trailers" role="tab" data-toggle="tab"><%= t 'movie.information.trailers' %></a>
+      <a href="#trailers" aria-controls="trailers" role="tab" data-toggle="tab"><%= t 'movie.attr.trailers' %></a>
     </li>
     <li class="presesntation">
-      <a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><%= t 'movie.information.reviews' %></a>
+      <a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><%= t 'movie.attr.reviews' %></a>
+    </li>
+    <li class="presesntation">
+      <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab"><%= t 'movie.attr.quotes' %></a>
     </li>
     <li class="pull-right">
       <%= link_to 'Add a missing person', remote_new_person_path, :remote => true, :class => "btn btn-sm btn-danger" %>
     </li>
   </ul>
-  <br>
+  </p>
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active" id="info">
       <%= render 'form' %>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="cast">
-      <%= form_for @movie do |f| %>
-          <table class="table table-condensed">
-            <tr>
-              <th>Actor</th>
-              <th>Charcter Name</th>
-              <th class="col-sm-1">Order</th>
-              <th>Delete</th>
-            </tr>
-            <% @movie.characters.ranked.each do |character| %>
-              <%= f.fields_for :characters, character do |characters_form| %>
-                <tr>
-                  <td><%= characters_form.hidden_field :person_id, :id => 'person_id_' + character.id.to_s %>
-                  <%= characters_form.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#person_id_' + character.id.to_s, :class => "form-control", :value => (character.person.name unless character.person.nil?) %></td>
-                  <td><%= characters_form.text_field :name, :class => "form-control", :placeholder => t('character.name') %></td>
-                  <td><%= characters_form.number_field :importance, :class => "form-control" %></td>
-                  <td class="text-center"><%= characters_form.check_box :_destroy %></td>
-                </tr>
-              <% end %>
-            <% end %>
-            
-            <tr>
-              <td colspan="4">
-                <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-              </td>
-            </tr>
-          </table>
-        <% end %>
-        
-        <h4>ADD NEW CHARACTER</h4>
-        <%= form_for(@new) do |f| %>
-          <fieldset>
-            <%= f.hidden_field :movie_id, :value => @movie.id %>
-            
-            <div class="form-group">
-              <%= f.label :person, 'Actor', :class => "col-lg-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.hidden_field :person_id %>
-                <%= f.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#character_person_id', :class => "form-control", :value => (@new.person.name unless @new.person.nil?) %>
-                <span class="help-block"></span>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <%= f.label :name, 'Character Name', :class => "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :name, :class => "form-control" %>
-                <span class="help-block"></span>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <%= f.label :importance, 'Order', :class => "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.number_field :importance, :class => "form-control" %>
-                <span class="help-block"></span>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <div class="col-sm-10 col-sm-offset-2">
-                <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-              </div>
-            </div>
-          </fieldset>
-        <% end %>
+      <%= render 'movies/edit/cast' %>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="crew">
-      <%= form_for @movie do |f| %>
-      <fieldset>
-        <div class="form-group">
-          <%= f.label :director, :class => "col-lg-2 control-label" %>
-          <div class="col-lg-10">
-            <%= f.hidden_field :director_id %>
-            <%= f.autocomplete_field :director, autocomplete_person_name_movies_path, :id_element => '#movie_director_id', :class => "form-control", :value => (@movie.director.name unless @movie.director.nil?) %>
-            <span class="help-block"></span>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <div class="col-lg-10 col-lg-offset-2">
-            <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-          </div>
-        </div>
-      </fieldset>
-      <% end %>
+      <%= render 'movies/edit/crew' %>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="trailers">
-      
-      <%= form_for @movie do |f| %>
-          <table class="table table-condensed">
-            <tr>
-              <th class="col-sm-3">Trailer</th>
-              <th>Code</th>
-              <th class="col-sm-1">Active</th>
-              <th class="col-sm-1">Delete</th>
-            </tr>
-            <% @movie.trailers.each do |trailer| %>
-              <%= f.fields_for :trailers, trailer do |trailers_form| %>
-                <tr>
-                  <td>
-                    <%= render 'shared/video', embed: trailer %>
-                  </td>
-                  <td><%= trailers_form.text_field :code, :class => "form-control", :placeholder => t('trailer.code') %></td>
-                  <td class="text-center"><%= trailers_form.check_box :active %></td>
-                  <td class="text-center"><%= trailers_form.check_box :_destroy %></td>
-                </tr>
-              <% end %>
-            <% end %>
-            
-            <tr>
-              <td colspan="4">
-                <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-              </td>
-            </tr>
-          </table>
-        <% end %>
-      
-      <h4>ADD NEW TRAILER</h4>
-        <%= form_for(@trailer) do |f| %>
-          <fieldset>
-            <%= f.hidden_field :movie_id, :value => @movie.id %>
-            
-            <div class="form-group">
-              <%= f.label :code, 'YouTube Code', :class => "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :code, :class => "form-control" %>
-                <span class="help-block"></span>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <%= f.label :active, 'Active', :class => "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.check_box :active, :checked => true %>
-                <span class="help-block"></span>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <div class="col-sm-10 col-sm-offset-2">
-                <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-              </div>
-            </div>
-          </fieldset>
-        <% end %>
+      <%= render 'movies/edit/trailers' %>
     </div>
-    
     <div role="tabpanel" class="tab-pane fade" id="reviews">
-      
-      <%= form_for @movie do |f| %>
-          <table class="table table-condensed">
-            <tr>
-              <th class="col-sm-3">Review</th>
-              <th>Code</th>
-              <th class="col-sm-1">Active</th>
-              <th class="col-sm-1">Delete</th>
-            </tr>
-            <% @movie.reviews.each do |review| %>
-              <%= f.fields_for :reviews, review do |reviews_form| %>
-                <tr>
-                  <td>
-                    <%= render 'shared/video', embed: review %>
-                  </td>
-                  <td><%= reviews_form.text_field :code, :class => "form-control", :placeholder => t('trailer.code') %></td>
-                  <td class="text-center"><%= reviews_form.check_box :active %></td>
-                  <td class="text-center"><%= reviews_form.check_box :_destroy %></td>
-                </tr>
-              <% end %>
-            <% end %>
-            
-            <tr>
-              <td colspan="4">
-                <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-              </td>
-            </tr>
-          </table>
-        <% end %>
-      
-      <h4>ADD NEW REVIEW</h4>
-        <%= form_for(@review) do |f| %>
-          <fieldset>
-            <%= f.hidden_field :movie_id, :value => @movie.id %>
-            
-            <div class="form-group">
-              <%= f.label :code, 'YouTube Code', :class => "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.text_field :code, :class => "form-control" %>
-                <span class="help-block"></span>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <%= f.label :active, 'Active', :class => "col-sm-2 control-label" %>
-              <div class="col-sm-10">
-                <%= f.check_box :active, :checked => true %>
-                <span class="help-block"></span>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <div class="col-sm-10 col-sm-offset-2">
-                <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-              </div>
-            </div>
-          </fieldset>
-        <% end %>
+      <%= render 'movies/edit/reviews' %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="quotes">
+      <%= render 'movies/edit/quotes' %>
     </div>
   </div>
   

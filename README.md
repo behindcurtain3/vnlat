@@ -16,7 +16,7 @@ Have a remote modal form for easily creating a new person on the cast editing pa
 Todo
 ----
 
-- Quotes add/edit/delete
+- ~~Quotes add/edit/delete~~
 - ~~View all trailers and reviews for a movie~~
 - Box office charts
 - Fix how crew members work and add their movies to their profile page

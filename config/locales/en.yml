@@ -21,6 +21,7 @@ en:
       mpaa: "Rated"
       n: "N"
       nudity: "Nudity"
+      quotes: "Quotes"
       released: "Release Date"
       reviews: "Reviews"
       reviews_featured: "Featured Review"
@@ -111,3 +112,5 @@ en:
     name: "Name"
   trailer:
     code: "Code"
+  quote:
+    text: "Quote Text"

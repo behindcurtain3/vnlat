@@ -1,0 +1,65 @@
+<%= form_for @movie do |f| %>
+  <table class="table table-condensed">
+    <tr>
+      <th>Actor</th>
+      <th>Charcter Name</th>
+      <th class="col-sm-1">Order</th>
+      <th>Delete</th>
+    </tr>
+    <% @movie.characters.ranked.each do |character| %>
+      <%= f.fields_for :characters, character do |characters_form| %>
+        <tr>
+          <td><%= characters_form.hidden_field :person_id, :id => 'person_id_' + character.id.to_s %>
+          <%= characters_form.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#person_id_' + character.id.to_s, :class => "form-control", :value => (character.person.name unless character.person.nil?) %></td>
+          <td><%= characters_form.text_field :name, :class => "form-control", :placeholder => t('character.name') %></td>
+          <td><%= characters_form.number_field :importance, :class => "form-control" %></td>
+          <td class="text-center"><%= characters_form.check_box :_destroy %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    
+    <tr>
+      <td colspan="4">
+        <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<h4>ADD NEW CHARACTER</h4>
+<%= form_for(@new) do |f| %>
+  <fieldset>
+    <%= f.hidden_field :movie_id, :value => @movie.id %>
+    
+    <div class="form-group">
+      <%= f.label :person, 'Actor', :class => "col-lg-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.hidden_field :person_id %>
+        <%= f.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#character_person_id', :class => "form-control", :value => (@new.person.name unless @new.person.nil?) %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :name, 'Character Name', :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, :class => "form-control" %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :importance, 'Order', :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :importance, :class => "form-control" %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

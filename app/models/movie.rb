@@ -43,6 +43,7 @@ class Movie < ActiveRecord::Base
   accepts_nested_attributes_for :characters, allow_destroy: true
   accepts_nested_attributes_for :trailers, allow_destroy: true
   accepts_nested_attributes_for :reviews, allow_destroy: true
+  accepts_nested_attributes_for :quotes, allow_destroy: true
   
   acts_as_taggable
   acts_as_api
