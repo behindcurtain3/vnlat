@@ -1,94 +1,114 @@
 <%= render 'header', full: true %>
-
-  <%= form_for @movie do |f| %>
-    <table class="table table-hover table-condensed">
-      <tr>
-        <th>Actor</th>
-        <th>Charcter Name</th>
-        <th>Importance</th>
-        <th>Delete</th>
-      </tr>
-      <% @movie.characters.ranked.each do |character| %>
-        <%= f.fields_for :characters, character do |characters_form| %>
-          <tr>
-            <td><%= characters_form.hidden_field :person_id, :id => 'person_id_' + character.id.to_s %>
-            <%= characters_form.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#person_id_' + character.id.to_s, :class => "form-control", :value => (character.person.name unless character.person.nil?) %></td>
-            <td><%= characters_form.text_field :name, :class => "form-control", :placeholder => t('character.name') %></td>
-            <td><%= characters_form.number_field :importance, :class => "form-control" %></td>
-            <td class="text-center"><%= characters_form.check_box :_destroy %></td>
-          </tr>
+  <br>
+  <ul id="edit_cast_tabs" class="nav nav-pills" role="tablist">
+    <li class="presesntation active">
+      <a href="#cast" aria-controls="cast" role="tab" data-toggle="tab"><%= t 'movie.cast' %></a>
+    </li>
+    <li class="presesntation">
+      <a href="#crew" aria-controls="crew" role="tab" data-toggle="tab"><%= t 'movie.crew' %></a>
+    </li>
+    <li class="pull-right">
+      <%= link_to 'Add a missing person', remote_new_person_path, :remote => true, :class => "btn btn-sm btn-danger" %>
+    </li>
+  </ul>
+  <br>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="cast">
+      <%= form_for @movie do |f| %>
+          <table class="table table-condensed">
+            <tr>
+              <th>Actor</th>
+              <th>Charcter Name</th>
+              <th class="col-sm-1">Order</th>
+              <th>Delete</th>
+            </tr>
+            <% @movie.characters.ranked.each do |character| %>
+              <%= f.fields_for :characters, character do |characters_form| %>
+                <tr>
+                  <td><%= characters_form.hidden_field :person_id, :id => 'person_id_' + character.id.to_s %>
+                  <%= characters_form.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#person_id_' + character.id.to_s, :class => "form-control", :value => (character.person.name unless character.person.nil?) %></td>
+                  <td><%= characters_form.text_field :name, :class => "form-control", :placeholder => t('character.name') %></td>
+                  <td><%= characters_form.number_field :importance, :class => "form-control" %></td>
+                  <td class="text-center"><%= characters_form.check_box :_destroy %></td>
+                </tr>
+              <% end %>
+            <% end %>
+            
+            <tr>
+              <td colspan="4">
+                <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
+              </td>
+            </tr>
+          </table>
         <% end %>
-      <% end %>
-      
-      <tr>
-        <td colspan="4">
-          <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
-  
-  <div>
-    <h4>ADD NEW CHARACTER</h4>
-    <%= form_for(@new) do |f| %>
+        
+        <h4>ADD NEW CHARACTER</h4>
+        <%= form_for(@new) do |f| %>
+          <fieldset>
+            <%= f.hidden_field :movie_id, :value => @movie.id %>
+            
+            <div class="form-group">
+              <%= f.label :person, 'Actor', :class => "col-lg-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.hidden_field :person_id %>
+                <%= f.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#character_person_id', :class => "form-control", :value => (@new.person.name unless @new.person.nil?) %>
+                <span class="help-block"></span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :name, 'Character Name', :class => "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.text_field :name, :class => "form-control" %>
+                <span class="help-block"></span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :importance, 'Order', :class => "col-sm-2 control-label" %>
+              <div class="col-sm-10">
+                <%= f.number_field :importance, :class => "form-control" %>
+                <span class="help-block"></span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="col-sm-10 col-sm-offset-2">
+                <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="crew">
+      <h4>EDIT THE DIRECTOR</h4>
+      <%= form_for @movie do |f| %>
       <fieldset>
-        <%= f.hidden_field :movie_id, :value => @movie.id %>
-        
         <div class="form-group">
-          <%= f.label :person, :class => "col-lg-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.hidden_field :person_id %>
-            <%= f.autocomplete_field :person, autocomplete_person_name_movies_path, :id_element => '#character_person_id', :class => "form-control", :value => (@new.person.name unless @new.person.nil?) %>
+          <%= f.label :director, :class => "col-lg-2 control-label" %>
+          <div class="col-lg-10">
+            <%= f.hidden_field :director_id %>
+            <%= f.autocomplete_field :director, autocomplete_person_name_movies_path, :id_element => '#movie_director_id', :class => "form-control", :value => (@movie.director.name unless @movie.director.nil?) %>
             <span class="help-block"></span>
           </div>
         </div>
         
         <div class="form-group">
-          <%= f.label :name, :class => "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.text_field :name, :class => "form-control" %>
-            <span class="help-block"></span>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <%= f.label :importance, :class => "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.number_field :importance, :class => "form-control" %>
-            <span class="help-block"></span>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <div class="col-sm-10 col-sm-offset-2">
+          <div class="col-lg-10 col-lg-offset-2">
             <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
           </div>
         </div>
       </fieldset>
-    <% end %>
-    
-    <h4>EDIT THE DIRECTOR</h4>
-    <%= form_for @movie do |f| %>
-    <fieldset>
-      <div class="form-group">
-        <%= f.label :director, :class => "col-lg-2 control-label" %>
-        <div class="col-lg-10">
-          <%= f.hidden_field :director_id %>
-          <%= f.autocomplete_field :director, autocomplete_person_name_movies_path, :id_element => '#movie_director_id', :class => "form-control", :value => (@movie.director.name unless @movie.director.nil?) %>
-          <span class="help-block"></span>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="col-lg-10 col-lg-offset-2">
-          <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
-        </div>
-      </div>
-    </fieldset>
-    <% end %>
-    
-    <br />
-    <%= link_to 'Add a missing person', remote_new_person_path, :remote => true, :class => "btn btn-primary" %>
-    <div id="new-person-modal-container"></div>
+      <% end %>
+    </div>
   </div>
+  
+  <div id="new-person-modal-container"></div>
 </div>
+
+<script>
+  $('#edit_cast_tabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+</script>

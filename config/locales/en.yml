@@ -58,6 +58,8 @@ en:
       description: "Runtime (in minutes)"
     mpaa: "MPAA Rating"
     unknown: "Unknown"
+    cast: "Cast"
+    crew: "Crew"
   nav:
     about: "ABOUT"
     about_normal: "About"
