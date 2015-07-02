@@ -92,7 +92,7 @@ class MoviesController < ApplicationController
         :runtime, :mpaa, :released,
         :tag_list, :boxoffice_us, :boxoffice_foreign, :boxoffice_worldwide, 
         :j_v, :j_n, :j_l, :j_at, :g_v, :g_n, :g_l, :g_at,
-        characters_attributes: [:id, :name, :person_id, :movie_id, :_destroy],
+        characters_attributes: [:id, :name, :person_id, :movie_id, :importance, :_destroy],
         trailers_attributes: [:id, :movie_id, :code, :active, :_destroy],
         reviews_attributes: [:id, :movie_id, :code, :active, :_destroy],
         quotes_attributes: [:id, :movie_id, :character_id, :text, :_destroy])
