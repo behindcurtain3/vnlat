@@ -1,9 +1,11 @@
 <%= render 'header' %>
 
   <% if @movie.trailers.any? %>
+    <p>
     <% @movie.trailers.each do |trailer| %>
       <%= render 'shared/video', embed: trailer %>
     <% end %>
+    </p>
   <% else %>
     <p>No trailers are currently available.</p>
   <% end %>
