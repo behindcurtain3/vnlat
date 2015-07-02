@@ -1,7 +1,5 @@
 <%= render 'header', full: true %>
-
   <%= form_for @movie do |f| %>
-
     <table class="table table-hover table-condensed">
       <tr>
         <th>Actor</th>
@@ -67,5 +65,9 @@
         </div>
       </fieldset>
     <% end %>
+    
+    <br />
+    <%= link_to 'Add a missing person', remote_new_person_path, :remote => true, :class => "btn btn-primary" %>
+    <div id="new-person-modal-container"></div>
   </div>
 </div>

@@ -73,6 +73,7 @@ en:
     display_name: "Display Name"
     first_name: "First Name"
     form:
+      display_name: "Display As"
       new: "NEW"
       edit: "EDIT"
       resource: "PERSON"

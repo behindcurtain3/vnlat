@@ -26,9 +26,27 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
     if @person.save
-      respond_with(@person)
+      respond_to do |format|
+        format.html {
+          respond_with(@person)    
+        }
+        format.js {
+          flash[:notice] = "New person was added."
+					render :partial => "remote_content/new_person_success.js.erb"
+					flash.discard
+        }
+      end
     else
-      render action: 'new'
+      respond_to do |format|
+        format.html {
+          render action: 'new'    
+        }
+        format.js {
+          flash[:notice] = @person.errors.full_messages.to_sentence
+					render :partial => "remote_content/new_person_errors.js.erb"
+					flash.discard
+        }
+      end
     end
   end
 

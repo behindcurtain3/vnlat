@@ -1,0 +1,13 @@
+<div class="modal fade" id="new-person-modal">
+  <div class="modal-dialog">
+  	<div class="modal-content">
+  		<div class="modal-body">			  
+				<%# Render the new person form (passing modal => true to enable remote => true) %>
+        <%= render 'people/form', modal: true %>
+		  </div>
+		  <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+		</div>	
+  </div>
+</div>

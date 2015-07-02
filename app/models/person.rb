@@ -42,6 +42,14 @@ class Person < ActiveRecord::Base
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :promo, :content_type => /\Aimage\/.*\Z/
   
+  validates :first_name,
+    presence: true,
+    :if => 'display_name.blank?'
+    
+  validates :last_name,
+    presence: true,
+    :if => 'display_name.blank?'
+  
   def slug_candidates
     [
       [:first_name, :last_name],

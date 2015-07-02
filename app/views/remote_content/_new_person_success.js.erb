@@ -1,0 +1,7 @@
+// hide the old modal
+$("#new-person-modal").modal_success();
+$("#new-person-modal").hide();
+
+// get the new html and show it
+$("#new-person-modal-container").html("<%= escape_javascript(render :partial => "remote_content/new_person_success", :formats => [:html]) %>");
+$("#new-person-modal").modal();

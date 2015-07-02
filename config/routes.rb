@@ -28,5 +28,6 @@ Rails.application.routes.draw do
 
   get 'genres/:genre', to: 'movies#index', as: :genre
   get 'about' => "pages#about"
+  get 'remote_new_person', to: 'remote_content#remote_new_person'
   root 'movies#index'
 end
