@@ -1,5 +1,5 @@
 <% if local_assigns.has_key?(:person) && !person.nil? %>
-  <%= link_to person_path(person) do %><%= image_tag person.promo.url(:thumb), alt: person.name, class: "img-rounded", height: '125', width: '86' %><% end %>
+  <%= link_to person_path(person) do %><%= image_tag person.promo.url(:thumb), alt: person.name, class: "img-rounded", height: '125', width: '85' %><% end %>
   <p class="thumb-description"><%= link_to person.name, person_path(person) %></p>
 <% else %>
   <%= image_tag 'missing-thumb.png', alt: "Unknown", class: "img-rounded", height: '125' %><br />
