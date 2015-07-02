@@ -21,4 +21,4 @@ Todo
 - Box office charts
 - Fix how crew members work and add their movies to their profile page
 - ~~Reorder popular films list based on movies overall gross~~
-- Add career earning to profile page for people
+- ~~Add career earning to profile page for people~~

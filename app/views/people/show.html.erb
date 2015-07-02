@@ -1,3 +1,4 @@
+<% provide(:title, @person.name) %>
 <div class="col-sm-3">
   <%= image_tag @person.promo.url(:large), alt: @person.name, class: "img-responsive" %>
 </div>
@@ -21,7 +22,7 @@
   </ul>
   
   <h4><%= t 'person.information.biography' %></h4>
-  <p><%= @person.biography %></p>
+  <p><%= @person.biography.blank? ? 'Not available' : @person.biography %></p>
   
   <h4><%= t 'person.information.filmography' %></h4>
   <table class="table table-hover">
@@ -66,5 +67,21 @@
       <td class="text-right"><%= time_tag @person.died %></td>
     </tr>
     <% end %>
+  </table>
+  
+  <h4><%= t 'person.information.earnings' %></h4>
+  <table class="table table-hover table-condensed">
+    <tr>
+      <td><%= t 'person.information.boxoffice_us' %></td>
+      <td class="text-right"><%= number_to_currency(@person.movies.sum(:boxoffice_us), precision: 0) %></td>
+    </tr>
+    <tr>
+      <td><%= t 'person.information.boxoffice_foreign' %></td>
+      <td class="text-right"><%= number_to_currency(@person.movies.sum(:boxoffice_foreign), precision: 0) %></td>
+    </tr>
+    <tr>
+      <td><%= t 'person.information.boxoffice_worldwide' %></td>
+      <td class="text-right"><%= number_to_currency(@person.movies.sum(:boxoffice_worldwide), precision: 0) %></td>
+    </tr>
   </table>
 </div>
