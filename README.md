@@ -11,3 +11,14 @@ Guidelines
 
 
 Have a remote modal form for easily creating a new person on the cast editing page.
+
+
+Todo
+----
+
+- Quotes add/edit/delete
+- View all trailers and reviews for a movie
+- Box office charts
+- Fix how crew members work and add their movies to their profile page
+- Reorder popular films list based on movies overall gross
+- Add career earning to profile page for people
