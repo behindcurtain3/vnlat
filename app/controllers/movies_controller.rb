@@ -34,6 +34,7 @@ class MoviesController < ApplicationController
   def edit
     @new = Character.new
     @trailer = Trailer.new
+    @review = Review.new
   end
 
   def create
@@ -92,6 +93,7 @@ class MoviesController < ApplicationController
         :tag_list, :boxoffice_us, :boxoffice_foreign, :boxoffice_worldwide, 
         :j_v, :j_n, :j_l, :j_at, :g_v, :g_n, :g_l, :g_at,
         characters_attributes: [:id, :name, :person_id, :movie_id, :_destroy],
-        trailers_attributes: [:id, :movie_id, :code, :active, :_destroy])
+        trailers_attributes: [:id, :movie_id, :code, :active, :_destroy],
+        reviews_attributes: [:id, :movie_id, :code, :active, :_destroy])
     end
 end
