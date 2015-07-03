@@ -22,3 +22,8 @@ Todo
 - ~~Fix how crew members work and add their movies to their profile page~~
 - ~~Reorder popular films list based on movies overall gross~~
 - ~~Add career earning to profile page for people~~
+- Show career earnings for production credits also
+- Fix unknown person thumb
+- Fix missing person thumb
+- Cancancan to control users
+- paper_trail for auditing
