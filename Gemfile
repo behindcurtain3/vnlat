@@ -26,6 +26,8 @@ gem 'acts_as_api'
 gem 'will_paginate-bootstrap'
 gem 'ransack'
 gem 'twitter'
+gem 'paper_trail'
+gem 'diffy'
 
 group :development do
     gem 'sqlite3'

@@ -53,6 +53,9 @@ class Movie < ActiveRecord::Base
   include ApiV1::Movie
   friendly_id :slug_candidates, use: :slugged
   
+  # for auditing changes
+  has_paper_trail class_name: 'MovieVersion'
+  
   validates :title,
     presence: true
       

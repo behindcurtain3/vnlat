@@ -2,11 +2,20 @@ Rails.application.routes.draw do
   resources :movies do
     resources :ratings, only: [:new, :create, :edit, :update, :destroy]
     get :autocomplete_person_name, :on => :collection
+    
     member do
       get :boxoffice
       get :trailers
       get :reviews
     end
+    
+    resources :versions, only: [:destroy] do
+      member do
+        get :diff, to: 'versions#diff'
+        patch :rollback, to: 'versions#rollback'
+      end
+    end
+    
   end
 
   resources :people do

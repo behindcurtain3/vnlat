@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def set_search
     @q = Movie.search(params[:q])
   end
+  
+  def info_for_paper_trail
+    { :author_username => current_user.email }
+  end
 end

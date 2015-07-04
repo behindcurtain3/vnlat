@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
   def rated?(movie)
     ratings.exists?(:movie_id => movie.id)
   end
+  
+  def self.find_version_author(version)
+    find(version.terminator)   
+  end
 end
