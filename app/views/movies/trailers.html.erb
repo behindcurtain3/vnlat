@@ -1,4 +1,5 @@
 <%= render 'header' %>
+  <h4><%= t 'movies.attr.trailers' %></h4>
 
   <% if @movie.trailers.any? %>
     <% @movie.trailers.each do |trailer| %>

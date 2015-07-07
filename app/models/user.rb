@@ -24,9 +24,22 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :ratings
+  has_many :likes
   
   def rated?(movie)
     ratings.exists?(:movie_id => movie.id)
+  end
+  
+  def loved?(movie)
+    likes.exists?(:movie_id => movie.id, :love => true)
+  end
+  
+  def liked?(movie)
+    likes.exists?(:movie_id => movie.id, :like => true)
+  end
+  
+  def hated?(movie)
+    likes.exists?(:movie_id => movie.id, :hate => true)
   end
   
   def self.find_version_author(version)

@@ -147,16 +147,19 @@ hr {
     background: rgba(0,0,0,0.9);
     color: #fff;
     
-    
     visibility: hidden;
     opacity: 0;
-    
-    /*remove comment if you want a gradual transition between states
-    -webkit-transition: visibility opacity 0.2s;
-*/
 }
 
 .thumb-wrap:hover .thumb-description {
   visibility: visible;
   opacity: 1;
+}
+
+.list-inline {
+    margin-left: 0px;
+}
+
+.love-it-bar {
+    margin-top: 0px;
 }

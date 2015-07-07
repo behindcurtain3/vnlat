@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150703174417) do
+ActiveRecord::Schema.define(version: 20150706230155) do
 
   create_table "characters", force: true do |t|
     t.integer  "person_id"
@@ -37,6 +37,19 @@ ActiveRecord::Schema.define(version: 20150703174417) do
 
   add_index "crews", ["movie_id"], name: "index_crews_on_movie_id"
   add_index "crews", ["person_id"], name: "index_crews_on_person_id"
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.boolean  "love"
+    t.boolean  "like"
+    t.boolean  "hate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["movie_id"], name: "index_likes_on_movie_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "movie_versions", force: true do |t|
     t.string   "item_type",       null: false
@@ -72,6 +85,9 @@ ActiveRecord::Schema.define(version: 20150703174417) do
     t.integer  "runtime"
     t.string   "mpaa"
     t.date     "released"
+    t.float    "avg_love"
+    t.float    "avg_like"
+    t.float    "avg_hate"
   end
 
   add_index "movies", ["director_id"], name: "index_movies_on_director_id"

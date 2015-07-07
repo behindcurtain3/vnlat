@@ -40,6 +40,7 @@ class Movie < ActiveRecord::Base
   has_many :stars, through: :ranked_characters, source: :person
   has_many :trailers
   has_many :reviews
+  has_many :likes
   
   belongs_to :director, class_name: 'Person'
   accepts_nested_attributes_for :characters, allow_destroy: true
@@ -106,6 +107,7 @@ class Movie < ActiveRecord::Base
   end
 
   def update_averages
+    # update the ratings averages
     count = self.ratings.count
     
     if count == 0
@@ -118,6 +120,17 @@ class Movie < ActiveRecord::Base
       update_n count
       update_l count
       update_at count  
+    end
+    
+    # update the love/like/hate %'s
+    count = self.likes.count
+    
+    if count == 0
+      self.avg_love = 0
+      self.avg_like = 0
+      self.avg_hate = 0
+    else
+      update_likes count
     end
   end
   
@@ -149,6 +162,16 @@ class Movie < ActiveRecord::Base
       sum = self.ratings.sum(:at)
       
       self.avg_at = (sum / count).ceil
+    end
+    
+    def update_likes(count)
+      loves = self.likes.only_loves.count
+      likes = self.likes.only_likes.count
+      hates = self.likes.only_hates.count
+      
+      self.avg_love = (loves / count) * 100
+      self.avg_like = (likes / count) * 100
+      self.avg_hate = (hates / count) * 100
     end
     
     def thumb

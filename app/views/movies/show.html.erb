@@ -1,16 +1,16 @@
 <%= render 'header' %>
   
   <div class="row">
-    <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-12 col-sm-3 col-md-3">
       <h4><%= t 'movie.attr.director' %></h4>
       <div class="thumb-wrap media-left media-top">
         <%= render 'shared/person_thumb', person: @movie.workers.where("role = ? AND featured = ?", "Director", true).first %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-10">
+    <div class="col-xs-12 col-sm-9 col-md-9">
       <h4><%= t 'movie.attr.stars' %></h4>
       <ul class="list-inline">
-        <% @movie.stars.limit(5).each do | actor | %>
+        <% @movie.stars.limit(4).each do | actor | %>
           <li class="thumb-wrap media-left media-top">
             <%= render 'shared/person_thumb', person: actor %>
           </li>
@@ -18,7 +18,24 @@
       </ul>
     </div>
   </div>
-  
+  <!--
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center love-it-bar">
+      <div class="col-xs-4 col-sm-4 emphasis">
+        <h3><attr title="<%= @movie.likes.only_loves.count %> People"><%= number_to_percentage @movie.avg_love, precision: 0 %></attr></h3>
+        <h4><%= render 'movies/likes/love' %></h4>
+      </div>
+      <div class="col-xs-4 col-sm-4 emphasis">
+          <h3><attr title="<%= @movie.likes.only_likes.count %> People"><%= number_to_percentage @movie.avg_like, precision: 0 %></attr></h3>
+          <h4><span class="fa fa-thumbs-o-up"></span> <%= t 'movie.attr.like' %></h4>
+      </div>
+      <div class="col-xs-4 col-sm-4 emphasis">
+          <h3><attr title="<%= @movie.likes.only_hates.count %> People"><%= number_to_percentage @movie.avg_hate, precision: 0 %></attr></h3>
+          <h4><span class="fa fa-thumbs-o-down"></span> <%= t 'movie.attr.hate' %></h4>
+      </div>
+    </div>
+  </div>
+  // -->
   <div>
     <h4><%= t 'movie.attr.summary' %></h4>
     <p><%= @movie.summary.blank? ? 'Currently unavailable' : @movie.summary %></p>

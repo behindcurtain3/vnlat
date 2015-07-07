@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :movies do
     resources :ratings, only: [:new, :create, :edit, :update, :destroy]
+    resources :likes, only: [:create, :update, :destroy]
     get :autocomplete_person_name, :on => :collection
     
     member do

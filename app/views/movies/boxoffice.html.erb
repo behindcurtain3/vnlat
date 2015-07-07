@@ -1,21 +1,21 @@
 <%= render 'header' %>
 
   <div class="col-xs-12 divider text-center">
-      <div class="col-xs-12 col-sm-4 emphasis">
-          <h3><strong><%= number_to_currency @movie.boxoffice_us, precision: 0 %></strong></h3>
-          <p><small><%= t 'movie.boxoffice.us' %></small></p>
-          <h4><strong><%= @movie.domestic_rank.ordinalize %></strong></h4>
-      </div>
-      <div class="col-xs-12 col-sm-4 emphasis">
-          <h3><strong><%= number_to_currency @movie.boxoffice_foreign, precision: 0 %></strong></h3>
-          <p><small><%= t 'movie.boxoffice.foreign' %></small></p>
-          <h4><strong><%= @movie.foreign_rank.ordinalize %></strong></h4>
-      </div>
-      <div class="col-xs-12 col-sm-4 emphasis">
-          <h3><strong><%= number_to_currency @movie.boxoffice_worldwide, precision: 0 %></strong></h3>
-          <p><small><%= t 'movie.boxoffice.worldwide' %></small></p>
-          <h4><strong><%= @movie.worldwide_rank.ordinalize %></strong></h4>
-      </div>
+    <div class="col-xs-12 col-sm-4 emphasis">
+        <h3><strong><%= number_to_currency @movie.boxoffice_us, precision: 0 %></strong></h3>
+        <p><small><%= t 'movie.boxoffice.us' %></small></p>
+        <h4><strong><%= @movie.domestic_rank.ordinalize %></strong></h4>
+    </div>
+    <div class="col-xs-12 col-sm-4 emphasis">
+        <h3><strong><%= number_to_currency @movie.boxoffice_foreign, precision: 0 %></strong></h3>
+        <p><small><%= t 'movie.boxoffice.foreign' %></small></p>
+        <h4><strong><%= @movie.foreign_rank.ordinalize %></strong></h4>
+    </div>
+    <div class="col-xs-12 col-sm-4 emphasis">
+        <h3><strong><%= number_to_currency @movie.boxoffice_worldwide, precision: 0 %></strong></h3>
+        <p><small><%= t 'movie.boxoffice.worldwide' %></small></p>
+        <h4><strong><%= @movie.worldwide_rank.ordinalize %></strong></h4>
+    </div>
   </div>
 </div>
 

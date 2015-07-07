@@ -27,3 +27,7 @@ Todo
 - Fix missing person thumb
 - Cancancan to control users
 - paper_trail for auditing
+- tweat link for quotes
+- page to display all quotes on a movie
+- add a featured quote, featured trailer, and featured review column to movies
+- possible to add movie_id meta data to paper_trail for characters etc to track their changes
