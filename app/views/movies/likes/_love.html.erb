@@ -1,0 +1,11 @@
+<% if current_user.blank? %>
+  <span class="fa fa-heart-o"></span> <%= t 'movie.attr.love' %>
+<% else %>
+  <% if current_user.loved?(@movie) %>
+    <%= link_to movie_like_path(@movie, current_user.likes.where('movie_id = ?', @movie.id).first), method: :delete do %>
+      <span class="fa fa-heart"></span> <%= t 'movie.attr.love' %>
+    <% end %>
+  <% else %>
+    <span class="fa fa-heart-o"></span> <%= t 'movie.attr.love' %>  
+  <% end %>
+<% end %>
