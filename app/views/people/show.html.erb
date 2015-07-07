@@ -22,7 +22,7 @@
   </ul>
   
   <h4><%= t 'person.information.biography' %></h4>
-  <p><%= @person.biography.blank? ? 'Not available' : @person.biography %></p>
+  <p><%= @person.biography.blank? ? 'Currently Unavailable' : @person.biography %></p>
   
   <% if @person.characters.any? %>
   <h4><%= t 'person.information.filmography' %></h4>

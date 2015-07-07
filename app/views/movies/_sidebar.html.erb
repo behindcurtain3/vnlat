@@ -26,42 +26,58 @@
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.violence' %></td>
-      <td class="col-xs-7 col-sm-7">
+      <td class="col-xs-7 col-sm-7 text-right">
+        <% if @movie.ratings.any? %>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_v %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_v == 0) ? 10 : @movie.avg_v * 20 %>%;">
             <%= @movie.avg_v %>    
           </div>
         </div>
+        <% else %>
+          <%= t 'movie.unknown' %>
+        <% end %>
       </td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-4"><%= t 'movie.attr.nudity' %></td>
-      <td class="col-xs-7 col-sm-8">
+      <td class="col-xs-7 col-sm-8 text-right">
+        <% if @movie.ratings.any? %>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_n %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_n == 0) ? 10 : @movie.avg_n * 20 %>%;">
             <%= @movie.avg_n %>    
           </div>
         </div>
+        <% else %>
+          <%= t 'movie.unknown' %>
+        <% end %>
       </td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-4"><%= t 'movie.attr.language' %></td>
-      <td class="col-xs-7 col-sm-8">
+      <td class="col-xs-7 col-sm-8 text-right">
+        <% if @movie.ratings.any? %>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_l %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_l == 0) ? 10 : @movie.avg_l * 20 %>%;">
             <%= @movie.avg_l %>    
           </div>
         </div>
+        <% else %>
+          <%= t 'movie.unknown' %>
+        <% end %>
       </td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-4"><%= t 'movie.attr.adult' %></td>
-      <td class="col-xs-7 col-sm-8">
+      <td class="col-xs-7 col-sm-8 text-right">
+        <% if @movie.ratings.any? %>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_at %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_at == 0) ? 10 : @movie.avg_at * 20 %>%;">
             <%= @movie.avg_at %>    
           </div>
         </div>
+        <% else %>
+          <%= t 'movie.unknown' %>
+        <% end %>
       </td>
     </tr>
     <tr>
