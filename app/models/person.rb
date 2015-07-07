@@ -29,7 +29,7 @@ class Person < ActiveRecord::Base
   
   has_many :characters
   has_many :crews
-  has_many :movies, through: :characters
+  has_many :movies, through: :characters, source: :movie
   has_many :production_credits, through: :crews, source: :movie
   has_many :directed, class_name: 'Movie', foreign_key: 'director_id'
   
