@@ -3,8 +3,8 @@
     <% if user_signed_in? && @rating.present? %>
       <small> - 
       <% if current_user.rated?(@movie) %>
-        <%= link_to t('movie.edit'), edit_movie_rating_path(@movie, @rating) %>
-        - <%= link_to t('movie.delete'), movie_rating_path(@movie, @rating), :method => :delete %>
+        <%= link_to t('movie.edit.e'), edit_movie_rating_path(@movie, @rating) %>
+         <%= link_to t('movie.edit.d'), movie_rating_path(@movie, @rating), :method => :delete %>
       <% else %>
         <%= link_to t('movie.rate'), new_movie_rating_path(@movie) %>
       <% end %>
@@ -14,19 +14,19 @@
   <table class="table table-hover table-condensed">
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.runtime.short' %></td>
-      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.runtime.present? ? t('movie.attr.runtime.data', :length => @movie.runtime) : t('movie.unknown') %></td>
+      <td class="col-xs-7 col-sm-7 text-right highlight"><%= @movie.runtime.present? ? t('movie.attr.runtime.data', :length => @movie.runtime) : t('movie.unknown') %></td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.released' %></td>
-      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.released.present? ? time_tag(@movie.released) : t('movie.unknown') %></td>
+      <td class="col-xs-7 col-sm-7 text-right highlight"><%= @movie.released.present? ? time_tag(@movie.released) : t('movie.unknown') %></td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.mpaa' %></td>
-      <td class="col-xs-7 col-sm-7 text-right"><%= @movie.mpaa.present? ? @movie.mpaa : t('movie.unknown') %></td>
+      <td class="col-xs-7 col-sm-7 text-right highlight"><%= @movie.mpaa.present? ? @movie.mpaa : t('movie.unknown') %></td>
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.violence' %></td>
-      <td class="col-xs-7 col-sm-7 text-right">
+      <td class="col-xs-7 col-sm-7 text-right highlight">
         <% if @movie.ratings.any? %>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_v %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_v == 0) ? 10 : @movie.avg_v * 20 %>%;">
@@ -40,7 +40,7 @@
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-4"><%= t 'movie.attr.nudity' %></td>
-      <td class="col-xs-7 col-sm-8 text-right">
+      <td class="col-xs-7 col-sm-8 text-right highlight">
         <% if @movie.ratings.any? %>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_n %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_n == 0) ? 10 : @movie.avg_n * 20 %>%;">
@@ -54,7 +54,7 @@
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-4"><%= t 'movie.attr.language' %></td>
-      <td class="col-xs-7 col-sm-8 text-right">
+      <td class="col-xs-7 col-sm-8 text-right highlight">
         <% if @movie.ratings.any? %>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_l %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_l == 0) ? 10 : @movie.avg_l * 20 %>%;">
@@ -68,7 +68,7 @@
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-4"><%= t 'movie.attr.adult' %></td>
-      <td class="col-xs-7 col-sm-8 text-right">
+      <td class="col-xs-7 col-sm-8 text-right highlight">
         <% if @movie.ratings.any? %>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @movie.avg_at %>" aria-valuemin="0" aria-valuemax="5" style="width: <%= (@movie.avg_at == 0) ? 10 : @movie.avg_at * 20 %>%;">
@@ -82,7 +82,7 @@
     </tr>
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.genre' %></td>
-      <td class="col-xs-7 col-sm-7"><%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, genre_path(t) }.join(', ') %></td>
+      <td class="col-xs-7 col-sm-7 text-right highlight"><%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, genre_path(t) }.join(', ') %></td>
     </tr>
   </tbody>
   </table>
@@ -92,15 +92,15 @@
   <table class="table table-hover table-condensed">
     <tr>
       <td><%= t 'movie.attr.boxoffice_us' %></td>
-      <td class="text-right"><%= @movie.boxoffice_us.present? ? number_to_currency(@movie.boxoffice_us, precision: 0) : t('movie.unknown') %></td>
+      <td class="text-right highlight"><%= @movie.boxoffice_us.present? ? number_to_currency(@movie.boxoffice_us, precision: 0) : t('movie.unknown') %></td>
     </tr>
     <tr>
       <td><%= t 'movie.attr.boxoffice_foreign' %></td>
-      <td class="text-right"><%= @movie.boxoffice_foreign.present? ? number_to_currency(@movie.boxoffice_foreign, precision: 0) : t('movie.unknown') %></td>
+      <td class="text-right highlight"><%= @movie.boxoffice_foreign.present? ? number_to_currency(@movie.boxoffice_foreign, precision: 0) : t('movie.unknown') %></td>
     </tr>
     <tr>
       <td><%= t 'movie.attr.boxoffice_worldwide' %></td>
-      <td class="text-right"><%= @movie.boxoffice_worldwide.present? ? number_to_currency(@movie.boxoffice_worldwide, precision: 0) : t('movie.unknown') %></td>
+      <td class="text-right highlight"><%= @movie.boxoffice_worldwide.present? ? number_to_currency(@movie.boxoffice_worldwide, precision: 0) : t('movie.unknown') %></td>
     </tr>
   </table>
   <% end %>

@@ -84,17 +84,17 @@
     <table class="table table-hover table-condensed">
     <tr>
       <td>Born</td>
-      <td class="text-right"><%= if @person.born.nil? then 'Unknown' else time_tag @person.born end  %></td>
+      <td class="text-right highlight"><%= if @person.born.nil? then 'Unknown' else time_tag @person.born end  %></td>
     </tr>
     <% if @person.died.nil? %>
     <tr>
       <td>Age</td>
-      <td class="text-right"><%= if @person.born.nil? then 'Unknown' else @person.age end %></td>
+      <td class="text-right highlight"><%= if @person.born.nil? then 'Unknown' else @person.age end %></td>
     </tr>
     <% else %>
     <tr>
       <td>Died</td>
-      <td class="text-right"><%= time_tag @person.died %></td>
+      <td class="text-right highlight"><%= time_tag @person.died %></td>
     </tr>
     <% end %>
   </table>
@@ -104,15 +104,15 @@
   <table class="table table-hover table-condensed">
     <tr>
       <td><%= t 'person.information.boxoffice_us' %></td>
-      <td class="text-right"><%= number_to_currency(@person.movies.sum(:boxoffice_us), precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.movies.sum(:boxoffice_us), precision: 0) %></td>
     </tr>
     <tr>
       <td><%= t 'person.information.boxoffice_foreign' %></td>
-      <td class="text-right"><%= number_to_currency(@person.movies.sum(:boxoffice_foreign), precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.movies.sum(:boxoffice_foreign), precision: 0) %></td>
     </tr>
     <tr>
       <td><%= t 'person.information.boxoffice_worldwide' %></td>
-      <td class="text-right"><%= number_to_currency(@person.movies.sum(:boxoffice_worldwide), precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.movies.sum(:boxoffice_worldwide), precision: 0) %></td>
     </tr>
   </table>
   <% end %>
@@ -122,15 +122,15 @@
   <table class="table table-hover table-condensed">
     <tr>
       <td><%= t 'person.information.boxoffice_us' %></td>
-      <td class="text-right"><%= number_to_currency(@person.production_gross_us, precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.production_gross_us, precision: 0) %></td>
     </tr>
     <tr>
       <td><%= t 'person.information.boxoffice_foreign' %></td>
-      <td class="text-right"><%= number_to_currency(@person.production_gross_foreign, precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.production_gross_foreign, precision: 0) %></td>
     </tr>
     <tr>
       <td><%= t 'person.information.boxoffice_worldwide' %></td>
-      <td class="text-right"><%= number_to_currency(@person.production_gross_worldwide, precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.production_gross_worldwide, precision: 0) %></td>
     </tr>
   </table>
   <% end %>

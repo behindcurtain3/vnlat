@@ -171,3 +171,11 @@ hr {
 .love-it-bar {
     margin-top: 0px;
 }
+
+.highlight, .highlight>a{
+    color: #c29d52;
+}
+
+.control-label {
+    font-weight: normal;
+}
