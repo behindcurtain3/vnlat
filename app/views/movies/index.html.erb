@@ -1,21 +1,17 @@
 <h3><% if params[:genre] %><%= params[:genre].upcase %> <%= t('movie.tag') %> <% elsif params[:q] and params[:q][:title_cont] %><%= t('movie.search') %> <%= params[:q][:title_cont].upcase %><% else %><%= t('movie.find') %><% end %></h3>
 
-<ul class="movie-list list-inline">
-<% if @movies.any? %>
-<% @movies.each do |movie| %>
-  <li class="thumb-wrap-movie">
-    <%= render 'shared/movie_thumb', movie: movie%>
-  </li>
-<% end %>
-<% else %>
-<li><p>No movies found</p></li>
-<% end %>
-</ul>
+<div class="text-center">
+  <ul class="movie-list list-inline">
+  <% if @movies.any? %>
+    <% @movies.each do |movie| %>
+      <li class="thumb-wrap-movie">
+        <%= render 'shared/movie_thumb', movie: movie%>
+      </li>
+    <% end %>
+  <% else %>
+    <li><p>No movies found</p></li>
+  <% end %>
+  </ul>
+</div>
 
 <%= will_paginate @movies, renderer: BootstrapPagination::Rails %>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
