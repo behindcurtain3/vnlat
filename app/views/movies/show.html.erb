@@ -1,21 +1,26 @@
 <%= render 'header' %>
   
   <div class="row">
-    <div class="col-xs-12 col-sm-3 col-md-3">
-      <h4><%= t 'movie.attr.director' %></h4>
-      <div class="thumb-wrap media-left media-top">
-        <%= render 'shared/person_thumb', person: @movie.workers.where("role = ? AND featured = ?", "Director", true).first %>
-      </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <ul class="list-inline thumb-wrap-list">
+        <li class="thumb-wrap-header"><h4><%= t 'movie.attr.director' %></h4></li>
+        <li class="thumb-wrap-header"><h4><%= t 'movie.attr.stars' %></h4></li>
+      </ul>
     </div>
-    <div class="col-xs-12 col-sm-9 col-md-9">
-      <h4><%= t 'movie.attr.stars' %></h4>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
       <ul class="list-inline">
-        <% @movie.stars.limit(4).each do | actor | %>
+        <li class="thumb-wrap media-left media-top">
+          <%= render 'shared/person_thumb', person: @movie.workers.where("role = ? AND featured = ?", "Director", true).first %>
+        </li>
+        <% @movie.stars.limit(5).each do | actor | %>
           <li class="thumb-wrap media-left media-top">
             <%= render 'shared/person_thumb', person: actor %>
           </li>
         <% end %>
       </ul>
+      
     </div>
   </div>
 

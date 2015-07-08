@@ -152,8 +152,16 @@ hr {
 }
 
 .thumb-wrap:hover .thumb-description {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
+}
+
+.thumb-wrap-list {
+    margin-bottom: 0px;
+}
+
+.thumb-wrap-header {
+    width: 85px;
 }
 
 .list-inline {
