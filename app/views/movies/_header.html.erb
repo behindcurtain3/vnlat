@@ -8,10 +8,23 @@
   <% end %>
 </div>
 <div class="<%= local_assigns.has_key?(:full) ? 'col-sm-9' : 'col-sm-6' %> well">
-  <h2 class="movie-title"><b><%= @movie.title.upcase %></b> <small>&nbsp;<%= @movie.year %>
+  <h2 class="movie-title"><b><%= @movie.title.upcase %></b> <small>
   <% if user_signed_in? %>
     - <%= link_to t('movie.form.edit'), edit_movie_path %>
   <% end %>
   </small>
   </h2>
+  <p class="highlight">
+    <% director = @movie.workers.where("role = ? AND featured = ?", "Director", true).first %>
+    <% if director.present? %>
+    <%= t 'movie.attr.directed' %> <%= link_to director.name, person_path(director) %>
+    <% end %>
+    <% count = @movie.workers.where("role = ? AND featured = ?", "Writer", true).count %>
+    <% if count > 0 %>
+      - <%= t 'movie.attr.written' %>
+      <% @movie.workers.where("role = ? AND featured = ?", "Writer", true).each_with_index do |writer, i| %>
+        <%= link_to writer.name, person_path(writer) %><%= ', ' unless i == count - 1 %>
+      <% end %>
+    <% end %>
+  </p>
   <hr/>

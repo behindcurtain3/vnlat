@@ -13,6 +13,7 @@ en:
       boxoffice_worldwide: "Worldwide"
       cast: "Cast"
       crew: "Crew"
+      directed: "Directed by"
       director: "Director"
       genre: "Genre"
       hate: "Hate It"
@@ -38,6 +39,7 @@ en:
       trailers_featured: "Featured Trailer"
       v: "V"
       violence: "Violence"
+      written: "Written by"
       year: "Year"
     edit:
       e: "e"

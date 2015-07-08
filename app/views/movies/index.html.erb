@@ -3,7 +3,7 @@
 <ul class="movie-list list-inline">
 <% if @movies.any? %>
 <% @movies.each do |movie| %>
-  <li class="thumb-wrap">
+  <li class="thumb-wrap-movie">
     <%= render 'shared/movie_thumb', movie: movie%>
   </li>
 <% end %>

@@ -3,7 +3,6 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <ul class="list-inline thumb-wrap-list">
-        <li class="thumb-wrap-header"><h4><%= t 'movie.attr.director' %></h4></li>
         <li class="thumb-wrap-header"><h4><%= t 'movie.attr.stars' %></h4></li>
       </ul>
     </div>
@@ -11,10 +10,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <ul class="list-inline">
-        <li class="thumb-wrap media-left media-top">
-          <%= render 'shared/person_thumb', person: @movie.workers.where("role = ? AND featured = ?", "Director", true).first %>
-        </li>
-        <% @movie.stars.limit(5).each do | actor | %>
+        <% @movie.stars.limit(6).each do | actor | %>
           <li class="thumb-wrap media-left media-top">
             <%= render 'shared/person_thumb', person: actor %>
           </li>
@@ -24,71 +20,79 @@
     </div>
   </div>
 
-  <div>
-    <h4><%= t 'movie.attr.summary' %></h4>
-    <p><%= @movie.summary.blank? ? 'Currently Unavailable' : @movie.summary %></p>
-  </div>
-  
+  <h4><%= t 'movie.attr.summary' %></h4>
+  <p><%= @movie.summary.blank? ? 'Currently Unavailable' : @movie.summary %></p>
+
   <% if @movie.quotes.count > 0 %>
   <blockquote class="blockquote-reverse">
     <p>
-      <span class="fa fa-quote-left pull-left fa-lg"></span>
-      <%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>
+      "<%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>"
     </p>
     <footer><%= @movie.quotes.first.character.name %></footer>
   </blockquote>
   <% end %>
   
-  <h4><%= t 'movie.attr.cast' %></h4>
-  <table class="table table-hover">
-    <tbody>
-      <% @movie.characters.ranked.each do | character | %>
-      <tr>
-        <td class="col-sm-6">
-          <div class="media">
-            <div class="media-left media-top">
-              <%= link_to person_path(character.person) do %>
-                <%= image_tag character.person.promo.url(:thumb), alt: character.person.name, class: "", height: '45' %>
-              <% end %>
-            </div>
-            <div class="media-body">
-              <%= link_to character.person.name, person_path(character.person) %>
-            </div>
-          </div>
-        </td>
-        <td class="text-center"><%= character.name %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <ul id="movie-tabs" class="list-inline" role="tablist">
+    <li class="presesntation active">
+      <h4><a href="#cast" aria-controls="cast" role="tab" data-toggle="tab"><%= t 'movie.attr.cast' %></a></h4>
+    </li>
+    <li class="presesntation">
+      <h4><a href="#crew" aria-controls="crew" role="tab" data-toggle="tab"><%= t 'movie.attr.crew' %></a></h4>
+    </li>
+  </ul>
   
-  <h4><%= t 'movie.attr.crew' %></h4>
-  <table class="table table-hover">
-    <tbody>
-      <% @movie.crews.group_by(&:person).each_pair do | person, roles | %>
-        <tr>
-          <td class="col-sm-6">
-            <div class="media">
-              <div class="media-left media-top">
-                <%= link_to person_path(person) do %>
-                  <%= image_tag person.promo.url(:thumb), alt: person.name, class: "", height: '45' %>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="cast">
+      <table class="table table-hover">
+        <tbody>
+          <% @movie.characters.ranked.each do | character | %>
+          <tr>
+            <td class="col-sm-6">
+              <div class="media">
+                <div class="media-left media-top">
+                  <%= link_to person_path(character.person) do %>
+                    <%= image_tag character.person.promo.url(:thumb), alt: character.person.name, class: "", height: '45' %>
+                  <% end %>
+                </div>
+                <div class="media-body">
+                  <%= link_to character.person.name, person_path(character.person) %>
+                </div>
+              </div>
+            </td>
+            <td class="text-center"><%= character.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>    
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="crew">
+      <table class="table table-hover">
+        <tbody>
+          <% @movie.crews.group_by(&:person).each_pair do | person, roles | %>
+            <tr>
+              <td class="col-sm-6">
+                <div class="media">
+                  <div class="media-left media-top">
+                    <%= link_to person_path(person) do %>
+                      <%= image_tag person.promo.url(:thumb), alt: person.name, class: "", height: '45' %>
+                    <% end %>
+                  </div>
+                  <div class="media-body">
+                    <%= link_to person.name, person_path(person) %>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">
+                <% roles.each_with_index do |role, i| %>
+                  <%= role.role %><%= ', ' unless i == roles.size - 1 %>
                 <% end %>
-              </div>
-              <div class="media-body">
-                <%= link_to person.name, person_path(person) %>
-              </div>
-            </div>
-          </td>
-          <td class="text-center">
-            <% roles.each_with_index do |role, i| %>
-              <%= role.role %><%= ', ' unless i == roles.size - 1 %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <%= render 'sidebar' %>
