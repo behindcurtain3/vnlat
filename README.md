@@ -31,4 +31,4 @@ Todo
 - ~~page to display all quotes on a movie~~
 - add a featured quote, featured trailer, and featured review column to movies
 - possible to add movie_id meta data to paper_trail for characters etc to track their changes
-- Fix boxoffice view error with no boxoffice results are available
+- ~~Fix boxoffice view error with no boxoffice results are available~~
