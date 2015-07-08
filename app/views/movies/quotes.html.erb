@@ -1,0 +1,18 @@
+<%= render 'header' %>
+  <h4><%= t 'movies.attr.quotes' %></h4>
+
+  <% if @movie.quotes.any? %>
+    <% @movie.quotes.each do |quote| %>
+      <blockquote class="blockquote">
+        <p>
+          "<%= quote.text %>"
+        </p>
+        <footer><%= quote.character.name %></footer>
+      </blockquote>
+    <% end %>
+  <% else %>
+    <p>No quotes are currently available.</p>
+  <% end %>
+</div>
+
+<%= render 'sidebar' %>

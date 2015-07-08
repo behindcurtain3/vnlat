@@ -28,7 +28,7 @@
   <blockquote class="blockquote-reverse">
     <p>
       <span class="fa fa-quote-left pull-left fa-lg"></span>
-      <%= @movie.quotes.first.text %>
+      <%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>
     </p>
     <footer><%= @movie.quotes.first.character.name %></footer>
   </blockquote>

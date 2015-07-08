@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show, :boxoffice, :trailers, :reviews]
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice, :trailers, :reviews]
+  before_filter :authenticate_user!, except: [:index, :show, :boxoffice, :trailers, :reviews, :quotes]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice, :trailers, :reviews, :quotes]
   autocomplete :person, :name
 
   respond_to :html
@@ -80,6 +80,10 @@ class MoviesController < ApplicationController
   end
   
   def reviews
+    respond_with(@movie)
+  end
+  
+  def quotes
     respond_with(@movie)
   end
 

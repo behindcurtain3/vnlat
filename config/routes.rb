@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get :boxoffice
       get :trailers
       get :reviews
+      get :quotes
     end
     
     resources :versions, only: [:destroy] do

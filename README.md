@@ -22,12 +22,13 @@ Todo
 - ~~Fix how crew members work and add their movies to their profile page~~
 - ~~Reorder popular films list based on movies overall gross~~
 - ~~Add career earning to profile page for people~~
-- Show career earnings for production credits also
+- ~~Show career earnings for production credits also~~
 - Fix unknown person thumb
 - Fix missing person thumb
 - Cancancan to control users
-- paper_trail for auditing
+- paper_trail for auditing (in progress, needs better diff page and to work with associations)
 - tweat link for quotes
-- page to display all quotes on a movie
+- ~~page to display all quotes on a movie~~
 - add a featured quote, featured trailer, and featured review column to movies
 - possible to add movie_id meta data to paper_trail for characters etc to track their changes
+- Fix boxoffice view error with no boxoffice results are available
