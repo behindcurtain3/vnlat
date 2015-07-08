@@ -19,12 +19,5 @@
     <% if director.present? %>
     <%= t 'movie.attr.directed' %> <%= link_to director.name, person_path(director) %>
     <% end %>
-    <% count = @movie.workers.where("role = ? AND featured = ?", "Writer", true).count %>
-    <% if count > 0 %>
-      - <%= t 'movie.attr.written' %>
-      <% @movie.workers.where("role = ? AND featured = ?", "Writer", true).each_with_index do |writer, i| %>
-        <%= link_to writer.name, person_path(writer) %><%= ', ' unless i == count - 1 %>
-      <% end %>
-    <% end %>
   </p>
   <hr/>
