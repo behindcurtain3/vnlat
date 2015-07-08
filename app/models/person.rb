@@ -69,6 +69,30 @@ class Person < ActiveRecord::Base
     ]
   end
   
+  def production_gross_us
+    #Movie
+    #  .includes(:crews)
+    #  .where(crews: { person_id: id})
+    #  .count(:boxoffice_us)
+    
+    # using this becuase the sum distinct sql is bugged on rails, it should look like about with sum instead of count
+    sql = "SELECT SUM(DISTINCT 'movies'.'boxoffice_us') AS sum_id FROM 'movies' LEFT OUTER JOIN 'crews' ON 'crews'.'movie_id' = 'movies'.'id' WHERE 'crews'.'person_id' = %d"
+    r = ActiveRecord::Base.connection.execute(sprintf(sql, id))
+    r.first[0]
+  end
+  
+  def production_gross_foreign
+    sql = "SELECT SUM(DISTINCT 'movies'.'boxoffice_foreign') AS sum_id FROM 'movies' LEFT OUTER JOIN 'crews' ON 'crews'.'movie_id' = 'movies'.'id' WHERE 'crews'.'person_id' = %d"
+    r = ActiveRecord::Base.connection.execute(sprintf(sql, id))
+    r.first[0]
+  end
+  
+  def production_gross_worldwide
+    sql = "SELECT SUM(DISTINCT 'movies'.'boxoffice_worldwide') AS sum_id FROM 'movies' LEFT OUTER JOIN 'crews' ON 'crews'.'movie_id' = 'movies'.'id' WHERE 'crews'.'person_id' = %d"
+    r = ActiveRecord::Base.connection.execute(sprintf(sql, id))
+    r.first[0]
+  end
+  
   def update_name
     if self.display_name.blank?
       self.name = self.first_name + " " + self.last_name
