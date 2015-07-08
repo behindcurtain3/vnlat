@@ -78,19 +78,19 @@ class Person < ActiveRecord::Base
     # using this becuase the sum distinct sql is bugged on rails, it should look like about with sum instead of count
     sql = 'SELECT SUM(DISTINCT "movies"."boxoffice_us") AS sum_id FROM "movies" LEFT OUTER JOIN "crews" ON "crews"."movie_id" = "movies"."id" WHERE "crews"."person_id" = %d'
     r = ActiveRecord::Base.connection.execute(sprintf(sql, id))
-    r.first[0]
+    r.first['sum_id']
   end
   
   def production_gross_foreign
     sql = 'SELECT SUM(DISTINCT "movies"."boxoffice_foreign") AS sum_id FROM "movies" LEFT OUTER JOIN "crews" ON "crews"."movie_id" = "movies"."id" WHERE "crews"."person_id" = %d'
     r = ActiveRecord::Base.connection.execute(sprintf(sql, id))
-    r.first[0]
+    r.first['sum_id']
   end
   
   def production_gross_worldwide
     sql = 'SELECT SUM(DISTINCT "movies"."boxoffice_worldwide") AS sum_id FROM "movies" LEFT OUTER JOIN "crews" ON "crews"."movie_id" = "movies"."id" WHERE "crews"."person_id" = %d'
     r = ActiveRecord::Base.connection.execute(sprintf(sql, id))
-    r.first[0]
+    r.first['sum_id']
   end
   
   def update_name
