@@ -3,3 +3,5 @@
 <% @people.each do |person| %>
   <%= render 'shared/person_thumb', person: person %>
 <% end %>
+
+<%= will_paginate @people, renderer: BootstrapPagination::Rails %>
