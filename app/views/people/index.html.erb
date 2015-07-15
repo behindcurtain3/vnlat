@@ -1,7 +1,13 @@
 <h3>Browse People</h3>
 
+<div class="text-center">
+  <ul class="list-inline">
 <% @people.each do |person| %>
-  <%= render 'shared/person_thumb', person: person %>
+    <li>
+      <%= render 'shared/person_thumb', person: person %>
+    </li>
 <% end %>
-
-<%= will_paginate @people, renderer: BootstrapPagination::Rails %>
+  </ul>
+  
+  <%= will_paginate @people, renderer: BootstrapPagination::Rails %>
+</div>
