@@ -1,0 +1,43 @@
+<%= form_for @movie do |f| %>
+  <table class="table table-condensed">
+    <tr>
+      <th class="col-sm-3">Franchise</th>
+      <th class="col-sm-1">Delete</th>
+    </tr>
+    <% @movie.franchise_members.each do |franchise_member| %>
+      <%= f.fields_for :franchise_members, franchise_member do |franchises_form| %>
+        <tr>
+          <td><%= link_to franchise_member.franchise.name, franchise_path(franchise_member.franchise) %></td>
+          <td class="text-center"><%= franchises_form.check_box :_destroy %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    
+    <tr>
+      <td colspan="4">
+        <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<h4>ADD NEW FRANCHISE</h4>
+<%= form_for(@franchise_member) do |f| %>
+  <fieldset>
+    <%= f.hidden_field :movie_id, :value => @movie.id %>
+    
+    <div class="form-group">
+      <%= f.label :franchise, t('movie.label.franchise'), :class => "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.select :franchise_id, options_from_collection_for_select(Franchise.all, "id", "name"), {}, { :class => "form-control" } %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <%= f.submit t('movie.form.save'), :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

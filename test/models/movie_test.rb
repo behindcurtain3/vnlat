@@ -24,6 +24,9 @@
 #  runtime             :integer
 #  mpaa                :string(255)
 #  released            :date
+#  avg_love            :float
+#  avg_like            :float
+#  avg_hate            :float
 #
 
 require 'test_helper'

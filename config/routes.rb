@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :franchises
+
   resources :movies do
     resources :ratings, only: [:new, :create, :edit, :update, :destroy]
     resources :likes, only: [:create, :update, :destroy]
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
   resources :trailers, only: [:create, :update, :destroy]
   resources :reviews, only: [:create]
   resources :quotes, only: [:create]
+  resources :franchise_members, only: [:create]
 
   namespace :api do
     namespace :v1 do

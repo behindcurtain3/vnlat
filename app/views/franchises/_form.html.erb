@@ -1,0 +1,34 @@
+<div>
+  <%= form_for(@franchise) do |f| %>
+  <fieldset>
+    <% if f.object.new_record? %>
+      <legend><%= t('franchise.form.new') %> <%= t('franchise.form.resource') %></legend>
+    <% end %>
+    <% if @franchise.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@franchise.errors.count, "error") %> prohibited this franchise from being saved:</h2>
+  
+        <ul>
+        <% @franchise.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="form-group">
+      <%= f.label :name, t('franchise.label.name'), :class => "col-sm-3 control-label" %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, :autofocus => true, :class => "form-control", :placeholder => t('franchise.form.name') %>
+        <span class="help-block"></span>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.submit t('franchise.form.save'), :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+  <% end %>
+</div>

@@ -22,6 +22,9 @@
     <li class="presesntation">
       <a href="#versions" aria-controls="versions" role="tab" data-toggle="tab"><%= t 'movie.attr.versions' %></a>
     </li>
+    <li class="presesntation">
+      <a href="#franchises" aria-controls="franchises" role="tab" data-toggle="tab"><%= t 'movie.attr.franchises' %></a>
+    </li>
     <li class="pull-right">
       <%= link_to 'Add a missing person', remote_new_person_path, :remote => true, :class => "btn btn-sm btn-danger" %>
     </li>
@@ -48,6 +51,9 @@
     </div>
     <div role="tabpanel" class="tab-pane fade" id="versions">
       <%= render 'movies/edit/versions', movie: @movie %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="franchises">
+      <%= render 'movies/edit/franchise', movie: @movie %>
     </div>
   </div>
   

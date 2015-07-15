@@ -84,6 +84,16 @@
       <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.genre' %></td>
       <td class="col-xs-7 col-sm-7 text-right highlight"><%= raw @movie.tag_list.sort { |a,b| a <=> b }.map { |t| link_to t, genre_path(t) }.join(', ') %></td>
     </tr>
+    <% if @movie.franchises.any? %>
+    <tr>
+      <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.franchise' %></td>
+      <td class="col-xs-7 col-sm-7 text-right highlight">
+        <% @movie.franchises.each do |franchise| %>
+          <%= link_to franchise.name, franchise_path(franchise) %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
   </tbody>
   </table>
   
