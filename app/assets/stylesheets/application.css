@@ -88,9 +88,28 @@ hr {
     padding-left: 2px;
 }
 
-.movie-list>li {
+.movie-list>li,
+.people-list>li {
     margin-bottom: 5px;
 }
+
+.people-list {
+    display: inline-block;
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.people-list>li {
+    display: inline;
+}
+
+.person-item {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
 
 .movie-title,
 .person-title {

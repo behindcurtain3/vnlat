@@ -1,9 +1,9 @@
 <h3>Browse People</h3>
 
 <div class="text-center">
-  <ul class="list-inline">
+  <ul class="people-list">
 <% @people.each do |person| %>
-    <li>
+    <li class="person-item">
       <%= render 'shared/person_thumb', person: person %>
     </li>
 <% end %>
