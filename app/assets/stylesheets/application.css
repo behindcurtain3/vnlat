@@ -106,8 +106,15 @@ hr {
 }
 
 .person-item {
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    float: left;
+}
+
+.person-item>a {
+    display:block;
+    width: 85px;
+    height: 125px;
 }
 
 
