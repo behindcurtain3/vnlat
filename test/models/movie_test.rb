@@ -27,6 +27,7 @@
 #  avg_love            :float
 #  avg_like            :float
 #  avg_hate            :float
+#  spotify             :string(255)
 #
 
 require 'test_helper'

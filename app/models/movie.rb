@@ -27,6 +27,7 @@
 #  avg_love            :float
 #  avg_like            :float
 #  avg_hate            :float
+#  spotify             :string(255)
 #
 
 class Movie < ActiveRecord::Base
@@ -46,6 +47,7 @@ class Movie < ActiveRecord::Base
   has_many :likes
   has_many :franchise_members
   has_many :franchises, through: :franchise_members, source: :franchise
+  has_many :earnings
   
   belongs_to :director, class_name: 'Person'
   accepts_nested_attributes_for :characters, allow_destroy: true
@@ -54,6 +56,7 @@ class Movie < ActiveRecord::Base
   accepts_nested_attributes_for :reviews, allow_destroy: true
   accepts_nested_attributes_for :quotes, allow_destroy: true
   accepts_nested_attributes_for :franchise_members, allow_destroy: true
+  accepts_nested_attributes_for :earnings, allow_destroy: true
   
   acts_as_taggable
   acts_as_api

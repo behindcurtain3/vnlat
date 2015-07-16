@@ -38,6 +38,7 @@ class MoviesController < ApplicationController
     @quote = Quote.new
     @crew = Crew.new
     @franchise_member = FranchiseMember.new
+    @earning = Earning.new
   end
 
   def create
@@ -103,6 +104,7 @@ class MoviesController < ApplicationController
         trailers_attributes: [:id, :movie_id, :code, :active, :_destroy],
         reviews_attributes: [:id, :movie_id, :code, :active, :_destroy],
         quotes_attributes: [:id, :movie_id, :character_id, :text, :_destroy],
-        franchise_members_attributes: [:id, :movie_id, :franchise_id, :_destroy])
+        franchise_members_attributes: [:id, :movie_id, :franchise_id, :_destroy],
+        earnings_attributes: [:id, :movie_id, :domestic, :foreign, :date, :_destroy])
     end
 end

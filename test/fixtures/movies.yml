@@ -27,6 +27,7 @@
 #  avg_love            :float
 #  avg_like            :float
 #  avg_hate            :float
+#  spotify             :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

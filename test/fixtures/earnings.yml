@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: earnings
+#
+#  id         :integer          not null, primary key
+#  movie_id   :integer
+#  domestic   :integer          default(0)
+#  foreign    :integer          default(0)
+#  worldwide  :integer          default(0)
+#  date       :date
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie_id: 
+  domestic: 1
+  foreign: 1
+  worldwide: 1
+  date: 2015-07-16
+
+two:
+  movie_id: 
+  domestic: 1
+  foreign: 1
+  worldwide: 1
+  date: 2015-07-16

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create]
   resources :quotes, only: [:create]
   resources :franchise_members, only: [:create]
+  resources :earnings, only: [:create]
 
   namespace :api do
     namespace :v1 do

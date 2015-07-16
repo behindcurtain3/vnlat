@@ -3,6 +3,12 @@ en:
   help:
     description: "Each category is rated on a 0-5 scale. 0 represents a total absence of that content from the movie, while a 5 respresents excessive use."
     title: "How it works"
+  earning:
+    date: "Date"
+    domestic: "Domestic"
+    foreign: "Foreign"
+    form:
+      save: "Save"
   franchise:
     form:
       name: "Franchise Name"
