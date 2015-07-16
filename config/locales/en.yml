@@ -41,6 +41,7 @@ en:
       runtime:
         data: "%{length} minutes"
         short: "Runtime"
+      spotify: "Soundtrack"
       stars: "Stars"
       summary: "Summary"
       title: "Title"
@@ -65,6 +66,7 @@ en:
       resource: "Movie"
       runtime: "Runtime (in minutes)"
       save: "Save"
+      spotify: "Spotify URI"
       summary: "Summary"
       title: "Title"
       year: "Year"
@@ -77,6 +79,7 @@ en:
       mpaa: "Rated"
       released: "Released On"
       runtime: "Runtime"
+      spotify: "Spotify URI"
       summary: "Summary"
       title: "Title"
       year: "Year Released"

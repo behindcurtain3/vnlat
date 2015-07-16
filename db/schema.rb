@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715203104) do
+ActiveRecord::Schema.define(version: 20150716044935) do
 
   create_table "characters", force: true do |t|
     t.integer  "person_id"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150715203104) do
     t.float    "avg_love"
     t.float    "avg_like"
     t.float    "avg_hate"
+    t.string   "spotify"
   end
 
   add_index "movies", ["director_id"], name: "index_movies_on_director_id"

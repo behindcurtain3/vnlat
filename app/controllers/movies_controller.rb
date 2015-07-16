@@ -95,7 +95,7 @@ class MoviesController < ApplicationController
 
     def movie_params
       params.require(:movie).permit(:title, :year, :poster, :director_id, :summary,
-        :runtime, :mpaa, :released,
+        :runtime, :mpaa, :released, :spotify,
         :tag_list, :boxoffice_us, :boxoffice_foreign, :boxoffice_worldwide, 
         :j_v, :j_n, :j_l, :j_at, :g_v, :g_n, :g_l, :g_at,
         characters_attributes: [:id, :name, :person_id, :movie_id, :importance, :_destroy],

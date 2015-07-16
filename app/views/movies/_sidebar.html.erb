@@ -124,5 +124,9 @@
   <h4><%= t 'movie.attr.reviews_featured' %><small> - <%= link_to t('movies.view_all'), reviews_movie_path(@movie) %></small></h4>
   <%= render 'shared/video', embed: @movie.reviews.first %>
   <% end %>
-  
+
+  <% if @movie.spotify.present? %>
+  <h4><%= t 'movie.attr.spotify' %></h4>  
+  <iframe src="https://embed.spotify.com/?uri=<%= @movie.spotify %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+  <% end %>
 </div>
