@@ -31,33 +31,35 @@
     <div id="earnings_chart" style="height: 350px;"></div>
     
     <script type="text/javascript">
-      new Morris.Area({
-        // ID of the element in which to draw the chart.
-        element: 'earnings_chart',
-        // Chart data records -- each entry in this array corresponds to a point on
-        // the chart.
-        data: [
-          <% @movie.earnings.each_with_index do |earning, index| %>
-           <% if index > 0 %>, <% end %>
-           { date: '<%= earning.date %>', domestic: <%= earning.domestic %>, foreign: <%= earning.foreign %> }
-          <% end %>
-        ],
-        // The name of the data record attribute that contains x-values.
-        xkey: 'date',
-        // A list of names of data record attributes that contain y-values.
-        ykeys: ['domestic', 'foreign'],
-        // Labels for the ykeys -- will be displayed when you hover over the
-        // chart.
-        labels: ['Domestic', 'Foreign'],
-        xLabels: 'day',
-        xLabelAngle: 30,
-        lineColors: ['#81652d', '#c29d52'],
-        lineWidth: 1,
-        preUnits: '$',
-        gridTextFamily: 'Carrois Gothic',
-        gridTextSize: 14,
-        fillOpacity: 0.7
-      });  
+      $(function(){
+        new Morris.Area({
+          // ID of the element in which to draw the chart.
+          element: 'earnings_chart',
+          // Chart data records -- each entry in this array corresponds to a point on
+          // the chart.
+          data: [
+            <% @movie.earnings.each_with_index do |earning, index| %>
+             <% if index > 0 %>, <% end %>
+             { date: '<%= earning.date %>', domestic: <%= earning.domestic %>, foreign: <%= earning.foreign %> }
+            <% end %>
+          ],
+          // The name of the data record attribute that contains x-values.
+          xkey: 'date',
+          // A list of names of data record attributes that contain y-values.
+          ykeys: ['domestic', 'foreign'],
+          // Labels for the ykeys -- will be displayed when you hover over the
+          // chart.
+          labels: ['Domestic', 'Foreign'],
+          xLabels: 'day',
+          xLabelAngle: 30,
+          lineColors: ['#81652d', '#c29d52'],
+          lineWidth: 1,
+          preUnits: '$',
+          gridTextFamily: 'Carrois Gothic',
+          gridTextSize: 14,
+          fillOpacity: 0.7
+        });
+      });
     </script>
   <% end %>
 </div>
