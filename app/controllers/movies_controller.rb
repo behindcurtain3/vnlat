@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
 
   def update
     if @movie.update(movie_params)
-      redirect_to edit_movie_path(@movie)
+      redirect_to edit_movie_path(@movie), :flash => { :anchor => params['anchor'] }
     else
       render action: 'edit'
     end

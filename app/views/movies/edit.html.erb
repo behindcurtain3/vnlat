@@ -1,31 +1,31 @@
 <%= render 'header', full: true %>
   <p>
   <ul id="edit_cast_tabs" class="nav nav-pills" role="tablist">
-    <li class="presesntation active">
+    <li class="presesntation<% unless flash.key?('anchor') %> active<% end %>">
       <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t 'movie.attr.information' %></a>
     </li>
-    <li class="presesntation">
+    <li class="presesntation<% if flash[:anchor] == 'cast' %> active<% end %>">
       <a href="#cast" aria-controls="cast" role="tab" data-toggle="tab"><%= t 'movie.attr.cast' %></a>
     </li>
-    <li class="presesntation">
+    <li class="presesntation<% if flash[:anchor] == 'crew' %> active<% end %>">
       <a href="#crew" aria-controls="crew" role="tab" data-toggle="tab"><%= t 'movie.attr.crew' %></a>
     </li>
-    <li class="presesntation">
+    <li class="presesntation<% if flash[:anchor] == 'trailers' %> active<% end %>">
       <a href="#trailers" aria-controls="trailers" role="tab" data-toggle="tab"><%= t 'movie.attr.trailers' %></a>
     </li>
-    <li class="presesntation">
+    <li class="presesntation<% if flash[:anchor] == 'reviews' %> active<% end %>">
       <a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><%= t 'movie.attr.reviews' %></a>
     </li>
-    <li class="presesntation">
+    <li class="presesntation<% if flash[:anchor] == 'quotes' %> active<% end %>">
       <a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab"><%= t 'movie.attr.quotes' %></a>
     </li>
     <li class="presesntation">
       <a href="#versions" aria-controls="versions" role="tab" data-toggle="tab"><%= t 'movie.attr.versions' %></a>
     </li>
-    <li class="presesntation">
+    <li class="presesntation<% if flash[:anchor] == 'franchise' %> active<% end %>">
       <a href="#franchises" aria-controls="franchises" role="tab" data-toggle="tab"><%= t 'movie.attr.franchises' %></a>
     </li>
-    <li class="presesntation">
+    <li class="presesntation<% if flash[:anchor] == 'earnings' %> active<% end %>">
       <a href="#earnings" aria-controls="earnings" role="tab" data-toggle="tab"><%= t 'movie.attr.earnings' %></a>
     </li>
     <li class="pull-right">
@@ -34,31 +34,31 @@
   </ul>
   </p>
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active" id="info">
+    <div role="tabpanel" class="tab-pane fade<% unless flash.key?('anchor') %> in active<% end %>" id="info">
       <%= render 'form' %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="cast">
+    <div role="tabpanel" class="tab-pane fade<% if flash[:anchor] == 'cast' %> in active<% end %>" id="cast">
       <%= render 'movies/edit/cast' %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="crew">
+    <div role="tabpanel" class="tab-pane fade<% if flash[:anchor] == 'crew' %> in active<% end %>" id="crew">
       <%= render 'movies/edit/crew' %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="trailers">
+    <div role="tabpanel" class="tab-pane fade<% if flash[:anchor] == 'trailers' %> in active<% end %>" id="trailers">
       <%= render 'movies/edit/trailers' %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="reviews">
+    <div role="tabpanel" class="tab-pane fade<% if flash[:anchor] == 'reviews' %> in active<% end %>" id="reviews">
       <%= render 'movies/edit/reviews' %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="quotes">
+    <div role="tabpanel" class="tab-pane fade<% if flash[:anchor] == 'quotes' %> in active<% end %>" id="quotes">
       <%= render 'movies/edit/quotes' %>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="versions">
       <%= render 'movies/edit/versions', movie: @movie %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="franchises">
+    <div role="tabpanel" class="tab-pane fade<% if flash[:anchor] == 'franchise' %> in active<% end %>" id="franchises">
       <%= render 'movies/edit/franchise', movie: @movie %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="earnings">
+    <div role="tabpanel" class="tab-pane fade<% if flash[:anchor] == 'earnings' %> in active<% end %>" id="earnings">
       <%= render 'movies/edit/earnings', movie: @movie %>
     </div>
   </div>
