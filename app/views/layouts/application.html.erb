@@ -62,9 +62,11 @@
 </footer>
 <script type="text/javascript">
 	$(document).on("ready page:change", function() {
-  	$("[data-toggle='tooltip']")
-    	.tooltip("destroy")
-    	.tooltip();
+		if (!window.matchMedia || (window.matchMedia("(min-width: 1024px)").matches)) {
+			$("[data-toggle='tooltip']")
+    		.tooltip("destroy")
+    		.tooltip();
+		}
 	});
 </script>
 </body>
