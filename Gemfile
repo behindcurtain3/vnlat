@@ -28,6 +28,7 @@ gem 'ransack'
 gem 'twitter'
 gem 'paper_trail'
 gem 'diffy'
+gem 'has_scope'
 
 group :development do
     gem 'sqlite3'

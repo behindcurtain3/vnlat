@@ -98,6 +98,14 @@ class Movie < ActiveRecord::Base
   scope :popular, -> { order('boxoffice_worldwide DESC') }
   scope :by_release_desc, -> { order('released DESC') }
   scope :by_release_asc, -> { order('released ASC') }
+  scope :starts_with, -> (title) { where("title like ?", "#{title}%")}
+  scope :year, -> (year) { where year: year }
+  scope :year_less, -> (year) { where('year < ?', year) }
+  scope :year_greater, -> (year) { where('year > ?', year) }
+  scope :year_less_equal, -> (year) { where('year <= ?', year) }
+  scope :year_greater_equal, -> (year) { where('year >= ?', year) }
+  scope :released_after, lambda { | date = 1.year.ago.to_date | where('released >= ?', date) }
+  scope :released_before, lambda { | date = Date.today | where('released <= ?', date) }
       
   def slug_candidates
     [

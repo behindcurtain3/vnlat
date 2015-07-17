@@ -4,6 +4,15 @@ class MoviesController < ApplicationController
   autocomplete :person, :name
 
   respond_to :html
+  
+  has_scope :year
+  has_scope :year_greater
+  has_scope :year_greater_equal
+  has_scope :year_less
+  has_scope :year_less_equal
+  has_scope :starts_with
+  has_scope :released_after
+  has_scope :released_before
 
   def index
     if params[:genre]
@@ -14,6 +23,7 @@ class MoviesController < ApplicationController
       @movies = Movie.all
     end
     
+    @movies = apply_scopes(@movies).all
     @movies = @movies.paginate(:page => params[:page], :per_page => 50)
     
     respond_with(@movies)
