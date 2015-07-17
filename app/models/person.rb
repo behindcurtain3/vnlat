@@ -64,7 +64,9 @@ class Person < ActiveRecord::Base
   
   def slug_candidates
     [
+      [:name],
       [:first_name, :last_name],
+      [:name, :born],
       [:first_name, :last_name, :born]
     ]
   end
