@@ -218,3 +218,8 @@ and (min-device-width : 1024px) {
         box-shadow: 0 0 2px #c29d52;
     }
 } 
+
+.tooltip-inner {
+    font-family: 'Carrois Gothic';
+    font-size: 14px;
+}
