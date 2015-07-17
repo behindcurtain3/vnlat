@@ -12,6 +12,6 @@
     <li><p>No movies found</p></li>
   <% end %>
   </ul>
+  
+  <%= will_paginate @movies, renderer: BootstrapPagination::Rails %>
 </div>
-
-<%= will_paginate @movies, renderer: BootstrapPagination::Rails %>
