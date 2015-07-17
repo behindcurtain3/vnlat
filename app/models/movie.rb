@@ -96,6 +96,8 @@ class Movie < ActiveRecord::Base
   validates_attachment_content_type :poster, :content_type => /\Aimage\/.*\Z/
       
   scope :popular, -> { order('boxoffice_worldwide DESC') }
+  scope :by_release_desc, -> { order('released DESC') }
+  scope :by_release_asc, -> { order('released ASC') }
       
   def slug_candidates
     [

@@ -3,7 +3,7 @@
 <div class="text-center">
   <ul class="movie-list list-inline">
   <% if @franchise.movies.any? %>
-    <% @franchise.movies.each do |movie| %>
+    <% @franchise.movies.by_release_asc.each do |movie| %>
       <li class="thumb-wrap-movie">
         <%= render 'shared/movie_thumb', movie: movie%>
       </li>
