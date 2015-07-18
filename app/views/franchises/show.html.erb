@@ -16,7 +16,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-4">
     <h4>By Release:</h4>
-    <table class="table table-hover">
+    <table class="table table-hover table-data">
       <tbody>
         <% @franchise.movies.by_release_asc.each do | movie | %>
         <tr>
@@ -31,7 +31,7 @@
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
     <h4>By US Box Office:</h4>
-    <table class="table table-hover">
+    <table class="table table-hover table-data">
       <tbody>
         <% @franchise.movies.by_domestic.each do | movie | %>
         <tr>
@@ -46,7 +46,7 @@
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
     <h4>By Worldwide Box Office:</h4>
-    <table class="table table-hover">
+    <table class="table table-hover table-data">
       <tbody>
         <% @franchise.movies.by_worldwide.each do | movie | %>
         <tr>
