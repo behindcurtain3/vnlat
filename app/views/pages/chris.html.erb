@@ -1,0 +1,27 @@
+<% provide(:title, 'The Real Chris') %>
+
+<% @contenders.each do |chris| %>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <%= image_tag chris.promo.url(:large), alt: chris.name, class: "img-responsive" %>
+    <h2 class="person-title text-center"><b><%= chris.name.upcase %></b>
+    <br>
+    <small>Age: <%= chris.age %></small>
+    </h2>
+    <h4>Top Films:</h4>
+    <table class="table table-hover">
+      <tbody>
+        <% sum = 0 %>
+        <% chris.movies.by_worldwide.limit(3).each do | movie | %>
+          <% sum += movie.boxoffice_worldwide %>
+        <tr class="table-data">
+          <td>
+            <%= render 'shared/movie_table', movie: movie %>
+          </td>
+          <td><%= number_to_currency movie.boxoffice_worldwide, precision: 0 %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h2 class="text-center"><small>Total: <%= number_to_currency sum, precision: 0 %></small></h2>
+  </div>
+<% end %>

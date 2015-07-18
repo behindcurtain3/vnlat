@@ -47,7 +47,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   get 'genres/:genre', to: 'movies#index', as: :genre
-  get 'about' => "pages#about"
+  get 'about' => 'pages#about'
+  get 'the-real-chris' => 'pages#chris'
   get 'remote_new_person', to: 'remote_content#remote_new_person'
   root 'movies#index'
 end

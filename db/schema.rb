@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150716195906) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "characters", force: true do |t|
     t.integer  "person_id"
     t.integer  "movie_id"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "characters", ["movie_id"], name: "index_characters_on_movie_id"
-  add_index "characters", ["person_id"], name: "index_characters_on_person_id"
+  add_index "characters", ["movie_id"], name: "index_characters_on_movie_id", using: :btree
+  add_index "characters", ["person_id"], name: "index_characters_on_person_id", using: :btree
 
   create_table "crews", force: true do |t|
     t.integer  "movie_id"
@@ -35,8 +38,8 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "crews", ["movie_id"], name: "index_crews_on_movie_id"
-  add_index "crews", ["person_id"], name: "index_crews_on_person_id"
+  add_index "crews", ["movie_id"], name: "index_crews_on_movie_id", using: :btree
+  add_index "crews", ["person_id"], name: "index_crews_on_person_id", using: :btree
 
   create_table "earnings", force: true do |t|
     t.integer  "movie_id"
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "earnings", ["movie_id"], name: "index_earnings_on_movie_id"
+  add_index "earnings", ["movie_id"], name: "index_earnings_on_movie_id", using: :btree
 
   create_table "franchise_members", force: true do |t|
     t.integer  "movie_id"
@@ -57,8 +60,8 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "franchise_members", ["franchise_id"], name: "index_franchise_members_on_franchise_id"
-  add_index "franchise_members", ["movie_id"], name: "index_franchise_members_on_movie_id"
+  add_index "franchise_members", ["franchise_id"], name: "index_franchise_members_on_franchise_id", using: :btree
+  add_index "franchise_members", ["movie_id"], name: "index_franchise_members_on_movie_id", using: :btree
 
   create_table "franchises", force: true do |t|
     t.string   "name"
@@ -67,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.string   "slug"
   end
 
-  add_index "franchises", ["slug"], name: "index_franchises_on_slug", unique: true
+  add_index "franchises", ["slug"], name: "index_franchises_on_slug", unique: true, using: :btree
 
   create_table "likes", force: true do |t|
     t.integer  "user_id"
@@ -79,8 +82,8 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "likes", ["movie_id"], name: "index_likes_on_movie_id"
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+  add_index "likes", ["movie_id"], name: "index_likes_on_movie_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "movie_versions", force: true do |t|
     t.string   "item_type",       null: false
@@ -92,7 +95,7 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.string   "author_username"
   end
 
-  add_index "movie_versions", ["item_type", "item_id"], name: "index_movie_versions_on_item_type_and_item_id"
+  add_index "movie_versions", ["item_type", "item_id"], name: "index_movie_versions_on_item_type_and_item_id", using: :btree
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -122,9 +125,9 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.string   "spotify"
   end
 
-  add_index "movies", ["director_id"], name: "index_movies_on_director_id"
-  add_index "movies", ["slug"], name: "index_movies_on_slug", unique: true
-  add_index "movies", ["title"], name: "index_movies_on_title"
+  add_index "movies", ["director_id"], name: "index_movies_on_director_id", using: :btree
+  add_index "movies", ["slug"], name: "index_movies_on_slug", unique: true, using: :btree
+  add_index "movies", ["title"], name: "index_movies_on_title", using: :btree
 
   create_table "people", force: true do |t|
     t.string   "first_name"
@@ -144,7 +147,7 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.string   "name"
   end
 
-  add_index "people", ["slug"], name: "index_people_on_slug", unique: true
+  add_index "people", ["slug"], name: "index_people_on_slug", unique: true, using: :btree
 
   create_table "quotes", force: true do |t|
     t.string   "text"
@@ -154,8 +157,8 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "quotes", ["character_id"], name: "index_quotes_on_character_id"
-  add_index "quotes", ["movie_id"], name: "index_quotes_on_movie_id"
+  add_index "quotes", ["character_id"], name: "index_quotes_on_character_id", using: :btree
+  add_index "quotes", ["movie_id"], name: "index_quotes_on_movie_id", using: :btree
 
   create_table "ratings", force: true do |t|
     t.integer  "user_id"
@@ -168,8 +171,8 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "ratings", ["movie_id"], name: "index_ratings_on_movie_id"
-  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
+  add_index "ratings", ["movie_id"], name: "index_ratings_on_movie_id", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.integer  "movie_id"
@@ -179,7 +182,7 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id"
+  add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -191,15 +194,15 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: true do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "trailers", force: true do |t|
     t.integer  "movie_id"
@@ -209,7 +212,7 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "trailers", ["movie_id"], name: "index_trailers_on_movie_id"
+  add_index "trailers", ["movie_id"], name: "index_trailers_on_movie_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -226,8 +229,8 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
@@ -238,6 +241,6 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "created_at"
   end
 
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end

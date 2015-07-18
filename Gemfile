@@ -29,15 +29,14 @@ gem 'twitter'
 gem 'paper_trail'
 gem 'diffy'
 gem 'has_scope'
+gem 'pg', '0.17.1'
 
 group :development do
-    gem 'sqlite3'
     gem 'spring'
     gem 'annotate'
 end
 
 group :production do
-  gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'unicorn'
 end
