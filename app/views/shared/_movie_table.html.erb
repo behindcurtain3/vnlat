@@ -1,0 +1,10 @@
+<div class="media">
+  <div class="media-left media-top">
+    <%= link_to movie_path(movie) do %>
+      <%= image_tag movie.poster.url(:thumb), alt: movie.title, class: "", height: '45' %>
+    <% end %>
+  </div>
+  <div class="media-body">
+    <%= link_to movie.title, movie_path(movie) %>
+  </div>
+</div>

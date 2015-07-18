@@ -31,16 +31,7 @@
       <% @person.characters.by_year.each do | character | %>
       <tr>
         <td>
-          <div class="media">
-            <div class="media-left media-top">
-              <%= link_to movie_path(character.movie) do %>
-                <%= image_tag character.movie.poster.url(:thumb), alt: character.movie.title, class: "", height: '45' %>
-              <% end %>
-            </div>
-            <div class="media-body">
-              <%= link_to character.movie.title, movie_path(character.movie) %>
-            </div>
-          </div>
+          <%= render 'shared/movie_table', movie: character.movie %>
         </td>
         <td><%= character.movie.year %></td>
         <td class="text-center"><%= character.name %></td>
