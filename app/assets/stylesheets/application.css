@@ -224,14 +224,8 @@ and (min-device-width : 1024px) {
     font-size: 14px;
 }
 
-.table-data {
+.table-data:hover {
     border-left-color: #c29d52;
     border-left-width: 1px !important;
     border-left-style: solid;   
-}
-
-.table-data:hover {
-    border-left-color: #fff;
-    border-left-width: 1px !important;
-    border-left-style: solid;
 }
