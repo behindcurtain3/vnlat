@@ -30,6 +30,7 @@
 <%= form_for(@earning) do |f| %>
   <fieldset>
     <%= f.hidden_field :movie_id, :value => @movie.id %>
+    <input type="hidden" name="anchor" value="earnings" />
     
     <div class="form-group">
       <%= f.label :domestic, t('earning.domestic'), :class => "col-sm-2 control-label" %>

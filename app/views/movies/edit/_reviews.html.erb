@@ -32,6 +32,7 @@
 <%= form_for(@review) do |f| %>
   <fieldset>
     <%= f.hidden_field :movie_id, :value => @movie.id %>
+    <input type="hidden" name="anchor" value="reviews" />
     
     <div class="form-group">
       <%= f.label :code, 'YouTube Code', :class => "col-sm-2 control-label" %>

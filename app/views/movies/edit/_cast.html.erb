@@ -31,6 +31,7 @@
 <%= form_for(@new) do |f| %>
   <fieldset>
     <%= f.hidden_field :movie_id, :value => @movie.id %>
+    <input type="hidden" name="anchor" value="cast" />
     
     <div class="form-group">
       <%= f.label :person, 'Actor', :class => "col-lg-2 control-label" %>

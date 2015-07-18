@@ -5,11 +5,8 @@ class QuotesController < ApplicationController
 
   def create
     @quote = Quote.new(quote_params)
-    if @quote.save
-      redirect_to edit_movie_path(@quote.movie)
-    else
-      redirect_to edit_movie_path(@quote.movie)
-    end
+    @quote.save
+    redirect_to edit_movie_path(@quote.movie), :flash => { :anchor => params['anchor'] }
   end
 
   private

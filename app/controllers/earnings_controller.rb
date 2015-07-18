@@ -5,11 +5,8 @@ class EarningsController < ApplicationController
 
   def create
     @earning = Earning.new(earning_params)
-    if @earning.save
-      redirect_to edit_movie_path(@earning.movie)
-    else
-      redirect_to edit_movie_path(@earning.movie)
-    end
+    @earning.save
+    redirect_to edit_movie_path(@earning.movie), :flash => { :anchor => params['anchor'] }
   end
 
   private

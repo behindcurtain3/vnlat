@@ -31,6 +31,7 @@
 <%= form_for(@quote) do |f| %>
   <fieldset>
     <%= f.hidden_field :movie_id, :value => @movie.id %>
+    <input type="hidden" name="anchor" value="quotes" />
     
     <div class="form-group">
       <%= f.label :character, t('quote.character'), :class => "col-sm-2 control-label" %>

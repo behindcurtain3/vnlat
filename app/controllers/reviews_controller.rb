@@ -5,11 +5,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    if @review.save
-      redirect_to edit_movie_path(@review.movie)
-    else
-      redirect_to edit_movie_path(@review.movie)
-    end
+    @review.save
+    redirect_to edit_movie_path(@review.movie), :flash => { :anchor => params['anchor'] }
   end
 
   private

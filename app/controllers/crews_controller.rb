@@ -5,11 +5,8 @@ class CrewsController < ApplicationController
 
   def create
     @crew = Crew.new(crew_params)
-    if @crew.save
-      redirect_to edit_movie_path(@crew.movie)
-    else
-      redirect_to edit_movie_path(@crew.movie)
-    end
+    @crew.save
+    redirect_to edit_movie_path(@crew.movie), :flash => { :anchor => params['anchor'] }
   end
 
   private

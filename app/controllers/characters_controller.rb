@@ -19,7 +19,7 @@ class CharactersController < ApplicationController
   def create
     @character = Character.new(character_params)
     if @character.save
-      redirect_to edit_movie_path(@character.movie)
+      redirect_to edit_movie_path(@character.movie), :flash => { :anchor => params['anchor'] }
     else
       render action: 'new'
     end

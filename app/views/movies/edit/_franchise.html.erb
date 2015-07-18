@@ -26,6 +26,7 @@
 <%= form_for(@franchise_member) do |f| %>
   <fieldset>
     <%= f.hidden_field :movie_id, :value => @movie.id %>
+    <input type="hidden" name="anchor" value="franchise" />
     
     <div class="form-group">
       <%= f.label :franchise, t('movie.label.franchise'), :class => "col-sm-2 control-label" %>

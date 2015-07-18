@@ -6,11 +6,8 @@ class TrailersController < ApplicationController
 
   def create
     @trailer = Trailer.new(trailer_params)
-    if @trailer.save
-      redirect_to edit_movie_path(@trailer.movie)
-    else
-      redirect_to edit_movie_path(@trailer.movie)
-    end
+    @trailer.save
+    redirect_to edit_movie_path(@trailer.movie), :flash => { :anchor => params['anchor'] }
   end
 
   def update
