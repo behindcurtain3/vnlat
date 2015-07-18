@@ -1,5 +1,5 @@
 <h3><%= @franchise.name %></h3>
-<div class="col-sm-12 text-center">
+<div class="text-center">
   <ul class="movie-list list-inline">
   <% if @franchise.movies.any? %>
     <% @franchise.movies.by_release_asc.each do |movie| %>
