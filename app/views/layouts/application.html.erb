@@ -24,8 +24,9 @@
 	</div>
 	<div class="navbar-collapse collapse navbar-inverse-collapse" id="navbar-primary">
 	  <ul class="nav navbar-nav">
-  		<li><%= link_to movies_path do %><%= t('nav.all') %><% end %></li>
-	  	<li><%= link_to about_path do %><%= t('nav.about') %><% end %></li>
+  		<li><%= link_to t('nav.all'), movies_path %></li>
+  		<li><%= link_to t('nav.top'), top_path %></li>
+	  	<li><%= link_to t('nav.about'), about_path %></li>
 		  <% if user_signed_in? %>
 		    <li><%= link_to t('nav.new'), new_movie_path %></li>
 		  <% end %>

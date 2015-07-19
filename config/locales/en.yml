@@ -104,6 +104,7 @@ en:
     login: "login"
     logout: "logout"
     new: "ADD A MOVIE"
+    top: "TOP MOVIES"
   person:
     biography: "Biography"
     born: "Born On"
