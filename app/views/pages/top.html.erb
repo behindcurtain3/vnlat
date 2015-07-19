@@ -1,0 +1,30 @@
+<% provide(:title, 'Top Movies') %>
+
+<div class="col-xs-12 col-sm-6 well">
+  <h4>Top Movies in the US</h4>
+  <table class="table table-hover">
+    <tbody>
+      <% @domestic.each_with_index do |movie, index| %>
+        <tr>
+          <td class="col-xs-1"><%= index + 1 %></td>
+          <td><%= render 'shared/movie_table', movie: movie %></td>
+          <td><%= number_to_currency movie.boxoffice_us, precision: 0 %></td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="col-xs-12 col-sm-6 well">
+  <h4>Top Movies Worldwide</h4>
+  <table class="table table-hover">
+    <tbody>
+      <% @worldwide.each_with_index do |movie, index| %>
+        <tr>
+          <td class="col-xs-1"><%= index + 1 %></td>
+          <td><%= render 'shared/movie_table', movie: movie %></td>
+          <td><%= number_to_currency movie.boxoffice_worldwide, precision: 0 %></td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+</div>
