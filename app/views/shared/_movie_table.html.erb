@@ -1,7 +1,9 @@
+<% thumb_size = local_assigns.has_key?(:thumb_size) ? local_assigns[:thumb_size] : :thumb %>
+<% height = thumb_size == :thumb ? '45' : '90' %>
 <div class="media">
   <div class="media-left media-top">
     <%= link_to movie_path(movie) do %>
-      <%= image_tag movie.poster.url(:thumb), alt: movie.title, class: "", height: '45' %>
+      <%= image_tag movie.poster.url(thumb_size), alt: movie.title, class: "", height: height %>
     <% end %>
   </div>
   <div class="media-body">

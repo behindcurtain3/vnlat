@@ -5,9 +5,10 @@
   <table class="table table-hover">
     <tbody>
       <% @domestic.each_with_index do |movie, index| %>
-        <tr>
+        <% thumb = index < 3 ? :small : :thumb %>
+        <tr class="table-data">
           <td class="col-xs-1"><%= index + 1 %></td>
-          <td><%= render 'shared/movie_table', movie: movie %></td>
+          <td><%= render 'shared/movie_table', movie: movie, thumb_size: thumb %></td>
           <td><%= number_to_currency movie.boxoffice_us, precision: 0 %></td>
         </tr>  
       <% end %>
@@ -19,9 +20,10 @@
   <table class="table table-hover">
     <tbody>
       <% @worldwide.each_with_index do |movie, index| %>
-        <tr>
+        <% thumb = index < 3 ? :small : :thumb %>
+        <tr class="table-data">
           <td class="col-xs-1"><%= index + 1 %></td>
-          <td><%= render 'shared/movie_table', movie: movie %></td>
+          <td><%= render 'shared/movie_table', movie: movie, thumb_size: thumb %></td>
           <td><%= number_to_currency movie.boxoffice_worldwide, precision: 0 %></td>
         </tr>  
       <% end %>
