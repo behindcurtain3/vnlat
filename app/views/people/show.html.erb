@@ -2,7 +2,7 @@
 
 <div class="col-xs-12 data-header text-center">
   <h2 class="title">
-    <b><%= link_to @person.name.upcase, person_path(@person) %></b>
+    <b><%= link_to @person.name, person_path(@person) %></b>
     <% roles = (@person.characters.any?) ? ['Actor'] : [] %>
     <% roles = (roles + @person.crews.map { |r| r.role }).uniq %>
     <% unless roles.blank? %>
