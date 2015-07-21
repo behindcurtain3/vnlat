@@ -18,13 +18,15 @@
 </div>
 <div class="col-sm-3">
   <%= link_to movie_path(@movie) do %><%= image_tag @movie.poster.url, alt: @movie.title, class: "img-responsive poster" %><% end %>
-  <% if @movie.quotes.count > 0 %>
-  <blockquote class="blockquote">
-    <p>
-      "<%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>"
-    </p>
-    <footer><%= @movie.quotes.first.character.name %></footer>
-  </blockquote>
+  <% if current_page?(:controller => 'movies', :action => 'show') %>
+    <% if @movie.quotes.count > 0 %>
+      <blockquote class="blockquote">
+        <p>
+          "<%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>"
+        </p>
+        <footer><%= @movie.quotes.first.character.name %></footer>
+      </blockquote>
+    <% end %>
   <% end %>
 </div>
 <div class="<%= local_assigns.has_key?(:full) ? 'col-sm-9' : 'col-sm-6' %> movie-content">
