@@ -33,6 +33,7 @@
 class Movie < ActiveRecord::Base
   extend FriendlyId
   before_save :update_averages
+  before_save :update_worldwide
   
   has_many :ratings
   has_many :characters
@@ -155,6 +156,13 @@ class Movie < ActiveRecord::Base
     else
       update_likes count
     end
+  end
+  
+  def update_worldwide
+    return self.boxoffice_worldwide = nil if self.boxoffice_us.nil? && self.boxoffice_foreign.nil?
+    return self.boxoffice_worldwide = self.boxoffice_us if self.boxoffice_foreign.nil?
+    return self.boxoffice_worldwide = self.boxoffice_foreign if self.boxoffice_us.nil?
+    return self.boxoffice_worldwide = self.boxoffice_us + self.boxoffice_foreign
   end
   
   def any_boxoffice?
