@@ -1,4 +1,4 @@
-<h3><%= @franchise.name %></h3>
+<h3 class="content-header"><%= @franchise.name %></h3>
 <div class="text-center">
   <ul class="movie-list list-inline">
   <% if @franchise.movies.any? %>
@@ -15,7 +15,7 @@
 
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <h4>By Release:</h4>
+    <h4 class="sidebar-header">By Release:</h4>
     <table class="table table-hover">
       <tbody>
         <% @franchise.movies.by_release_asc.each do | movie | %>
@@ -30,7 +30,7 @@
     </table>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <h4>By US Box Office:</h4>
+    <h4 class="sidebar-header">By US Box Office:</h4>
     <table class="table table-hover">
       <tbody>
         <% @franchise.movies.by_domestic.each do | movie | %>
@@ -45,7 +45,7 @@
     </table>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <h4>By Worldwide Box Office:</h4>
+    <h4 class="sidebar-header">By Worldwide Box Office:</h4>
     <table class="table table-hover">
       <tbody>
         <% @franchise.movies.by_worldwide.each do | movie | %>

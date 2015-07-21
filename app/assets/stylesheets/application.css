@@ -238,14 +238,6 @@ and (min-device-width : 1024px) {
     padding-top: 5px;
 }
 
-.content-header {
-    border-bottom-color: #c29d52;
-    border-bottom-width: 3px !important;
-    border-bottom-style: solid;
-    padding-bottom: 5px; 
-    margin-top: 0;
-}
-
 .data-header {
     background-color: #262626;
     padding-top: 10px;
@@ -258,6 +250,7 @@ and (min-device-width : 1024px) {
     font-size: 14px;
 }
 
+.content-header,
 .movie-content>h4,
 .person-content>h4 {
     border-top-color: #c29d52;
