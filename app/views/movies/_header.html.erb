@@ -1,23 +1,30 @@
 <% provide(:title, @movie.title) %>
+<div class="col-xs-12 movie-header text-center">
+  <h2 class="movie-title">
+    <b><%= link_to @movie.title.upcase, movie_path(@movie) %></b>
+    <p>
+      <small class="highlight">
+        <% director = @movie.workers.where("role = ? AND featured = ?", "Director", true) %>
+        <% director = director.map {|d| link_to(d.name, person_path(d)) } %>
+        <% if director.any? %>
+          <%= t 'movie.attr.directed' %> <%= director.to_sentence.html_safe %>
+        <% end %>
+        <% if user_signed_in? %>
+          - <%= link_to t('movie.form.edit'), edit_movie_path %>
+        <% end %>
+      </small>
+    </p>
+  </h2>
+</div>
 <div class="col-sm-3">
-  <%= image_tag @movie.poster.url, alt: @movie.title, class: "img-responsive poster" %>
-  <% unless current_page?(:controller => 'movies', :action => 'show') %>
-    <div class="text-center">
-      <h4><%= link_to t('movie.home'), movie_path(@movie) %></h4>
-    </div>
+  <%= link_to movie_path(@movie) do %><%= image_tag @movie.poster.url, alt: @movie.title, class: "img-responsive poster" %><% end %>
+  <% if @movie.quotes.count > 0 %>
+  <blockquote class="blockquote">
+    <p>
+      "<%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>"
+    </p>
+    <footer><%= @movie.quotes.first.character.name %></footer>
+  </blockquote>
   <% end %>
 </div>
-<div class="<%= local_assigns.has_key?(:full) ? 'col-sm-9' : 'col-sm-6' %>">
-  <h2 class="movie-title"><b><%= @movie.title.upcase %></b> <small>
-  <% if user_signed_in? %>
-    - <%= link_to t('movie.form.edit'), edit_movie_path %>
-  <% end %>
-  </small>
-  </h2>
-  <p class="highlight">
-    <% director = @movie.workers.where("role = ? AND featured = ?", "Director", true).first %>
-    <% if director.present? %>
-    <%= t 'movie.attr.directed' %> <%= link_to director.name, person_path(director) %>
-    <% end %>
-  </p>
-  <hr/>
+<div class="<%= local_assigns.has_key?(:full) ? 'col-sm-9' : 'col-sm-6' %> movie-content">

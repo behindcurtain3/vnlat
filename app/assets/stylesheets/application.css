@@ -213,10 +213,6 @@ hr {
 
 @media only screen 
 and (min-device-width : 1024px) { 
-    .thumb-wrap-movie>a>img:hover {
-        border-color: #c29d52;
-        box-shadow: 0 0 2px #c29d52;
-    }
 } 
 
 .tooltip-inner {
@@ -235,4 +231,42 @@ and (min-device-width : 1024px) {
     border-top-width: 3px !important;
     border-top-style: solid;
     padding-top: 5px;
+}
+
+.content-header {
+    border-bottom-color: #c29d52;
+    border-bottom-width: 3px !important;
+    border-bottom-style: solid;
+    padding-bottom: 5px; 
+    margin-top: 0;
+}
+
+.movie-header {
+    background-color: #262626;
+    padding-top: 10px;
+    margin-bottom: 5px;
+}
+
+.movie-header>h2>p,
+.movie-header>h2>p>small {
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+.movie-content>h4 {
+    border-top-color: #c29d52;
+    border-top-width: 3px !important;
+    border-top-style: solid;
+    padding-top: 5px;
+    border-bottom-color: #262626;
+    border-bottom-width: 1px !important;
+    border-bottom-style: solid;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.boxoffice-result-list,
+.boxoffice-result-list>li>h3 {
+    margin-top: 0;
+    padding-top: 0;
 }

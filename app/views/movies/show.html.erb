@@ -1,36 +1,16 @@
 <%= render 'header' %>
   
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <ul class="list-inline thumb-wrap-list">
-        <li class="thumb-wrap-header"><h4><%= t 'movie.attr.stars' %></h4></li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <ul class="list-inline">
-        <% @movie.stars.limit(6).each do | actor | %>
-          <li class="thumb-wrap media-left media-top">
-            <%= render 'shared/person_thumb', person: actor %>
-          </li>
-        <% end %>
-      </ul>
-      
-    </div>
-  </div>
+  <h4><%= t 'movie.attr.stars' %></h4>
+  <ul class="list-inline">
+    <% @movie.stars.limit(6).each do | actor | %>
+      <li class="thumb-wrap media-left media-top">
+        <%= render 'shared/person_thumb', person: actor %>
+      </li>
+    <% end %>
+  </ul>
 
   <h4><%= t 'movie.attr.summary' %></h4>
   <p><%= @movie.summary.blank? ? 'Currently Unavailable' : @movie.summary %></p>
-
-  <% if @movie.quotes.count > 0 %>
-  <blockquote class="">
-    <p>
-      "<%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>"
-    </p>
-    <footer><%= @movie.quotes.first.character.name %></footer>
-  </blockquote>
-  <% end %>
   
   <ul id="movie-tabs" class="list-inline" role="tablist">
     <li class="presesntation active">
