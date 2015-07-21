@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716195906) do
+ActiveRecord::Schema.define(version: 20150721232541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,9 +113,9 @@ ActiveRecord::Schema.define(version: 20150716195906) do
     t.datetime "poster_updated_at"
     t.text     "summary"
     t.integer  "director_id"
-    t.integer  "boxoffice_us"
-    t.integer  "boxoffice_foreign"
-    t.integer  "boxoffice_worldwide"
+    t.integer  "boxoffice_us",        limit: 8
+    t.integer  "boxoffice_foreign",   limit: 8
+    t.integer  "boxoffice_worldwide", limit: 8
     t.integer  "runtime"
     t.string   "mpaa"
     t.date     "released"
