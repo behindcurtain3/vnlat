@@ -116,17 +116,17 @@
   <% end %>
   
   <% if @movie.trailers.any? %>
-  <h4 class="text-center sidebar-header"><%= link_to t('movie.attr.trailers_featured'), trailers_movie_path(@movie) %></h4>
+  <h4 class="text-center content-header"><%= link_to t('movie.attr.trailers_featured'), trailers_movie_path(@movie) %></h4>
   <%= render 'shared/video', embed: @movie.trailers.first %>
   <% end %>
   
   <% if @movie.reviews.any? %>
-  <h4 class="text-center sidebar-header"><%= link_to t('movie.attr.reviews_featured'), reviews_movie_path(@movie) %></h4>
+  <h4 class="text-center content-header"><%= link_to t('movie.attr.reviews_featured'), reviews_movie_path(@movie) %></h4>
   <%= render 'shared/video', embed: @movie.reviews.first %>
   <% end %>
 
   <% if @movie.spotify.present? %>
-  <h4><%= t 'movie.attr.spotify' %></h4>  
+  <h4 class="text-center content-header"><%= t 'movie.attr.spotify' %></h4>  
   <iframe src="https://embed.spotify.com/?uri=<%= @movie.spotify %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
   <% end %>
 </div>
