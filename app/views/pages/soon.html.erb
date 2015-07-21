@@ -1,0 +1,19 @@
+<h3 class="sidebar-header">Coming Soon</h3>
+<% if @movies.any? %>
+  <table class="table table-hover">
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr class="table-data">
+          <td>
+            <%= render 'shared/movie_table', movie: movie %>
+          </td>
+          <td>
+            <%= time_tag(movie.released) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No movies found.</p>
+<% end %>

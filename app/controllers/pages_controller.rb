@@ -8,6 +8,11 @@ class PagesController < ApplicationController
     @contenders = @contenders.order('name ASC')
   end
   
+  # coming soon
+  def soon
+    @movies = Movie.where('released > ?', Date.today).by_release_asc
+  end
+  
   # top movies
   def top
     @domestic = Movie.order(:boxoffice_us => :desc).where.not(:boxoffice_us => nil).limit(50)

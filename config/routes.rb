@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'the-real-chris' => 'pages#chris'
   get 'top' => 'pages#top'
+  get 'coming-soon' => 'pages#soon'
   get 'remote_new_person', to: 'remote_content#remote_new_person'
   root 'movies#index'
 end
