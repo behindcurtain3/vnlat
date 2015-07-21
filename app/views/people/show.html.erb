@@ -2,7 +2,7 @@
 <div class="col-sm-3">
   <%= image_tag @person.promo.url(:large), alt: @person.name, class: "img-responsive" %>
 </div>
-<div class="col-sm-6 well">
+<div class="col-sm-6">
   <h2 class="person-title"><b><%= @person.name.upcase %></b>
   <% if user_signed_in? %>
     <small>
@@ -29,7 +29,7 @@
   <table class="table table-hover">
     <tbody>
       <% @person.characters.by_year.each do | character | %>
-      <tr>
+      <tr class="table-data">
         <td>
           <%= render 'shared/movie_table', movie: character.movie %>
         </td>
@@ -46,7 +46,7 @@
   <table class="table table-hover">
     <tbody>
       <% @person.crews.group_by(&:movie).each_pair do | movie, jobs | %>
-        <tr>
+        <tr class="table-data">
           <td>
             <div class="media">
               <div class="media-left media-top">
@@ -71,8 +71,8 @@
   <% end %>
 </div>
 <div class="col-sm-3">
-    <h4><%= t 'person.information.general' %></h4>
-    <table class="table table-hover table-condensed">
+  <h4 class="text-center sidebar-header"><%= t 'person.information.general' %></h4>
+  <table class="table table-hover table-condensed">
     <tr>
       <td>Born</td>
       <td class="text-right highlight"><%= if @person.born.nil? then 'Unknown' else time_tag @person.born end  %></td>
@@ -91,7 +91,7 @@
   </table>
   
   <% if @person.movies.any? %>
-  <h4><%= t 'person.information.earnings' %></h4>
+  <h4 class="text-center sidebar-header"><%= t 'person.information.earnings' %></h4>
   <table class="table table-hover table-condensed">
     <tr>
       <td><%= t 'person.information.boxoffice_us' %></td>
@@ -109,7 +109,7 @@
   <% end %>
   
   <% if @person.production_credits.any? %>
-  <h4><%= t 'person.information.earnings_production' %></h4>
+  <h4 class="text-center sidebar-header"><%= t 'person.information.earnings_production' %></h4>
   <table class="table table-hover table-condensed">
     <tr>
       <td><%= t 'person.information.boxoffice_us' %></td>
