@@ -25,4 +25,6 @@ class Franchise < ActiveRecord::Base
       :name
     ]
   end
+  
+  scope :alphabetical, -> { order(name: :asc) }
 end

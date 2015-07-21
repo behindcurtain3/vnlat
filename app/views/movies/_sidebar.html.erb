@@ -88,9 +88,7 @@
     <tr>
       <td class="col-xs-5 col-sm-5"><%= t 'movie.attr.franchise' %></td>
       <td class="col-xs-7 col-sm-7 text-right highlight">
-        <% @movie.franchises.each do |franchise| %>
-          <%= link_to franchise.name, franchise_path(franchise) %>
-        <% end %>
+        <%= raw @movie.franchises.alphabetical.map { |franchise| link_to franchise.name, franchise_path(franchise) }.join(', ') %>
       </td>
     </tr>
     <% end %>
