@@ -108,6 +108,7 @@ class Movie < ActiveRecord::Base
   scope :released_before, lambda { | date = Date.today | where('released <= ?', date) }
   scope :by_domestic, -> { where.not(:boxoffice_us => nil).order('boxoffice_us DESC') }
   scope :by_worldwide, -> { where.not(:boxoffice_worldwide => nil).order('boxoffice_worldwide DESC') }
+  scope :genre, -> (genre) { tagged_with(genre) }
       
   def slug_candidates
     [

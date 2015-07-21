@@ -13,11 +13,10 @@ class MoviesController < ApplicationController
   has_scope :starts_with
   has_scope :released_after
   has_scope :released_before
-
+  has_scope :genre
+  
   def index
-    if params[:genre]
-      @movies = Movie.tagged_with(params[:genre])
-    elsif params[:q]
+    if params[:q]
       @movies = @q.result(distinct: true)
     else
       @movies = Movie.all

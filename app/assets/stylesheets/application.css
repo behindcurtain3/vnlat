@@ -242,6 +242,7 @@ and (min-device-width : 1024px) {
     background-color: #262626;
     padding-top: 10px;
     margin-bottom: 5px;
+    box-shadow: 0 0 5px #111;
 }
 
 .data-header>h2>p,
@@ -264,8 +265,20 @@ and (min-device-width : 1024px) {
     text-align: center;
 }
 
+.content-header,
+.movie-content>h4,
+.person-content>h4,
+.sidebar-header {
+    box-shadow: inset 0 4px 2px -2px #111;
+}
+
 .boxoffice-result-list,
 .boxoffice-result-list>li>h3 {
     margin-top: 0;
     padding-top: 0;
+}
+
+.poster {
+    box-shadow: 0 4px 4px #111;
+    margin-top: 10px;
 }
