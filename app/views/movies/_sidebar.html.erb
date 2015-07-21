@@ -95,7 +95,7 @@
   </tbody>
   </table>
   
-  <% if @movie.any_boxoffice? %>
+  <% unless current_page?(:controller => 'movies', :action => 'boxoffice') && @movie.any_boxoffice? %>
   <h4 class="text-center sidebar-header"><%= link_to t('movie.attr.boxoffice'), boxoffice_movie_path(@movie) %></h4>
   <table class="table table-hover table-condensed">
     <tr>
@@ -113,12 +113,12 @@
   </table>
   <% end %>
   
-  <% if @movie.trailers.any? %>
+  <% unless current_page?(:controller => 'movies', :action => 'trailers') && @movie.trailers.any? %>
   <h4 class="text-center content-header"><%= link_to t('movie.attr.trailers_featured'), trailers_movie_path(@movie) %></h4>
   <%= render 'shared/video', embed: @movie.trailers.first %>
   <% end %>
   
-  <% if @movie.reviews.any? %>
+  <% unless current_page?(:controller => 'movies', :action => 'reviews') && @movie.reviews.any? %>
   <h4 class="text-center content-header"><%= link_to t('movie.attr.reviews_featured'), reviews_movie_path(@movie) %></h4>
   <%= render 'shared/video', embed: @movie.reviews.first %>
   <% end %>
