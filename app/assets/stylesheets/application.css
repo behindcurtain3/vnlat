@@ -117,10 +117,14 @@ hr {
     height: 125px;
 }
 
-
+.title,
 .movie-title,
 .person-title {
     margin-top: 0;    
+}
+
+.person-title {
+    padding-top: 5px;
 }
 
 .movie-poster {
@@ -230,6 +234,7 @@ and (min-device-width : 1024px) {
     border-top-color: #c29d52;
     border-top-width: 3px !important;
     border-top-style: solid;
+    border-bottom-width: 0px !important;
     padding-top: 5px;
 }
 
@@ -241,25 +246,26 @@ and (min-device-width : 1024px) {
     margin-top: 0;
 }
 
-.movie-header {
+.data-header {
     background-color: #262626;
     padding-top: 10px;
     margin-bottom: 5px;
 }
 
-.movie-header>h2>p,
-.movie-header>h2>p>small {
+.data-header>h2>p,
+.data-header>h2>p>small {
     margin-top: 4px;
     font-size: 14px;
 }
 
-.movie-content>h4 {
+.movie-content>h4,
+.person-content>h4 {
     border-top-color: #c29d52;
-    border-top-width: 3px !important;
+    border-top-width: 3px;
     border-top-style: solid;
     padding-top: 5px;
     border-bottom-color: #262626;
-    border-bottom-width: 1px !important;
+    border-bottom-width: 1px;
     border-bottom-style: solid;
     padding-bottom: 5px;
     text-align: center;

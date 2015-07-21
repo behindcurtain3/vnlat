@@ -1,18 +1,17 @@
 <% provide(:title, 'The Real Chris') %>
 
 <% @contenders.each do |chris| %>
-  <div class="col-xs-12 col-sm-6 col-md-3 well">
-    <%= image_tag chris.promo.url(:large), alt: chris.name, class: "img-responsive" %>
-    <h2 class="person-title text-center"><b><%= chris.name.upcase %></b>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <%= link_to person_path(chris) do %><%= image_tag chris.promo.url(:large), alt: chris.name, class: "img-responsive" %><% end %>
+    <h2 class="person-title text-center"><b><%= link_to chris.name.upcase, person_path(chris) %></b>
     <br>
     <small>Age: <%= chris.age %></small>
     </h2>
-    <h4>Top Films:</h4>
+    <h4 class="sidebar-header">Top Films:</h4>
     <table class="table table-hover">
       <tbody>
         <% sum = 0 %>
         <% chris.movies.by_worldwide.limit(3).each do | movie | %>
-          <% sum += movie.boxoffice_worldwide %>
         <tr class="table-data">
           <td>
             <%= render 'shared/movie_table', movie: movie %>
@@ -20,8 +19,11 @@
           <td><%= number_to_currency movie.boxoffice_worldwide, precision: 0 %></td>
         </tr>
         <% end %>
+        <tr>
+          <td>Career Box Office Total:</td>
+          <td><%= number_to_currency chris.movies.sum(:boxoffice_worldwide), precision: 0 %></td>
+        </tr>
       </tbody>
     </table>
-    <h2 class="text-center"><small>Total: <%= number_to_currency sum, precision: 0 %></small></h2>
   </div>
 <% end %>

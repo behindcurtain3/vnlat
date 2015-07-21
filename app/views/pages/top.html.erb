@@ -1,7 +1,7 @@
 <% provide(:title, 'Top Movies') %>
 
 <div class="col-xs-12 col-sm-6">
-  <h4>Top Movies in the US</h4>
+  <h4 class="sidebar-header">Top Movies in the US</h4>
   <table class="table table-hover">
     <tbody>
       <% @domestic.each_with_index do |movie, index| %>
@@ -16,7 +16,7 @@
   </table>
 </div>
 <div class="col-xs-12 col-sm-6">
-  <h4>Top Movies Worldwide</h4>
+  <h4 class="sidebar-header">Top Movies Worldwide</h4>
   <table class="table table-hover">
     <tbody>
       <% @worldwide.each_with_index do |movie, index| %>

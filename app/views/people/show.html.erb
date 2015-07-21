@@ -1,19 +1,16 @@
 <% provide(:title, @person.name) %>
-<div class="col-sm-3">
-  <%= image_tag @person.promo.url(:large), alt: @person.name, class: "img-responsive" %>
-</div>
-<div class="col-sm-6">
-  <h2 class="person-title"><b><%= @person.name.upcase %></b>
-  <% if user_signed_in? %>
-    <small>
-      - <%= link_to t('person.form.edit'), edit_person_path %>  
-    </small>
-  <% end %>
+
+<div class="col-xs-12 data-header text-center">
+  <h2 class="title">
+    <b><%= link_to @person.name.upcase, person_path(@person) %></b>
   </h2>
-  <hr/>
-  
+</div>
+<div class="col-sm-3">
+  <%= link_to person_path(@person) do %><%= image_tag @person.promo.url(:large), alt: @person.name, class: "img-responsive" %><% end %>
+</div>
+<div class="col-sm-6 person-content">
   <h4><%= t 'person.information.popular' %></h4>
-  <ul class="list-inline">
+  <ul class="list-inline text-center">
     <% @person.movies_or_credits.popular.limit(4).uniq.each do | movie | %>
       <li class="thumb-wrap-movie">
         <%= render 'shared/movie_thumb', movie: movie %>
@@ -25,7 +22,7 @@
   <p><%= @person.biography.blank? ? 'Currently Unavailable' : @person.biography %></p>
   
   <% if @person.characters.any? %>
-  <h4><%= t 'person.information.filmography' %></h4>
+  <h4 class="sidebar-header"><%= t 'person.information.filmography' %></h4>
   <table class="table table-hover">
     <tbody>
       <% @person.characters.by_year.each do | character | %>
@@ -42,7 +39,7 @@
   <% end %>
   
   <% if @person.crews.any? %>
-  <h4><%= t 'person.information.crews' %></h4>
+  <h4 class="sidebar-header"><%= t 'person.information.crews' %></h4>
   <table class="table table-hover">
     <tbody>
       <% @person.crews.group_by(&:movie).each_pair do | movie, jobs | %>
