@@ -7,7 +7,7 @@
     </div>
   <% end %>
 </div>
-<div class="<%= local_assigns.has_key?(:full) ? 'col-sm-9' : 'col-sm-6' %> well">
+<div class="<%= local_assigns.has_key?(:full) ? 'col-sm-9' : 'col-sm-6' %>">
   <h2 class="movie-title"><b><%= @movie.title.upcase %></b> <small>
   <% if user_signed_in? %>
     - <%= link_to t('movie.form.edit'), edit_movie_path %>

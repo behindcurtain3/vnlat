@@ -1,5 +1,5 @@
 <div class="col-sm-3">
-  <h4><%= t 'movie.attr.information' %>
+  <h4 class="text-center sidebar-header"><%= t 'movie.attr.information' %>
     <% if user_signed_in? && @rating.present? %>
       <small> - 
       <% if current_user.rated?(@movie) %>
@@ -98,7 +98,7 @@
   </table>
   
   <% if @movie.any_boxoffice? %>
-  <h4><%= link_to t('movie.attr.boxoffice'), boxoffice_movie_path(@movie) %></h4>
+  <h4 class="text-center sidebar-header"><%= link_to t('movie.attr.boxoffice'), boxoffice_movie_path(@movie) %></h4>
   <table class="table table-hover table-condensed">
     <tr>
       <td><%= t 'movie.attr.boxoffice_us' %></td>
@@ -116,12 +116,12 @@
   <% end %>
   
   <% if @movie.trailers.any? %>
-  <h4><%= t 'movie.attr.trailers_featured' %><small> - <%= link_to t('movies.view_all'), trailers_movie_path(@movie) %></small></h4>
+  <h4 class="text-center sidebar-header"><%= link_to t('movie.attr.trailers_featured'), trailers_movie_path(@movie) %></h4>
   <%= render 'shared/video', embed: @movie.trailers.first %>
   <% end %>
   
   <% if @movie.reviews.any? %>
-  <h4><%= t 'movie.attr.reviews_featured' %><small> - <%= link_to t('movies.view_all'), reviews_movie_path(@movie) %></small></h4>
+  <h4 class="text-center sidebar-header"><%= link_to t('movie.attr.reviews_featured'), reviews_movie_path(@movie) %></h4>
   <%= render 'shared/video', embed: @movie.reviews.first %>
   <% end %>
 

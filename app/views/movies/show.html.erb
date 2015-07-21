@@ -24,7 +24,7 @@
   <p><%= @movie.summary.blank? ? 'Currently Unavailable' : @movie.summary %></p>
 
   <% if @movie.quotes.count > 0 %>
-  <blockquote class="blockquote-reverse">
+  <blockquote class="">
     <p>
       "<%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>"
     </p>
@@ -46,7 +46,7 @@
       <table class="table table-hover">
         <tbody>
           <% @movie.characters.ranked.each do | character | %>
-          <tr>
+          <tr class="table-data">
             <td class="col-sm-6">
               <div class="media">
                 <div class="media-left media-top">
@@ -69,7 +69,7 @@
       <table class="table table-hover">
         <tbody>
           <% @movie.crews.group_by(&:person).each_pair do | person, roles | %>
-            <tr>
+            <tr class="table-data">
               <td class="col-sm-6">
                 <div class="media">
                   <div class="media-left media-top">

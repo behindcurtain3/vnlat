@@ -229,3 +229,10 @@ and (min-device-width : 1024px) {
     border-left-width: 1px !important;
     border-left-style: solid;   
 }
+
+.sidebar-header {
+    border-top-color: #c29d52;
+    border-top-width: 3px !important;
+    border-top-style: solid;
+    padding-top: 5px;
+}
