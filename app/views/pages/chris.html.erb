@@ -7,10 +7,9 @@
     <br>
     <small>Age: <%= chris.age %></small>
     </h2>
-    <h4 class="sidebar-header">Top Films:</h4>
+    <h4 class="sidebar-header">Top Films</h4>
     <table class="table table-hover">
       <tbody>
-        <% sum = 0 %>
         <% chris.movies.by_worldwide.limit(3).each do | movie | %>
         <tr class="table-data">
           <td>
