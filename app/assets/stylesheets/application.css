@@ -83,7 +83,8 @@ hr {
     margin-right: 15px;
 }
 
-.movie-list {
+.movie-list,
+.people-list {
     list-style-type: none;
     padding-left: 2px;
 }
@@ -106,9 +107,9 @@ hr {
 }
 
 .person-item {
-    padding-left: 3px;
-    padding-right: 3px;
-    float: left;
+    position: relative;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 
 .person-item>a {

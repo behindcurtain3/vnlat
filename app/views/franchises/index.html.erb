@@ -1,7 +1,5 @@
-<h3>Franchises</h3>
+<h3 class="content-header">Franchises</h3>
 
-<% @franchises.each do |franchise| %>
-
+<% @franchises.alphabetical.each do |franchise| %>
   <%= link_to franchise.name, franchise_path(franchise) %><br>
-
 <% end %>

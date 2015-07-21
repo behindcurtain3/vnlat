@@ -52,6 +52,8 @@ class Person < ActiveRecord::Base
   validates :last_name,
     presence: true,
     :if => 'display_name.blank?'
+    
+  scope :alphabetical, -> { order(name: :asc) }
   
   def credits
     self.movies + self.jobs
