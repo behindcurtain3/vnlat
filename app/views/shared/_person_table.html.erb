@@ -1,0 +1,10 @@
+<div class="media">
+  <div class="media-left media-top">
+    <%= link_to person_path(person) do %>
+      <%= image_tag person.promo.url(:thumb), alt: person.name, class: "", height: '45' %>
+    <% end %>
+  </div>
+  <div class="media-body">
+    <%= link_to person.name, person_path(person) %>
+  </div>
+</div>

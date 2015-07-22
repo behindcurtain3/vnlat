@@ -28,16 +28,7 @@
           <% @movie.characters.ranked.each do | character | %>
           <tr class="table-data">
             <td class="col-sm-6">
-              <div class="media">
-                <div class="media-left media-top">
-                  <%= link_to person_path(character.person) do %>
-                    <%= image_tag character.person.promo.url(:thumb), alt: character.person.name, class: "", height: '45' %>
-                  <% end %>
-                </div>
-                <div class="media-body">
-                  <%= link_to character.person.name, person_path(character.person) %>
-                </div>
-              </div>
+              <%= render 'shared/person_table', person: character.person %>
             </td>
             <td class="text-center"><%= character.name %></td>
           </tr>

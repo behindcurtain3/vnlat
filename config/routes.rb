@@ -50,7 +50,8 @@ Rails.application.routes.draw do
   get 'year/:year', to: 'movies#index', as: :year
   get 'about' => 'pages#about'
   get 'the-real-chris' => 'pages#chris'
-  get 'top' => 'pages#top'
+  get 'top-movies' => 'pages#top_movies'
+  get 'top-actors' => 'pages#top_actors'
   get 'coming-soon' => 'pages#soon'
   get 'remote_new_person', to: 'remote_content#remote_new_person'
   root 'movies#index'

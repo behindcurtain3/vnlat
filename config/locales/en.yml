@@ -105,7 +105,8 @@ en:
     logout: "logout"
     new: "Add a Movie"
     soon: "Coming Soon"
-    top: "Top Movies"
+    top-actors: "Top Actors"
+    top-movies: "Top Movies"
   person:
     biography: "Biography"
     born: "Born On"

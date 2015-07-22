@@ -1,0 +1,34 @@
+<% provide(:title, 'Top Actors') %>
+
+<div class="col-xs-12 col-sm-6">
+  <h4 class="sidebar-header">Top Actors US Gross</h4>
+  <table class="table table-hover">
+    <tbody>
+      <% @domestic.each_with_index do |person, index| %>
+        <tr class="table-data">
+          <td class="col-xs-1"><%= index + 1 %></td>
+          <td>
+            <%= render 'shared/person_table', person: person %>
+          </td>
+          <td><%= number_to_currency person.sum_us, precision: 0 %></td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="col-xs-12 col-sm-6">
+  <h4 class="sidebar-header">Top Actors Worldwide Gross</h4>
+  <table class="table table-hover">
+    <tbody>
+      <% @worldwide.each_with_index do |person, index| %>
+        <tr class="table-data">
+          <td class="col-xs-1"><%= index + 1 %></td>
+          <td>
+            <%= render 'shared/person_table', person: person %>
+          </td>
+          <td><%= number_to_currency person.sum_us, precision: 0 %></td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+</div>
