@@ -1,7 +1,7 @@
 <%= render 'header', full: true %>
   <p>
   <ul id="edit_cast_tabs" class="nav nav-pills" role="tablist">
-    <li class="presesntation<% unless flash.key?('anchor') %> active<% end %>">
+    <li class="presesntation<% if flash[:anchor].blank? %> active<% end %>">
       <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t 'movie.attr.information' %></a>
     </li>
     <li class="presesntation<% if flash[:anchor] == 'cast' %> active<% end %>">
@@ -34,7 +34,7 @@
   </ul>
   </p>
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade<% unless flash.key?('anchor') %> in active<% end %>" id="info">
+    <div role="tabpanel" class="tab-pane fade<% if flash[:anchor].blank? %> in active<% end %>" id="info">
       <%= render 'form' %>
     </div>
     <div role="tabpanel" class="tab-pane fade<% if flash[:anchor] == 'cast' %> in active<% end %>" id="cast">
