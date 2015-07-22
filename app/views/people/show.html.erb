@@ -15,7 +15,7 @@
   </h2>
 </div>
 <div class="col-sm-3">
-  <%= link_to person_path(@person) do %><%= image_tag @person.promo.url(:large), alt: @person.name, class: "img-responsive" %><% end %>
+  <%= link_to person_path(@person) do %><%= image_tag @person.promo.url(:large), alt: @person.name, class: "img-responsive poster" %><% end %>
 </div>
 <div class="col-sm-6 person-content">
   <h4><%= t 'person.information.popular' %></h4>
