@@ -61,7 +61,7 @@ class Person < ActiveRecord::Base
   end
   
   def movies_or_credits
-    return self.movies unless self.movies.blank?
+    return self.movies.only_credits unless self.movies.blank?
     return self.production_credits
   end
   
