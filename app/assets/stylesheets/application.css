@@ -252,6 +252,7 @@ and (min-device-width : 1024px) {
     font-size: 14px;
 }
 
+.embed-header,
 .content-header,
 .movie-content>h4,
 .person-content>h4 {
@@ -265,12 +266,18 @@ and (min-device-width : 1024px) {
     padding-bottom: 5px;
 }
 
+.embed-header,
 .content-header,
 .movie-content>h4,
 .person-content>h4,
 .sidebar-header {
     box-shadow: 0 -6px 2px -2px #111;
     text-align: center;
+}
+
+.embed-header {
+    margin-bottom: 0px;
+    border-bottom: 0;
 }
 
 .boxoffice-result-list,

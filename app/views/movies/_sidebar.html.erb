@@ -114,12 +114,12 @@
   <% end %>
   
   <% if !current_page?(:controller => 'movies', :action => 'trailers') && @movie.trailers.any? %>
-  <h4 class="text-center content-header"><%= link_to t('movie.attr.trailers_featured'), trailers_movie_path(@movie) %></h4>
+  <h4 class="text-center embed-header"><%= link_to t('movie.attr.trailers_featured'), trailers_movie_path(@movie) %></h4>
   <%= render 'shared/video', embed: @movie.trailers.first %>
   <% end %>
   
   <% if !current_page?(:controller => 'movies', :action => 'reviews') && @movie.reviews.any? %>
-  <h4 class="text-center content-header"><%= link_to t('movie.attr.reviews_featured'), reviews_movie_path(@movie) %></h4>
+  <h4 class="text-center embed-header"><%= link_to t('movie.attr.reviews_featured'), reviews_movie_path(@movie) %></h4>
   <%= render 'shared/video', embed: @movie.reviews.first %>
   <% end %>
 
