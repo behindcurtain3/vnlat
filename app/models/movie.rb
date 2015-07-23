@@ -124,6 +124,9 @@ class Movie < ActiveRecord::Base
   scope :popular_credits, -> { 
     joins(:appearances).where.not({ appearances: { uncredited: true } })
   }
+  scope :only_credits, -> {
+    where.not({ appearances: { uncredited: true } })
+  }
       
   def slug_candidates
     [
