@@ -20,7 +20,7 @@
 <div class="col-sm-6 person-content">
   <h4><%= t 'person.information.popular' %></h4>
   <ul class="list-inline text-center">
-    <% @person.movies_or_credits.popular_credits.distinct.limit(4).uniq.each do | movie | %>
+    <% @person.movies_or_credits.popular_credits.by_worldwide.distinct.limit(4).uniq.each do | movie | %>
       <li class="thumb-wrap-movie">
         <%= render 'shared/movie_thumb', movie: movie %>
       </li>
