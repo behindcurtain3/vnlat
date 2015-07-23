@@ -18,7 +18,7 @@
   <table class="table table-hover">
     <tbody>
       <% if @character.movies.any? %>
-        <% @character.movies.by_release_asc.each do |movie| %>
+        <% @character.movies.by_release_desc.each do |movie| %>
           <tr class="table-data">
             <td>
               <%= render 'shared/movie_table', movie: movie%>
