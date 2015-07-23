@@ -140,6 +140,12 @@ en:
       edit: "EDIT RATING FOR"
       save: "Save"
   character:
+    alias: "Alias"
+    form:
+      edit: "Edit"
+      new: "New"
+      resource: "Character"
+      save: "Save"
     name: "Name"
   crew:
     role: "Role"

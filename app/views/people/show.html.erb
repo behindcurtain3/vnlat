@@ -3,7 +3,7 @@
 <div class="col-xs-12 data-header text-center">
   <h2 class="title">
     <b><%= link_to @person.name, person_path(@person) %></b>
-    <% roles = (@person.characters.any?) ? ['Actor'] : [] %>
+    <% roles = (@person.appearances.any?) ? ['Actor'] : [] %>
     <% roles = (roles + @person.crews.map { |r| r.role }).uniq %>
     <% unless roles.blank? %>
     <p>
@@ -30,17 +30,17 @@
   <h4><%= t 'person.information.biography' %></h4>
   <p><%= @person.biography.blank? ? 'Currently Unavailable' : @person.biography %></p>
   
-  <% if @person.characters.any? %>
+  <% if @person.appearances.any? %>
   <h4 class="sidebar-header"><%= t 'person.information.filmography' %></h4>
   <table class="table table-hover">
     <tbody>
-      <% @person.characters.by_year.each do | character | %>
+      <% @person.appearances.by_year.each do | appearance | %>
       <tr class="table-data">
         <td>
-          <%= render 'shared/movie_table', movie: character.movie %>
+          <%= render 'shared/movie_table', movie: appearance.movie %>
         </td>
-        <td><%= character.movie.year %></td>
-        <td class="text-center"><%= character.name %></td>
+        <td><%= appearance.movie.year %></td>
+        <td class="text-center"><%= render 'shared/appearance', appearance: appearance %></td>
       </tr>
       <% end %>
     </tbody>

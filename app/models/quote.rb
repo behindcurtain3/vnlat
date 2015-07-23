@@ -2,17 +2,17 @@
 #
 # Table name: quotes
 #
-#  id           :integer          not null, primary key
-#  text         :string(255)
-#  movie_id     :integer
-#  character_id :integer
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id            :integer          not null, primary key
+#  text          :string(255)
+#  movie_id      :integer
+#  appearance_id :integer
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Quote < ActiveRecord::Base
   belongs_to :movie
-  belongs_to :character
+  belongs_to :appearance
   
   validates :text,
     presence: true
@@ -20,6 +20,6 @@ class Quote < ActiveRecord::Base
   validates :movie,
     presence: true
     
-  validates :character,
+  validates :appearance,
     presence: true
 end

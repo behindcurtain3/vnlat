@@ -3,37 +3,29 @@
 # Table name: characters
 #
 #  id         :integer          not null, primary key
-#  person_id  :integer
-#  movie_id   :integer
 #  name       :string(255)
-#  importance :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  slug       :string(255)
+#  alias      :string(255)
 #
 
 class Character < ActiveRecord::Base
-  belongs_to :person
-  belongs_to :movie
-  has_many :quotes
+  extend FriendlyId
   
-  scope :ranked, -> { includes(:person).order('importance ASC')
-    .order('people.last_name ASC')
-    .order('people.first_name ASC')
-    .order('people.name ASC') }
-  scope :alphabetical, -> { order('name') }
-  scope :by_year, -> { includes(:movie).order('movies.released DESC') }
-  
-  validates :person,
-    presence: true
-    
-  validates :movie,
-    presence: true
-    
+  has_many :appearances
+  has_many :movies, through: :appearances, source: :movie
+  has_many :actors, through: :appearances, source: :person
+
   validates :name,
     presence: true
     
-  validates :importance,
-    presence: true,
-    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  friendly_id :slug_candidates, use: :slugged
+  
+  def slug_candidates
+    [
+      [:name]
+    ]
+  end
     
 end

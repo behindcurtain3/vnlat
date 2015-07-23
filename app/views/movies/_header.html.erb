@@ -24,7 +24,7 @@
         <p>
           "<%= link_to quotes_movie_path(@movie) do %><%= @movie.quotes.first.text %><% end %>"
         </p>
-        <footer><%= @movie.quotes.first.character.name %></footer>
+        <footer><%= render 'shared/appearance', appearance: @movie.quotes.first.appearance %></footer>
       </blockquote>
     <% end %>
   <% end %>

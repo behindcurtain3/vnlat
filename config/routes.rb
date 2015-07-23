@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :ratings, only: [:new, :create, :edit, :update, :destroy]
     resources :likes, only: [:create, :update, :destroy]
     get :autocomplete_person_name, :on => :collection
+    get :autocomplete_character_name, :on => :collection
     
     member do
       get :boxoffice
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :characters
+  resources :appearances, only: [:create]
   resources :crews, only: [:create]
   resources :trailers, only: [:create, :update, :destroy]
   resources :reviews, only: [:create]
@@ -54,5 +56,6 @@ Rails.application.routes.draw do
   get 'top-actors' => 'pages#top_actors'
   get 'coming-soon' => 'pages#soon'
   get 'remote_new_person', to: 'remote_content#remote_new_person'
+  get 'remote_new_character', to: 'remote_content#remote_new_character'
   root 'movies#index'
 end

@@ -1,0 +1,8 @@
+<% if appearance.character.present? %>
+  <%= link_to appearance.character.name, character_path(appearance.character) %>
+<% else %>
+  <%= appearance.name %>
+<% end %>
+<% if appearance.uncredited %>
+  <small>(Uncredited)</small>
+<% end %>

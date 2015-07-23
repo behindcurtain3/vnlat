@@ -32,3 +32,13 @@ Todo
 - add a featured quote, featured trailer, and featured review column to movies
 - possible to add movie_id meta data to paper_trail for characters etc to track their changes
 - ~~Fix boxoffice view error with no boxoffice results are available~~
+
+Movie has many Appearances
+Movie has many Actors through Appearances
+Movie has many Characters through Appearances
+Appearance belongs to Movie, Person and Character
+Character has many Appearances
+Character has many Actors through Appearances
+Character has many Movies through Appearances
+Person has many Movies through Appearances
+Person has many Characters through Appearances

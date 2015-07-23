@@ -32,17 +32,34 @@
 
 class Movie < ActiveRecord::Base
   extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+  
   before_save :update_averages
   before_save :update_worldwide
   
-  has_many :ratings
-  has_many :characters
+  acts_as_taggable
+  
+  acts_as_api
+  include ApiV1::Movie
+  
+  # for auditing changes
+  has_paper_trail class_name: 'MovieVersion'
+  
+  ### references
+  has_many :appearances
+  
+  # actors
+  has_many :actors, through: :appearances, source: :person
+  has_many :ordered_appearances, -> { ranked }, class_name: 'Appearance'
+  has_many :ordered_actors, through: :ordered_appearances, source: :person
+
+  # crew
   has_many :crews
-  has_many :quotes
-  has_many :actors, through: :characters, source: :person
   has_many :workers, through: :crews, source: :person
-  has_many :ranked_characters, -> { ranked }, :class_name => 'Character'
-  has_many :stars, through: :ranked_characters, source: :person
+  
+  # data
+  has_many :ratings
+  has_many :quotes
   has_many :trailers
   has_many :reviews
   has_many :likes
@@ -50,8 +67,8 @@ class Movie < ActiveRecord::Base
   has_many :franchises, through: :franchise_members, source: :franchise
   has_many :earnings
   
-  belongs_to :director, class_name: 'Person'
-  accepts_nested_attributes_for :characters, allow_destroy: true
+  # accept the changes for the following references
+  accepts_nested_attributes_for :appearances, allow_destroy: true
   accepts_nested_attributes_for :crews, allow_destroy: true
   accepts_nested_attributes_for :trailers, allow_destroy: true
   accepts_nested_attributes_for :reviews, allow_destroy: true
@@ -59,14 +76,7 @@ class Movie < ActiveRecord::Base
   accepts_nested_attributes_for :franchise_members, allow_destroy: true
   accepts_nested_attributes_for :earnings, allow_destroy: true
   
-  acts_as_taggable
-  acts_as_api
-  include ApiV1::Movie
-  friendly_id :slug_candidates, use: :slugged
-  
-  # for auditing changes
-  has_paper_trail class_name: 'MovieVersion'
-  
+  # validations
   validates :title,
     presence: true
       
@@ -96,6 +106,7 @@ class Movie < ActiveRecord::Base
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :poster, :content_type => /\Aimage\/.*\Z/
       
+  # scopes
   scope :popular, -> { order('boxoffice_worldwide DESC') }
   scope :by_release_desc, -> { order('released DESC') }
   scope :by_release_asc, -> { order('released ASC') }

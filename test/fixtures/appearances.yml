@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: appearances
+#
+#  id           :integer          not null, primary key
+#  movie_id     :integer
+#  person_id    :integer
+#  character_id :integer
+#  name         :string(255)
+#  importance   :integer
+#  uncredited   :boolean          default(FALSE), not null
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie_id: 
+  person_id: 
+  character_id: 
+  name: MyString
+
+two:
+  movie_id: 
+  person_id: 
+  character_id: 
+  name: MyString

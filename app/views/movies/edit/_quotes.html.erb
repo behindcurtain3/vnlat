@@ -1,3 +1,4 @@
+<h4 class="sidebar-header">Quotes</h4>
 <%= form_for @movie do |f| %>
   <input type="hidden" name="anchor" value="quotes" />
   <table class="table table-condensed">
@@ -11,7 +12,7 @@
         <tr>
           <td>
             <!-- Character select, use collection from @movie.characters -->
-            <%= quotes_form.select :character_id, options_from_collection_for_select(@movie.characters, "id", "name", quote.character.id), {}, { :class => "form-control" } %>
+            <%= quotes_form.select :appearance_id, options_from_collection_for_select(@movie.appearances, "id", "display", quote.appearance.id), {}, { :class => "form-control" } %>
           </td>
           <td><%= quotes_form.text_field :text, :class => "form-control", :placeholder => t('quote.text') %></td>
           <td class="text-center"><%= quotes_form.check_box :_destroy %></td>
@@ -27,16 +28,16 @@
   </table>
 <% end %>
 
-<h4>ADD NEW QUOTE</h4>
+<h4 class="content-header">Add New Quote</h4>
 <%= form_for(@quote) do |f| %>
   <fieldset>
     <%= f.hidden_field :movie_id, :value => @movie.id %>
     <input type="hidden" name="anchor" value="quotes" />
     
     <div class="form-group">
-      <%= f.label :character, t('quote.character'), :class => "col-sm-2 control-label" %>
+      <%= f.label :appearance, t('quote.character'), :class => "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.select :character_id, options_from_collection_for_select(@movie.characters.order(:name => :asc), "id", "name"), {}, { :class => "form-control" } %>
+        <%= f.select :appearance_id, options_from_collection_for_select(@movie.appearances, "id", "display"), {}, { :class => "form-control" } %>
         <span class="help-block"></span>
       </div>
     </div>

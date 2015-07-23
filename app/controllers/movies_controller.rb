@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :boxoffice, :trailers, :reviews, :quotes]
   before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice, :trailers, :reviews, :quotes]
   autocomplete :person, :name
+  autocomplete :character, :name
 
   respond_to :html
   
@@ -41,7 +42,7 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @new = Character.new
+    @appearance = Appearance.new
     @trailer = Trailer.new
     @review = Review.new
     @quote = Quote.new
@@ -108,7 +109,7 @@ class MoviesController < ApplicationController
         :runtime, :mpaa, :released, :spotify,
         :tag_list, :boxoffice_us, :boxoffice_foreign, 
         :j_v, :j_n, :j_l, :j_at, :g_v, :g_n, :g_l, :g_at,
-        characters_attributes: [:id, :name, :person_id, :movie_id, :importance, :_destroy],
+        appearances_attributes: [:id, :name, :person_id, :movie_id, :character_id, :importance, :uncredited, :_destroy],
         crews_attributes: [:id, :person_id, :movie_id, :role, :importance, :featured, :_destroy],
         trailers_attributes: [:id, :movie_id, :code, :active, :_destroy],
         reviews_attributes: [:id, :movie_id, :code, :active, :_destroy],

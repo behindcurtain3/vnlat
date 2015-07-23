@@ -1,3 +1,4 @@
+<h4 class="sidebar-header">Franchise List</h4>
 <%= form_for @movie do |f| %>
   <input type="hidden" name="anchor" value="franchise" />
   <table class="table table-condensed">
@@ -22,7 +23,7 @@
   </table>
 <% end %>
 
-<h4>ADD NEW FRANCHISE</h4>
+<h4 class="content-header">Add New Franchise</h4>
 <%= form_for(@franchise_member) do |f| %>
   <fieldset>
     <%= f.hidden_field :movie_id, :value => @movie.id %>

@@ -1,0 +1,50 @@
+<% provide(:title, @character.name) %>
+
+<div class="col-xs-12 data-header text-center">
+  <h2 class="title">
+    <b><%= link_to @character.name, character_path(@character) %></b>
+    <% unless @character.alias.blank? %>
+    <p>
+      <small class="highlight">
+        Also Known As: <%= @character.alias %>
+      </small>
+    </p>
+    <% end %>
+  </h2>
+</div>
+
+<div class="col-xs-12 col-sm-6">
+  <h4 class="sidebar-header">Appears In</h4>
+  <table class="table table-hover">
+    <tbody>
+      <% if @character.movies.any? %>
+        <% @character.movies.by_release_asc.each do |movie| %>
+          <tr class="table-data">
+            <td>
+              <%= render 'shared/movie_table', movie: movie%>
+            </td>
+            <td><%= movie.year %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td>No Movies Found</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-xs-12 col-sm-6">
+  <h4 class="content-header">Played By</h4>
+  <ul class="list-inline text-center">
+    <% @character.actors.each do | actor | %>
+      <li class="thumb-wrap media-left media-top">
+        <%= render 'shared/person_thumb', person: actor %>
+      </li>
+    <% end %>
+    <% unless @character.actors.any? %>
+      <li>No Actors Found</li>
+    <% end %>
+  </ul>
+</div>

@@ -11,22 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721232541) do
+ActiveRecord::Schema.define(version: 20150722224219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "characters", force: true do |t|
-    t.integer  "person_id"
+  create_table "appearances", force: true do |t|
     t.integer  "movie_id"
+    t.integer  "person_id"
+    t.integer  "character_id"
     t.string   "name"
     t.integer  "importance"
+    t.boolean  "uncredited",   default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "characters", ["movie_id"], name: "index_characters_on_movie_id", using: :btree
-  add_index "characters", ["person_id"], name: "index_characters_on_person_id", using: :btree
+  add_index "appearances", ["character_id"], name: "index_appearances_on_character_id", using: :btree
+  add_index "appearances", ["movie_id"], name: "index_appearances_on_movie_id", using: :btree
+  add_index "appearances", ["person_id"], name: "index_appearances_on_person_id", using: :btree
+
+  create_table "characters", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "alias"
+  end
 
   create_table "crews", force: true do |t|
     t.integer  "movie_id"
@@ -152,12 +163,12 @@ ActiveRecord::Schema.define(version: 20150721232541) do
   create_table "quotes", force: true do |t|
     t.string   "text"
     t.integer  "movie_id"
-    t.integer  "character_id"
+    t.integer  "appearance_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "quotes", ["character_id"], name: "index_quotes_on_character_id", using: :btree
+  add_index "quotes", ["appearance_id"], name: "index_quotes_on_appearance_id", using: :btree
   add_index "quotes", ["movie_id"], name: "index_quotes_on_movie_id", using: :btree
 
   create_table "ratings", force: true do |t|

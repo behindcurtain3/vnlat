@@ -11,6 +11,6 @@ class QuotesController < ApplicationController
 
   private
     def quote_params
-      params.require(:quote).permit(:movie_id, :character_id, :text)
+      params.require(:quote).permit(:movie_id, :appearance_id, :text)
     end
 end

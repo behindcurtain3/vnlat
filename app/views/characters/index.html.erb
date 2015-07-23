@@ -1,0 +1,12 @@
+<h4 class="sidebar-header">Characters</h4>
+<table class="table table-hover">
+  <tbody>
+    <% @characters.each do | character | %>
+      <tr>
+        <td><%= link_to character.name, character_path(character) %></td>
+        <td><%= link_to 'Edit', edit_character_path(character) %></td>
+        <td><%= link_to 'Delete', character, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
