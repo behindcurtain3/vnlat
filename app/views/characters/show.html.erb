@@ -6,7 +6,7 @@
     <% unless @character.alias.blank? %>
     <p>
       <small class="highlight">
-        Also Known As: <%= @character.alias %>
+        <%= @character.alias %>
       </small>
     </p>
     <% end %>
@@ -38,7 +38,7 @@
 <div class="col-xs-12 col-sm-6">
   <h4 class="content-header">Played By</h4>
   <ul class="list-inline text-center">
-    <% @character.actors.each do | actor | %>
+    <% @character.actors.distinct.each do | actor | %>
       <li class="thumb-wrap media-left media-top">
         <%= render 'shared/person_thumb', person: actor %>
       </li>
