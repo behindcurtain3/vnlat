@@ -20,7 +20,7 @@
 <div class="col-sm-6 person-content">
   <h4><%= t 'person.information.popular' %></h4>
   <ul class="list-inline text-center">
-    <% @person.movies_or_credits.by_worldwide.limit(4).uniq.each do | movie | %>
+    <% @person.movies_or_credits.popular_credits.distinct.limit(4).uniq.each do | movie | %>
       <li class="thumb-wrap-movie">
         <%= render 'shared/movie_thumb', movie: movie %>
       </li>
@@ -101,15 +101,15 @@
   <table class="table table-hover table-condensed">
     <tr>
       <td><%= t 'person.information.boxoffice_us' %></td>
-      <td class="text-right highlight"><%= number_to_currency(@person.movies.sum(:boxoffice_us), precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.movies.popular_credits.sum(:boxoffice_us), precision: 0) %></td>
     </tr>
     <tr>
       <td><%= t 'person.information.boxoffice_foreign' %></td>
-      <td class="text-right highlight"><%= number_to_currency(@person.movies.sum(:boxoffice_foreign), precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.movies.popular_credits.sum(:boxoffice_foreign), precision: 0) %></td>
     </tr>
     <tr>
       <td><%= t 'person.information.boxoffice_worldwide' %></td>
-      <td class="text-right highlight"><%= number_to_currency(@person.movies.sum(:boxoffice_worldwide), precision: 0) %></td>
+      <td class="text-right highlight"><%= number_to_currency(@person.movies.popular_credits.sum(:boxoffice_worldwide), precision: 0) %></td>
     </tr>
   </table>
   <% end %>

@@ -121,6 +121,9 @@ class Movie < ActiveRecord::Base
   scope :by_domestic, -> { where.not(:boxoffice_us => nil).order('boxoffice_us DESC') }
   scope :by_worldwide, -> { where.not(:boxoffice_worldwide => nil).order('boxoffice_worldwide DESC') }
   scope :genre, -> (genre) { tagged_with(genre) }
+  scope :popular_credits, -> { 
+    joins(:appearances).where.not({ appearances: { uncredited: true } })
+  }
       
   def slug_candidates
     [

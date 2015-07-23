@@ -53,6 +53,7 @@ class Person < ActiveRecord::Base
     presence: true,
     :if => 'display_name.blank?'
     
+  # scopes
   scope :alphabetical, -> { order(name: :asc) }
   
   def credits

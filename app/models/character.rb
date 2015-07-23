@@ -24,7 +24,8 @@ class Character < ActiveRecord::Base
   
   def slug_candidates
     [
-      [:name]
+      [:name],
+      [:name, :alias]
     ]
   end
     

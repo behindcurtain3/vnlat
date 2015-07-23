@@ -1,5 +1,11 @@
 <% if appearance.character.present? %>
-  <%= link_to appearance.character.name, character_path(appearance.character) %>
+  <%= link_to character_path(appearance.character) do %>
+    <% if appearance.name.blank? %>
+      <%= appearance.character.name %>
+    <% else %>
+      <%= appearance.name %>
+    <% end %>
+  <% end %>
 <% else %>
   <%= appearance.name %>
 <% end %>
