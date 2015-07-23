@@ -66,6 +66,7 @@ class Person < ActiveRecord::Base
   end
   
   def slug_candidates
+    update_name if self.name.blank?
     [
       [:name],
       [:first_name, :last_name],
