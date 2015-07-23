@@ -19,3 +19,4 @@
 /spring
 local_env.yml
 *.dump
+backups.txt
