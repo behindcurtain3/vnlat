@@ -31,7 +31,7 @@
     <div id="earnings_chart" style="height: 350px;"></div>
     
     <script type="text/javascript">
-      $(function(){
+      $(document).on("ready page:change", function() {
         new Morris.Area({
           // ID of the element in which to draw the chart.
           element: 'earnings_chart',
