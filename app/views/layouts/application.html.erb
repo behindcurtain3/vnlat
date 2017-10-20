@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-spy="scroll" data-target="#movie-nav">
 <div class="navbar navbar-inverse navbar-static-top navbar-no-curves" role="navigation" id="custom-nav">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-primary"> 
@@ -57,7 +57,7 @@
 <footer class="footer">
 	<div class="container-fluid">
   	<p class="text-center">
-  		<small>VNLAT.org - <%= link_to t('nav.about_normal'), about_path %></small>
+  		<small>VNLAT - <%= link_to t('nav.about_normal'), about_path %></small>
   	</p>
   </div>
 </footer>
