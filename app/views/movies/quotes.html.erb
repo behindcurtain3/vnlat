@@ -7,7 +7,7 @@
         <p>
           "<%= quote.text %>"
         </p>
-        <footer><%= quote.character.name %></footer>
+        <footer><% if quote.appearance.character.nil? %><%= quote.appearance.display %><% else %><%= link_to quote.appearance.display, character_path(quote.appearance.character) %><% end %></footer>
       </blockquote>
     <% end %>
   <% else %>
