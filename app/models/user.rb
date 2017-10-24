@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
          
   has_many :ratings
   has_many :likes
+  has_many :movie_versions, foreign_key: 'whodunnit'
   
   def rated?(movie)
     ratings.exists?(:movie_id => movie.id)
@@ -43,6 +44,6 @@ class User < ActiveRecord::Base
   end
   
   def self.find_version_author(version)
-    find(version.terminator)   
+    find(version.whodunnit)   
   end
 end

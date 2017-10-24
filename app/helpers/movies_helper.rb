@@ -1,5 +1,8 @@
 module MoviesHelper
   def find_version_user_name(version)
+    if version.nil? or version.whodunnit.nil?
+      return "Unknown"
+    end
     user = User.find_version_author(version) 
     user ? user.email : ''
   end

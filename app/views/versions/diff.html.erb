@@ -13,7 +13,7 @@
       </p>
     </div>
     <p>
-    <%= "Version authored by #{find_version_user_name(@version)} on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    <%= "Version authored by" %> <%= @version.user.nil? ? "Unknown" : @version.user.email %> <%= "on #{@version.created_at} by '#{@version.event.humanize}'." %>
     </p>
   </div>
 </div>
