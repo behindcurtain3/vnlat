@@ -27,8 +27,9 @@
 	top: 0;
 	color: #fff;
 }
-.vid-info { position: absolute; top: 10%; left: 10%; width: 90%; background: rgba(0,0,0,0); color: #fff; padding: 1rem; font-family: 'Indie Flower', cursive; }
+.vid-info { position: absolute; top: 5%; left: 5%; width: 90%; background: rgba(0,0,0,0); color: #fff; padding: 1rem; font-family: 'Indie Flower', cursive; }
 .vid-info h1 { font-size: 8rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
+.vid-info p { font-size: 3rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
 .vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
 @media (min-aspect-ratio: 16/9) {
   .video-foreground { height: 300%; top: -100%; }
@@ -59,9 +60,13 @@ var x = setInterval(function() {
 
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
   // Display the result in the element with id="demo"
   document.getElementById("demo").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
 
   // If the count down is finished, write some text 
   if (distance < 0) {
@@ -83,7 +88,7 @@ var x = setInterval(function() {
   <div id="vidtop-content">
     <div class="vid-info">
   	  <h1><span id="demo"></span> Days Away</h1>
-  	  <p></p>
+  	  <p><!--<span id="hours"></span> hours and <span id="minutes"></span> minutes //--></p>
     </div>
   </div>
 </body>
