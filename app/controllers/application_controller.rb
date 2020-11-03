@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_search
   
   def set_search
-    @q = Movie.search(params[:q])
+    @q = Movie.ransack(params[:q])
   end
   
   def info_for_paper_trail

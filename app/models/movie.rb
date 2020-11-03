@@ -43,7 +43,7 @@ class Movie < ApplicationRecord
   include ApiV1::Movie
   
   # for auditing changes
-  has_paper_trail class_name: 'MovieVersion'
+  has_paper_trail versions: { class_name: 'MovieVersion' }
   
   ### references
   has_many :appearances
