@@ -19,7 +19,7 @@ gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.0.4'
 gem 'less-rails-bootstrap'
 gem 'therubyracer', :platforms => :ruby, :require => 'v8'
-gem "paperclip", "~> 4.2"
+gem "paperclip", "~> 5.2"
 gem 'aws-sdk'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_api'
