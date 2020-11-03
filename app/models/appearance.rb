@@ -16,7 +16,7 @@
 class Appearance < ApplicationRecord
   belongs_to :movie
   belongs_to :person
-  belongs_to :character
+  belongs_to :character, optional: true
   has_many :quotes
   
   # validations

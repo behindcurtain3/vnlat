@@ -1,10 +1,13 @@
 class AppearancesController < ApplicationController
   before_action :authenticate_user!
 
-  def create
+  def create    
     @appearance = Appearance.new(appearance_params)
-    @appearance.save
-    redirect_to edit_movie_path(@appearance.movie), :flash => { :anchor => params['anchor'] }
+    if @appearance.save
+      redirect_to edit_movie_path(@appearance.movie), :flash => { :anchor => params['anchor'] }
+    else
+      redirect_to edit_movie_path(@appearance.movie), :flash => { :anchor => params['anchor'], :notice => "Unable to save the appearance" }
+    end
   end
 
   private
