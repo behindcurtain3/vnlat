@@ -1,8 +1,6 @@
 class FranchiseMembersController < ApplicationController
   before_filter :authenticate_user!
 
-  respond_to :html
-
   def create
     @franchise_member = FranchiseMember.new(franchise_member_params)
     @franchise_member.save

@@ -1,8 +1,6 @@
 class QuotesController < ApplicationController
   before_filter :authenticate_user!
 
-  respond_to :html
-
   def create
     @quote = Quote.new(quote_params)
     @quote.save

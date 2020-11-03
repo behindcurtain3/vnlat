@@ -4,8 +4,6 @@ class MoviesController < ApplicationController
   before_action :set_paper_trail_whodunnit
   autocomplete :person, :name
   autocomplete :character, :name
-
-  respond_to :html
   
   has_scope :year
   has_scope :year_greater
@@ -25,21 +23,17 @@ class MoviesController < ApplicationController
     end
     
     @movies = apply_scopes(@movies).all
-    @movies = @movies.paginate(:page => params[:page], :per_page => 50)
-    
-    respond_with(@movies)
+    @movies = @movies.paginate(:page => params[:page], :per_page => 50)    
   end
 
   def show
     if user_signed_in? and current_user.rated?(@movie)
       @rating = current_user.ratings.where(:movie_id => @movie.id).first
     end
-    respond_with(@movie)
   end
 
   def new
     @movie = Movie.new
-    respond_with(@movie)
   end
 
   def edit
@@ -56,16 +50,16 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     if @movie.save
       
-      client = Twitter::REST::Client.new do |config|
-        config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
-        config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
-        config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
-        config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
-      end
+      #client = Twitter::REST::Client.new do |config|
+      #  config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+      #  config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+      #  config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
+      #  config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
+      #end
       
-      client.update(@movie.title << " was just added, check out the rating here: " << movie_url(@movie))
+      #client.update(@movie.title << " was just added, check out the rating here: " << movie_url(@movie))
       
-      respond_with(@movie)
+      redirect_to movie_path(@movie)
     else
       render action: 'new'
     end
@@ -81,23 +75,19 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    respond_with(@movie)
+    redirect_to movies_path
   end
   
-  def boxoffice
-    respond_with(@movie)
+  def boxoffice    
   end
   
-  def trailers
-    respond_with(@movie)
+  def trailers    
   end
   
-  def reviews
-    respond_with(@movie)
+  def reviews    
   end
   
-  def quotes
-    respond_with(@movie)
+  def quotes    
   end
 
   private

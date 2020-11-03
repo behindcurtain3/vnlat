@@ -2,23 +2,17 @@ class PeopleController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
-  
   def index
     @people = Person.all
     @people = @people.alphabetical
-    @people = @people.paginate(:page => params[:page], :per_page => 50)
-    
-    respond_with(@people)
+    @people = @people.paginate(:page => params[:page], :per_page => 50)    
   end
 
   def show
-    respond_with(@person)
   end
 
   def new
     @person = Person.new
-    respond_with(@person)
   end
 
   def edit
@@ -28,9 +22,7 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
     if @person.save
       respond_to do |format|
-        format.html {
-          respond_with(@person)    
-        }
+        format.html { redirect_to person_path(@person) }
         format.js {
           flash[:notice] = "New person was added."
 					render :partial => "remote_content/new_person_success.js.erb"
@@ -39,9 +31,7 @@ class PeopleController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html {
-          render action: 'new'    
-        }
+        format.html { render 'new' }
         format.js {
           flash[:notice] = @person.errors.full_messages.to_sentence
 					render :partial => "remote_content/new_person_errors.js.erb"
@@ -53,7 +43,7 @@ class PeopleController < ApplicationController
 
   def update
     if @person.update(person_params)
-      respond_with(@person)
+      redirect_to person_path(@person)
     else
       render action: 'edit'
     end
@@ -61,7 +51,7 @@ class PeopleController < ApplicationController
 
   def destroy
     @person.destroy
-    respond_with(@person)
+    redirect_to person_path(@person)
   end
   
   private

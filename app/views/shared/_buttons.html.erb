@@ -1,21 +1,21 @@
 <% if local_assigns.has_key?(:sm) %>
-<div class="btn-group" role="group" aria-label="<%= t('movie.violence') %>">
-  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.violence') %>"><%= t 'movie.v' %></button>
+<div class="btn-group" role="group" aria-label="<%= t('movie.attr.violence') %>">
+  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.attr.violence') %>"><%= t 'movie.attr.v' %></button>
   <button type="button" class="btn btn-default btn-xs"><strong><%= movie.avg_v %></strong></button>
 </div>
 
-<div class="btn-group" role="group" aria-label="<%= t('movie.nudity') %>">
-  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.nudity') %>"><%= t 'movie.n' %></button>
+<div class="btn-group" role="group" aria-label="<%= t('movie.attr.nudity') %>">
+  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.attr.nudity') %>"><%= t 'movie.attr.n' %></button>
   <button type="button" class="btn btn-default btn-xs"><strong><%= movie.avg_n %></strong></button>
 </div>
 
-<div class="btn-group" role="group" aria-label="<%= t('movie.language') %>">
-  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.language') %>"><%= t 'movie.l' %></button>
+<div class="btn-group" role="group" aria-label="<%= t('movie.attr.language') %>">
+  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.attr.language') %>"><%= t 'movie.attr.l' %></button>
   <button type="button" class="btn btn-default btn-xs"><strong><%= movie.avg_l %></strong></button>
 </div>
 
-<div class="btn-group" role="group" aria-label="<%= t('movie.adult') %>">
-  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.adult') %>"><%= t 'movie.at' %></button>
+<div class="btn-group" role="group" aria-label="<%= t('movie.attr.adult') %>">
+  <button type="button" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="<%= t('movie.attr.adult') %>"><%= t 'movie.attr.at' %></button>
   <button type="button" class="btn btn-default btn-xs"><strong><%= movie.avg_at %></strong></button>
 </div>
 <% else %>

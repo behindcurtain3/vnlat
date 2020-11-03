@@ -1,8 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :authenticate_user!
 
-  respond_to :html
-
   def create
     @review = Review.new(review_params)
     @review.save

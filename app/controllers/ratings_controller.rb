@@ -3,11 +3,8 @@ class RatingsController < ApplicationController
   before_action :set_movie, only: [:new, :create, :edit, :udpate, :destroy]
   before_action :set_rating, only: [:edit, :update, :destroy]
   
-  respond_to :html
-  
   def new
-    @rating = Rating.new
-    respond_with(@rating)
+    @rating = Rating.new    
   end
   
   def edit
@@ -22,7 +19,7 @@ class RatingsController < ApplicationController
     if @rating.save
       @movie.update_averages
       @movie.save
-      respond_with(@movie)
+      redirect_to movie_path(@movie)
     else
       render action: 'new'
     end
@@ -33,7 +30,7 @@ class RatingsController < ApplicationController
       @rating.movie.update_averages
       @rating.movie.save
     
-      redirect_to @rating.movie
+      redirect_to movie_path(@rating.movie)
     else
       @movie = @rating.movie
       render action: 'edit'
@@ -45,7 +42,7 @@ class RatingsController < ApplicationController
     @rating.movie.update_averages
     @rating.movie.save
     
-    redirect_to @rating.movie
+    redirect_to movie_path(@rating.movie)
   end
   
   private

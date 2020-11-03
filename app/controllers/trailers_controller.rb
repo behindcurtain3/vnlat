@@ -2,8 +2,6 @@ class TrailersController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_trailer, only: [:update, :destroy]
 
-  respond_to :html
-
   def create
     @trailer = Trailer.new(trailer_params)
     @trailer.save
@@ -20,7 +18,7 @@ class TrailersController < ApplicationController
 
   def destroy
     @trailer.destroy
-    respond_with(@trailer)
+    redirect_to movie_path(@trailer.movie)
   end
 
   private

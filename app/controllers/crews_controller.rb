@@ -1,8 +1,6 @@
 class CrewsController < ApplicationController
   before_filter :authenticate_user!
 
-  respond_to :html
-
   def create
     @crew = Crew.new(crew_params)
     @crew.save

@@ -1,8 +1,6 @@
 class AppearancesController < ApplicationController
   before_filter :authenticate_user!
 
-  respond_to :html
-
   def create
     @appearance = Appearance.new(appearance_params)
     @appearance.save

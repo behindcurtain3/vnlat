@@ -2,19 +2,15 @@ class CharactersController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
   before_action :set_character, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
-
   def index
     @characters = Character.all
   end
 
-  def show
-    respond_with(@character)
+  def show    
   end
 
   def new
-    @character = Character.new
-    respond_with(@character)
+    @character = Character.new    
   end
 
   def edit
@@ -24,9 +20,7 @@ class CharactersController < ApplicationController
     @character = Character.new(character_params)
     if @character.save
       respond_to do |format|
-        format.html {
-          respond_with(@character)    
-        }
+        format.html
         format.js {
           flash[:notice] = "New character was added."
 					render :partial => "remote_content/new_character_success.js.erb"
@@ -57,7 +51,7 @@ class CharactersController < ApplicationController
 
   def destroy
     @character.destroy
-    respond_with(@character)
+    redirect_to edit_movie_path(@character.movie)
   end
 
   private

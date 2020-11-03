@@ -1,8 +1,6 @@
 class EarningsController < ApplicationController
   before_filter :authenticate_user!
 
-  respond_to :html
-
   def create
     @earning = Earning.new(earning_params)
     @earning.save

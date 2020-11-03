@@ -2,9 +2,7 @@ class LikesController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_movie, only: [:create, :udpate, :destroy]
   before_action :set_like, only: [:update, :destroy]
-  
-  respond_to :html
-  
+    
   def create
     @like = Like.new(like_params)
     @like.user = current_user
@@ -13,10 +11,9 @@ class LikesController < ApplicationController
     if @like.save
       @movie.update_averages
       @movie.save
-      respond_with(@movie)
-    else
-      respond_with(@movie)
     end
+
+    redirect_to movie_path(@movie)
   end
   
   def update
@@ -24,9 +21,9 @@ class LikesController < ApplicationController
       @like.movie.update_averages
       @like.movie.save
     
-      redirect_to @like.movie
+      redirect_to movie_path(@like.movie)
     else
-      redirect_to @like.movie
+      redirect_to movie_path(@like.movie)
     end
   end
   
@@ -35,7 +32,7 @@ class LikesController < ApplicationController
     @like.movie.update_averages
     @like.movie.save
     
-    redirect_to @like.movie
+    redirect_to movie_path(@like.movie)
   end
   
   private

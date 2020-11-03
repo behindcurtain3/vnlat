@@ -2,20 +2,15 @@ class FranchisesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_franchise, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
-
   def index
-    @franchises = Franchise.all
-    respond_with(@franchises)
+    @franchises = Franchise.all    
   end
 
-  def show
-    respond_with(@franchise)
+  def show    
   end
 
   def new
     @franchise = Franchise.new
-    respond_with(@franchise)
   end
 
   def edit
@@ -24,17 +19,17 @@ class FranchisesController < ApplicationController
   def create
     @franchise = Franchise.new(franchise_params)
     @franchise.save
-    respond_with(@franchise)
+    redirect_to franchise_path(@franchise)
   end
 
   def update
     @franchise.update(franchise_params)
-    respond_with(@franchise)
+    redirect_to franchise_path(@franchise)
   end
 
   def destroy
     @franchise.destroy
-    respond_with(@franchise)
+    redirect_to franchises_path
   end
 
   private
