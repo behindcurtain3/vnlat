@@ -41,8 +41,8 @@
         <td>
           <%= render 'shared/movie_table', movie: appearance.movie %>
         </td>
-        <td><%= appearance.movie.year %></td>
-        <td class="text-center"><%= render 'shared/appearance', appearance: appearance %></td>
+        <td style="min-width: 100px;"><%= appearance.movie.year %></td>
+        <td style="min-width: 200px;" class="text-center"><%= render 'shared/appearance', appearance: appearance %></td>
       </tr>
       <% end %>
     </tbody>
@@ -67,7 +67,7 @@
               </div>
             </div>
           </td>
-          <td class="text-center">
+          <td style="min-width: 200px;" class="text-center">
             <% jobs.each_with_index do |job, i| %>
               <%= job.role %><%= ', ' unless i == jobs.size - 1 %>
             <% end %>
