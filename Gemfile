@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.5.8'
 
 gem 'rails', '4.2.11'
 
@@ -19,8 +19,8 @@ gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.0.4'
 gem 'less-rails-bootstrap'
 gem 'therubyracer', :platforms => :ruby, :require => 'v8'
-gem "paperclip", "~> 4.2"
-gem 'aws-sdk'
+gem "paperclip", ">= 5.2.0"
+gem 'aws-sdk', '~> 3.0'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_api'
 gem 'will_paginate-bootstrap'
