@@ -20,7 +20,7 @@
 #  name               :string(255)
 #
 
-class Person < ActiveRecord::Base
+class Person < ApplicationRecord
   extend FriendlyId
   
   acts_as_api

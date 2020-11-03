@@ -30,7 +30,7 @@
 #  spotify             :string(255)
 #
 
-class Movie < ActiveRecord::Base
+class Movie < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   

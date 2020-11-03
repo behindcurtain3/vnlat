@@ -12,7 +12,7 @@
 #  updated_at :datetime
 #
 
-class Earning < ActiveRecord::Base
+class Earning < ApplicationRecord
   before_save :sum_earnings
   belongs_to :movie
   

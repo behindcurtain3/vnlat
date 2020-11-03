@@ -10,7 +10,7 @@
 #  updated_at :datetime
 #
 
-class Trailer < ActiveRecord::Base
+class Trailer < ApplicationRecord
   belongs_to :movie
   
   validates :movie,

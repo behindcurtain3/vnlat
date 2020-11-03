@@ -10,6 +10,6 @@
 #  updated_at :datetime
 #
 
-class Review < ActiveRecord::Base
+class Review < ApplicationRecord
   belongs_to :movie
 end

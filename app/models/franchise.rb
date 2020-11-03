@@ -9,7 +9,7 @@
 #  slug       :string(255)
 #
 
-class Franchise < ActiveRecord::Base
+class Franchise < ApplicationRecord
   extend FriendlyId
   
   has_many :franchise_members

@@ -13,7 +13,7 @@
 #  updated_at   :datetime
 #
 
-class Appearance < ActiveRecord::Base
+class Appearance < ApplicationRecord
   belongs_to :movie
   belongs_to :person
   belongs_to :character

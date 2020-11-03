@@ -12,7 +12,7 @@
 #  updated_at :datetime
 #
 
-class Crew < ActiveRecord::Base
+class Crew < ApplicationRecord
   belongs_to :movie
   belongs_to :person
   

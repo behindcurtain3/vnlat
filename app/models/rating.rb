@@ -13,7 +13,7 @@
 #  updated_at :datetime
 #
 
-class Rating < ActiveRecord::Base
+class Rating < ApplicationRecord
   belongs_to :user
   belongs_to :movie
     

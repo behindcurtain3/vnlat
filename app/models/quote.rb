@@ -10,7 +10,7 @@
 #  updated_at    :datetime
 #
 
-class Quote < ActiveRecord::Base
+class Quote < ApplicationRecord
   belongs_to :movie
   belongs_to :appearance
   

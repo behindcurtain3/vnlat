@@ -10,7 +10,7 @@
 #  alias      :string(255)
 #
 
-class Character < ActiveRecord::Base
+class Character < ApplicationRecord
   extend FriendlyId
   
   has_many :appearances

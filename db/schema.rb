@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,244 +10,234 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024213123) do
+ActiveRecord::Schema.define(version: 2020_11_03_085411) do
 
-  create_table "appearances", force: true do |t|
-    t.integer  "movie_id"
-    t.integer  "person_id"
-    t.integer  "character_id"
-    t.string   "name"
-    t.integer  "importance"
-    t.boolean  "uncredited",   default: false, null: false
+  create_table "appearances", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "person_id"
+    t.integer "character_id"
+    t.string "name", limit: 255
+    t.integer "importance"
+    t.boolean "uncredited", default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["character_id"], name: "index_appearances_on_character_id"
+    t.index ["movie_id"], name: "index_appearances_on_movie_id"
+    t.index ["person_id"], name: "index_appearances_on_person_id"
   end
 
-  add_index "appearances", ["character_id"], name: "index_appearances_on_character_id"
-  add_index "appearances", ["movie_id"], name: "index_appearances_on_movie_id"
-  add_index "appearances", ["person_id"], name: "index_appearances_on_person_id"
-
-  create_table "characters", force: true do |t|
-    t.string   "name"
+  create_table "characters", force: :cascade do |t|
+    t.string "name", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
-    t.string   "alias"
+    t.string "slug", limit: 255
+    t.string "alias", limit: 255
   end
 
-  create_table "crews", force: true do |t|
-    t.integer  "movie_id"
-    t.integer  "person_id"
-    t.string   "role"
-    t.integer  "importance", default: 0
-    t.boolean  "featured"
+  create_table "crews", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "person_id"
+    t.string "role", limit: 255
+    t.integer "importance", default: 0
+    t.boolean "featured"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["movie_id"], name: "index_crews_on_movie_id"
+    t.index ["person_id"], name: "index_crews_on_person_id"
   end
 
-  add_index "crews", ["movie_id"], name: "index_crews_on_movie_id"
-  add_index "crews", ["person_id"], name: "index_crews_on_person_id"
-
-  create_table "earnings", force: true do |t|
-    t.integer  "movie_id"
-    t.integer  "domestic",   default: 0
-    t.integer  "foreign",    default: 0
-    t.integer  "worldwide",  default: 0
-    t.date     "date"
+  create_table "earnings", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "domestic", default: 0
+    t.integer "foreign", default: 0
+    t.integer "worldwide", default: 0
+    t.date "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["movie_id"], name: "index_earnings_on_movie_id"
   end
 
-  add_index "earnings", ["movie_id"], name: "index_earnings_on_movie_id"
-
-  create_table "franchise_members", force: true do |t|
-    t.integer  "movie_id"
-    t.integer  "franchise_id"
+  create_table "franchise_members", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "franchise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["franchise_id"], name: "index_franchise_members_on_franchise_id"
+    t.index ["movie_id"], name: "index_franchise_members_on_movie_id"
   end
 
-  add_index "franchise_members", ["franchise_id"], name: "index_franchise_members_on_franchise_id"
-  add_index "franchise_members", ["movie_id"], name: "index_franchise_members_on_movie_id"
-
-  create_table "franchises", force: true do |t|
-    t.string   "name"
+  create_table "franchises", force: :cascade do |t|
+    t.string "name", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
+    t.string "slug", limit: 255
+    t.index ["slug"], name: "index_franchises_on_slug", unique: true
   end
 
-  add_index "franchises", ["slug"], name: "index_franchises_on_slug", unique: true
-
-  create_table "likes", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "movie_id"
-    t.boolean  "love"
-    t.boolean  "like"
-    t.boolean  "hate"
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.boolean "love"
+    t.boolean "like"
+    t.boolean "hate"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["movie_id"], name: "index_likes_on_movie_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  add_index "likes", ["movie_id"], name: "index_likes_on_movie_id"
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
-
-  create_table "movie_versions", force: true do |t|
-    t.string   "item_type",       null: false
-    t.integer  "item_id",         null: false
-    t.string   "event",           null: false
-    t.string   "whodunnit"
-    t.text     "object"
+  create_table "movie_versions", force: :cascade do |t|
+    t.string "item_type", limit: 255, null: false
+    t.integer "item_id", null: false
+    t.string "event", limit: 255, null: false
+    t.string "whodunnit", limit: 255
+    t.text "object"
     t.datetime "created_at"
-    t.string   "author_username"
+    t.string "author_username", limit: 255
+    t.index ["item_type", "item_id"], name: "index_movie_versions_on_item_type_and_item_id"
   end
 
-  add_index "movie_versions", ["item_type", "item_id"], name: "index_movie_versions_on_item_type_and_item_id"
-
-  create_table "movies", force: true do |t|
-    t.string   "title"
-    t.integer  "year"
-    t.integer  "avg_v"
-    t.integer  "avg_n"
-    t.integer  "avg_l"
-    t.integer  "avg_at"
+  create_table "movies", force: :cascade do |t|
+    t.string "title", limit: 255
+    t.integer "year"
+    t.integer "avg_v"
+    t.integer "avg_n"
+    t.integer "avg_l"
+    t.integer "avg_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
-    t.string   "poster_file_name"
-    t.string   "poster_content_type"
-    t.integer  "poster_file_size"
+    t.string "slug", limit: 255
+    t.string "poster_file_name", limit: 255
+    t.string "poster_content_type", limit: 255
+    t.integer "poster_file_size"
     t.datetime "poster_updated_at"
-    t.text     "summary"
-    t.integer  "director_id"
-    t.integer  "boxoffice_us"
-    t.integer  "boxoffice_foreign"
-    t.integer  "boxoffice_worldwide"
-    t.integer  "runtime"
-    t.string   "mpaa"
-    t.date     "released"
-    t.float    "avg_love"
-    t.float    "avg_like"
-    t.float    "avg_hate"
-    t.string   "spotify"
+    t.text "summary"
+    t.integer "director_id"
+    t.integer "boxoffice_us"
+    t.integer "boxoffice_foreign"
+    t.bigint "boxoffice_worldwide"
+    t.integer "runtime"
+    t.string "mpaa", limit: 255
+    t.date "released"
+    t.float "avg_love"
+    t.float "avg_like"
+    t.float "avg_hate"
+    t.string "spotify", limit: 255
+    t.index ["director_id"], name: "index_movies_on_director_id"
+    t.index ["slug"], name: "index_movies_on_slug", unique: true
+    t.index ["title"], name: "index_movies_on_title"
   end
 
-  add_index "movies", ["director_id"], name: "index_movies_on_director_id"
-  add_index "movies", ["slug"], name: "index_movies_on_slug", unique: true
-  add_index "movies", ["title"], name: "index_movies_on_title"
-
-  create_table "people", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "display_name"
-    t.date     "born"
-    t.date     "died"
-    t.string   "twitter"
-    t.text     "biography"
+  create_table "people", force: :cascade do |t|
+    t.string "first_name", limit: 255
+    t.string "last_name", limit: 255
+    t.string "display_name", limit: 255
+    t.date "born"
+    t.date "died"
+    t.string "twitter", limit: 255
+    t.text "biography"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
-    t.string   "promo_file_name"
-    t.string   "promo_content_type"
-    t.integer  "promo_file_size"
+    t.string "slug", limit: 255
+    t.string "promo_file_name", limit: 255
+    t.string "promo_content_type", limit: 255
+    t.integer "promo_file_size"
     t.datetime "promo_updated_at"
-    t.string   "name"
+    t.string "name", limit: 255
+    t.index ["slug"], name: "index_people_on_slug", unique: true
   end
 
-  add_index "people", ["slug"], name: "index_people_on_slug", unique: true
-
-  create_table "quotes", force: true do |t|
-    t.string   "text"
-    t.integer  "movie_id"
-    t.integer  "appearance_id"
+  create_table "quotes", force: :cascade do |t|
+    t.string "text", limit: 255
+    t.integer "movie_id"
+    t.integer "appearance_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["appearance_id"], name: "index_quotes_on_appearance_id"
+    t.index ["movie_id"], name: "index_quotes_on_movie_id"
   end
 
-  add_index "quotes", ["appearance_id"], name: "index_quotes_on_appearance_id"
-  add_index "quotes", ["movie_id"], name: "index_quotes_on_movie_id"
-
-  create_table "ratings", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "movie_id"
-    t.integer  "v"
-    t.integer  "n"
-    t.integer  "l"
-    t.integer  "at"
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.integer "v"
+    t.integer "n"
+    t.integer "l"
+    t.integer "at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
-  add_index "ratings", ["movie_id"], name: "index_ratings_on_movie_id"
-  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
-
-  create_table "reviews", force: true do |t|
-    t.integer  "movie_id"
-    t.string   "code"
-    t.boolean  "active"
+  create_table "reviews", force: :cascade do |t|
+    t.integer "movie_id"
+    t.string "code", limit: 255
+    t.boolean "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
   end
 
-  add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id"
-
-  create_table "taggings", force: true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       limit: 128
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "taggable_id"
+    t.string "taggable_type", limit: 255
+    t.integer "tagger_id"
+    t.string "tagger_type", limit: 255
+    t.string "context", limit: 128
     t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-
-  create_table "tags", force: true do |t|
-    t.string  "name"
+  create_table "tags", force: :cascade do |t|
+    t.string "name", limit: 255
     t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
-
-  create_table "trailers", force: true do |t|
-    t.integer  "movie_id"
-    t.string   "code"
-    t.boolean  "active"
+  create_table "trailers", force: :cascade do |t|
+    t.integer "movie_id"
+    t.string "code", limit: 255
+    t.boolean "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["movie_id"], name: "index_trailers_on_movie_id"
   end
 
-  add_index "trailers", ["movie_id"], name: "index_trailers_on_movie_id"
-
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string "email", limit: 255, default: "", null: false
+    t.string "encrypted_password", limit: 255, default: "", null: false
+    t.string "reset_password_token", limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string "current_sign_in_ip", limit: 255
+    t.string "last_sign_in_ip", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "versions", force: true do |t|
-    t.string   "item_type",  null: false
-    t.integer  "item_id",    null: false
-    t.string   "event",      null: false
-    t.string   "whodunnit"
-    t.text     "object"
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", limit: 255, null: false
+    t.integer "item_id", null: false
+    t.string "event", limit: 255, null: false
+    t.string "whodunnit", limit: 255
+    t.text "object"
     t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
-
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end

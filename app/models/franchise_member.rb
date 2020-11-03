@@ -9,7 +9,7 @@
 #  updated_at   :datetime
 #
 
-class FranchiseMember < ActiveRecord::Base
+class FranchiseMember < ApplicationRecord
   belongs_to :movie
   belongs_to :franchise
 end
