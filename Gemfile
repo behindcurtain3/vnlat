@@ -6,7 +6,6 @@ gem 'rails', '5.2.4.4'
 
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
-#gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails-jquery-autocomplete'
@@ -40,7 +39,6 @@ group :development do
   gem 'listen', '3.2.1'
   gem 'spring'
   gem 'fog-local'
-#  gem 'annotate'
 end
 
 group :production do
