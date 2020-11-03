@@ -13,7 +13,7 @@ gem 'rails-jquery-autocomplete'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootsnap', '1.4.6', require: false
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 2.0',          group: :doc
 
 gem 'devise'
 gem 'font-awesome-rails'
