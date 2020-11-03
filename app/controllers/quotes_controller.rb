@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     @quote = Quote.new(quote_params)

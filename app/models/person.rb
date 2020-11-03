@@ -47,11 +47,11 @@ class Person < ApplicationRecord
   
   validates :first_name,
     presence: true,
-    :if => 'display_name.blank?'
+    if: -> { display_name.blank? }
     
   validates :last_name,
     presence: true,
-    :if => 'display_name.blank?'
+    if: -> { display_name.blank? }
     
   # scopes
   scope :alphabetical, -> { order(name: :asc) }

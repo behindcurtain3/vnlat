@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show, :boxoffice, :trailers, :reviews, :quotes]
+  before_action :authenticate_user!, except: [:index, :show, :boxoffice, :trailers, :reviews, :quotes]
   before_action :set_movie, only: [:show, :edit, :update, :destroy, :boxoffice, :trailers, :reviews, :quotes]
   before_action :set_paper_trail_whodunnit
   autocomplete :person, :name

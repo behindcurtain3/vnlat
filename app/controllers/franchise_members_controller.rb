@@ -1,5 +1,5 @@
 class FranchiseMembersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     @franchise_member = FranchiseMember.new(franchise_member_params)

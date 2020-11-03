@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   def index

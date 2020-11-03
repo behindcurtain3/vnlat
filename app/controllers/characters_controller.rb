@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-  before_filter :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show]
   before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   def index

@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_movie, only: [:new, :create, :edit, :udpate, :destroy]
   before_action :set_rating, only: [:edit, :update, :destroy]
   

@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_movie, only: [:create, :udpate, :destroy]
   before_action :set_like, only: [:update, :destroy]
     

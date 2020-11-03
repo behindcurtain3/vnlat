@@ -1,5 +1,5 @@
 class VersionsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_movie_and_version, only: [:diff, :rollback, :destroy]
   before_action :set_paper_trail_whodunnit
 
