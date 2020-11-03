@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.4'
+ruby '2.2.2'
 
 gem 'rails', '4.2.11'
 
@@ -31,7 +31,7 @@ gem 'diffy'
 gem 'has_scope'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.6'
+  gem 'sqlite3', '1.3.13'
 end
 
 group :development do
