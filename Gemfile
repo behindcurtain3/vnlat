@@ -37,7 +37,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'fog'
+  gem 'fog-local'
 #  gem 'annotate'
 end
 
