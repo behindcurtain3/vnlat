@@ -16,6 +16,7 @@ class Character < ApplicationRecord
   has_many :appearances
   has_many :movies, through: :appearances, source: :movie
   has_many :actors, through: :appearances, source: :person
+  has_many :quotes, through: :appearances
 
   validates :name,
     presence: true

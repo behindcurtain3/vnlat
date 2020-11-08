@@ -47,4 +47,15 @@
       <li>No Actors Found</li>
     <% end %>
   </ul>
+  <% if @character.quotes.any? %>
+    <h4 class="content-header">Quotes</h4>
+    <% @character.quotes.each do |quote| %>
+      <blockquote class="blockquote">
+        <p>
+          "<%= quote.text %>"
+        </p>
+        <footer>from <%= link_to quote.movie.title, movie_path(quote.movie) %></footer>
+      </blockquote>
+    <% end %>
+  <% end %>
 </div>
