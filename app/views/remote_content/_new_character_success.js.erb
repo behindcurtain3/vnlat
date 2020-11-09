@@ -1,3 +1,8 @@
 // hide the old modal
-$("#new-character-modal").modal_success();
-$("#new-character-modal").hide();
+$("#new-character-modal").modal('hide');
+
+// get the new html and show it
+$(this).delay(750).queue(function() {
+  $("#new-person-modal-container").html("<%= escape_javascript(render :partial => "remote_content/new_character_success", :formats => [:html]) %>");
+  $("#new-character-modal-success").modal();
+});
