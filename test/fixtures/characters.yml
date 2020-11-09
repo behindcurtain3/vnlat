@@ -11,15 +11,3 @@
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  person_id: 
-  movie_id: 
-  name: MyString
-  importance: 1
-
-two:
-  person_id: 
-  movie_id: 
-  name: MyString
-  importance: 1

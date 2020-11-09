@@ -54,11 +54,6 @@ class MovieTest < ActiveSupport::TestCase
   test "year should be at least 1900" do
     @movie.year = 1899
     assert_not @movie.valid?
-  end
-  
-  test "summary should be present" do
-    @movie.summary = ''
-    assert_not @movie.valid?
-  end
+  end  
   
 end
