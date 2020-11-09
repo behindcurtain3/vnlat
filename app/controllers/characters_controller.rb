@@ -43,7 +43,7 @@ class CharactersController < ApplicationController
 
   def update
     if @character.update(character_params)
-      redirect_to edit_movie_path(@character.movie)
+      redirect_to character_path(@character)
     else
       render action: 'edit'
     end
@@ -51,7 +51,7 @@ class CharactersController < ApplicationController
 
   def destroy
     @character.destroy
-    redirect_to edit_movie_path(@character.movie)
+    redirect_to characters_path
   end
 
   private
