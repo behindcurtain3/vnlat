@@ -44,7 +44,7 @@
     <div class="form-group">
       <%= f.label :tag_list, t('movie.label.genre'), :class => "col-sm-3 control-label" %>
       <div class="col-sm-9">
-  				<%= f.text_field :tag_list, :class => "form-control", :placeholder => t('movie.form.genre') %>
+  				<%= f.text_field :tag_list, value: @movie.send(:tag_list).to_s, :class => "form-control", :placeholder => t('movie.form.genre') %>
   				<span class="help-block"></span>
       </div>
   	</div>
