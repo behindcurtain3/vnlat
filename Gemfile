@@ -27,6 +27,7 @@ gem 'will_paginate-bootstrap'
 gem 'ransack', '~> 2.3'
 gem 'twitter'
 gem 'paper_trail'
+gem 'paper_trail-association_tracking'
 gem 'diffy'
 gem 'has_scope'
 

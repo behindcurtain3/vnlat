@@ -1106,6 +1106,7 @@ GEM
     paper_trail (11.0.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
+    paper_trail-association_tracking (2.1.1)
     paperclip (6.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -1255,6 +1256,7 @@ DEPENDENCIES
   less-rails-bootstrap
   listen (= 3.2.1)
   paper_trail
+  paper_trail-association_tracking
   paperclip (>= 5.2.0)
   pg (= 1.2.3)
   rails (= 5.2.4.4)

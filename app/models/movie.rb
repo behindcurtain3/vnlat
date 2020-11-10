@@ -43,29 +43,29 @@ class Movie < ApplicationRecord
   include ApiV1::Movie
   
   # for auditing changes
-  has_paper_trail versions: { class_name: 'MovieVersion' }
+  has_paper_trail versions: { class_name: 'MovieVersion' }, ignore: [:avg_v, :avg_n, :avg_l, :avg_at, :avg_love, :avg_like, :avg_hate]
   
   ### references
-  has_many :appearances
+  has_many :appearances, autosave: true
   
   # actors
-  has_many :actors, through: :appearances, source: :person
-  has_many :ordered_appearances, -> { ranked }, class_name: 'Appearance'
-  has_many :ordered_actors, through: :ordered_appearances, source: :person
+  has_many :actors, through: :appearances, source: :person, autosave: true
+  has_many :ordered_appearances, -> { ranked }, class_name: 'Appearance', autosave: true
+  has_many :ordered_actors, through: :ordered_appearances, source: :person, autosave: true
 
   # crew
-  has_many :crews
-  has_many :workers, through: :crews, source: :person
+  has_many :crews, autosave: true
+  has_many :workers, through: :crews, source: :person, autosave: true
   
   # data
-  has_many :ratings
-  has_many :quotes
-  has_many :trailers
-  has_many :reviews
+  has_many :ratings, autosave: true
+  has_many :quotes, autosave: true
+  has_many :trailers, autosave: true
+  has_many :reviews, autosave: true
   has_many :likes
-  has_many :franchise_members
-  has_many :franchises, through: :franchise_members, source: :franchise
-  has_many :earnings
+  has_many :franchise_members, autosave: true
+  has_many :franchises, through: :franchise_members, source: :franchise, autosave: true
+  has_many :earnings, autosave: true
   
   # accept the changes for the following references
   accepts_nested_attributes_for :appearances, allow_destroy: true
