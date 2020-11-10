@@ -15,9 +15,37 @@
         <strong>Summary:</strong>
         <%= diff(@version.reify.summary, @movie.summary) %>
       </p>
+      <p>
+        <strong>Runtime:</strong>
+        <%= diff(@version.reify.runtime, @movie.runtime) %>
+      </p>
+      <p>
+        <strong>Rating:</strong>
+        <%= diff(@version.reify.mpaa, @movie.mpaa) %>
+      </p>
+      <p>
+        <strong>Released:</strong>
+        <%= diff(@version.reify.released, @movie.released) %>
+      </p>
+      <p>
+        <strong>Box Office US:</strong>
+        <%= diff(@version.reify.boxoffice_us, @movie.boxoffice_us) %>
+      </p>
+      <p>
+        <strong>Box Office Foreign:</strong>
+        <%= diff(@version.reify.boxoffice_foreign, @movie.boxoffice_foreign) %>
+      </p>
+      <p>
+        <strong>Tag list:</strong>
+        <%= diff(@version.reify.tag_list, @movie.tag_list) %>
+      </p>
+      <p>
+        <strong>Spotify URI:</strong>
+        <%= diff(@version.reify.spotify, @movie.spotify) %>
+      </p>
     </div>
     <p>
-    <%= "Version authored by" %> <%= @version.user.nil? ? "Unknown" : @version.user.email %> <%= "on #{@version.created_at} via '#{@version.event.humanize}'." %>
+    <%= "Version authored by" %> <%= @version.author_username %> <%= "on #{@version.created_at} via '#{@version.event.humanize}'." %>
     </p>
   </div>
 </div>
