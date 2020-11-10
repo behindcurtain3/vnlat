@@ -9,6 +9,6 @@ class CrewsController < ApplicationController
 
   private
     def crew_params
-      params.require(:crew).permit(:person_id, :movie_id, :role, :featured)
+      params.require(:crew).permit(:person_id, :movie_id, :role, :featured, :importance)
     end
 end
