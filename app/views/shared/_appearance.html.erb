@@ -1,8 +1,12 @@
-<% if appearance.character.present? %>
-  <%= link_to character_path(appearance.character) do %><%= appearance.name.blank? ? appearance.character.name : appearance.name %><% end %>
+<% if appearance.nil? %>
+  Unknown
 <% else %>
-  <%= appearance.name %>
-<% end %>
-<% if appearance.uncredited %>
-  <small>(Uncredited)</small>
+  <% if appearance.character.present? %>
+    <%= link_to character_path(appearance.character) do %><%= appearance.name.blank? ? appearance.character.name : appearance.name %><% end %>
+  <% else %>
+    <%= appearance.name %>
+  <% end %>
+  <% if appearance.uncredited %>
+    <small>(Uncredited)</small>
+  <% end %>
 <% end %>

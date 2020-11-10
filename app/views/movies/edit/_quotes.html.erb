@@ -12,7 +12,7 @@
         <tr>
           <td>
             <!-- Character select, use collection from @movie.characters -->
-            <%= quotes_form.select :appearance_id, options_from_collection_for_select(@movie.appearances, "id", "display", quote.appearance.id), {}, { :class => "form-control" } %>
+            <%= quotes_form.select :appearance_id, options_from_collection_for_select(@movie.appearances, "id", "display", quote.appearance_id), {}, { :class => "form-control" } %>
           </td>
           <td><%= quotes_form.text_field :text, :class => "form-control", :placeholder => t('quote.text') %></td>
           <td class="text-center"><%= quotes_form.check_box :_destroy %></td>
