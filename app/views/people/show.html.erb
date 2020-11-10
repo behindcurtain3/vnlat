@@ -9,6 +9,9 @@
     <p>
       <small class="highlight">
         <%= roles.to_sentence %>
+        <% if user_signed_in? %>
+          - <%= link_to t('people.form.edit'), edit_person_path %>
+        <% end %>
       </small>
     </p>
     <% end %>
