@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   end
   
   def info_for_paper_trail
-    { :author_username => current_user.blank? ? '' : current_user.email }
+    return { author_username: current_user.email } unless current_user.blank?
+    return { author_username: "Unknown" }    
   end
 end

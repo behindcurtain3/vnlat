@@ -12,4 +12,5 @@
 
 class Review < ApplicationRecord
   belongs_to :movie
+  has_paper_trail
 end

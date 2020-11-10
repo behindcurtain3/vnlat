@@ -43,7 +43,7 @@ class Movie < ApplicationRecord
   include ApiV1::Movie
   
   # for auditing changes
-  has_paper_trail versions: { class_name: 'MovieVersion' }, ignore: [:avg_v, :avg_n, :avg_l, :avg_at, :avg_love, :avg_like, :avg_hate]
+  has_paper_trail skip: [:avg_v, :avg_n, :avg_l, :avg_at, :avg_love, :avg_like, :avg_hate]
   
   ### references
   has_many :appearances, autosave: true
