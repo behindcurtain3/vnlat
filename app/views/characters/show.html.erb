@@ -3,10 +3,13 @@
 <div class="col-xs-12 data-header text-center">
   <h2 class="title">
     <b><%= link_to @character.name, character_path(@character) %></b>
+    <% if user_signed_in? %>
+      <small>- <%= link_to t('character.form.edit'), edit_character_path %></small>
+    <% end %>
     <% unless @character.alias.blank? %>
     <p>
       <small class="highlight">
-        <%= @character.alias %>
+        <%= @character.alias %>        
       </small>
     </p>
     <% end %>
