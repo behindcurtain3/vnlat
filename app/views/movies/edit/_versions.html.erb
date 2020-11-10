@@ -23,7 +23,7 @@
         <td><%= link_to version.user.email, user_path(version.whodunnit) %></td>
         <% end %>
         <td><%= version.event.humanize %></td>
-        <td><%= link_to 'Diff', diff_movie_version_path(movie, version) %></td>
+        <td><%= link_to 'Diff', diff_movie_version_path(movie, version) if version.event.humanize != "Create" %></td>
         <td><%= link_to 'Rollback', rollback_movie_version_path(movie, version), method: 'PATCH' %></td>
       </tr>
     <% end %>

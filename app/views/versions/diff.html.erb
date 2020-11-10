@@ -8,12 +8,16 @@
         <%= diff(@version.reify.title, @movie.title) %>
       </p>
       <p>
+        <strong>Year:</strong>
+        <%= diff(@version.reify.year, @movie.year) %>
+      </p>
+      <p>
         <strong>Summary:</strong>
         <%= diff(@version.reify.summary, @movie.summary) %>
       </p>
     </div>
     <p>
-    <%= "Version authored by" %> <%= @version.user.nil? ? "Unknown" : @version.user.email %> <%= "on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    <%= "Version authored by" %> <%= @version.user.nil? ? "Unknown" : @version.user.email %> <%= "on #{@version.created_at} via '#{@version.event.humanize}'." %>
     </p>
   </div>
 </div>
