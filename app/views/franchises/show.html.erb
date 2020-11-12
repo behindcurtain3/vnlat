@@ -13,6 +13,19 @@
   </ul>
 </div>
 
+<h3 class="content-header">Stars</h3>
+<div class="text-center">
+  <% if @franchise.appearances.any? %>
+    <ul class="list-inline text-center">
+    <% @franchise.appearances.distinct_by_count.limit(10).each do |appearance| %>
+      <li class="thumb-wrap media-left media-top">
+        <%= render 'shared/person_thumb', person: appearance.person %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
+
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-4">
     <h4 class="sidebar-header">By Release</h4>

@@ -14,6 +14,7 @@ class Franchise < ApplicationRecord
   
   has_many :franchise_members
   has_many :movies, through: :franchise_members, source: :movie
+  has_many :appearances, -> { includes(:person) }, through: :movies, source: :appearances
   
   validates :name,
     presence: true
@@ -27,4 +28,5 @@ class Franchise < ApplicationRecord
   end
   
   scope :alphabetical, -> { order(name: :asc) }
+  #scope :ordered_stars, -> { left_joins(:stars).order('COUNT("appeareances"."person_id") DESC').distinct }
 end
