@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_064917) do
+ActiveRecord::Schema.define(version: 2020_11_12_211353) do
 
   create_table "appearances", force: :cascade do |t|
     t.integer "movie_id"
@@ -144,6 +144,9 @@ ActiveRecord::Schema.define(version: 2020_11_10_064917) do
     t.integer "promo_file_size"
     t.datetime "promo_updated_at"
     t.string "name", limit: 255
+    t.integer "boxoffice_us_cache", default: 0
+    t.integer "boxoffice_foreign_cache", default: 0
+    t.integer "boxoffice_worldwide_cache", default: 0
     t.index ["slug"], name: "index_people_on_slug", unique: true
   end
 

@@ -15,20 +15,24 @@ class PagesController < ApplicationController
   
   #top actors
   def top_actors
-    @domestic = Person.joins(:movies)
-      .select('people.*, sum(boxoffice_us) as "sum_us"')
-      .where.not({ movies: { boxoffice_us: nil } })
-      .where.not({ appearances: { uncredited: true } })
-      .group('people.id')
-      .order('sum_us desc')
-      .limit(50)
-    @worldwide = Person.joins(:movies)
-      .select('people.*, sum(boxoffice_worldwide) as "sum_us"')
-      .where.not({ movies: { boxoffice_worldwide: nil } })
-      .where.not({ appearances: { uncredited: true } })
-      .group('people.id')
-      .order('sum_us desc')
-      .limit(50)
+    #@domestic = Person.joins(:movies)
+    #  .select('people.*, sum(boxoffice_us) as "sum_us"')
+    #  .where.not({ movies: { boxoffice_us: nil } })
+    #  .where.not({ appearances: { uncredited: true } })
+    #  .group('people.id')
+    #  .order('sum_us desc')
+    #  .limit(50)
+    @domestic = Person.order('boxoffice_us_cache desc').limit(50)
+
+
+    #@worldwide = Person.joins(:movies)
+    #  .select('people.*, sum(boxoffice_worldwide) as "sum_us"')
+    #  .where.not({ movies: { boxoffice_worldwide: nil } })
+    #  .where.not({ appearances: { uncredited: true } })
+    #  .group('people.id')
+    #  .order('sum_us desc')
+    #  .limit(50)
+    @worldwide = Person.order('boxoffice_worldwide_cache desc').limit(50)
   end
   
   # top movies

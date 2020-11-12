@@ -10,7 +10,7 @@
           <td>
             <%= render 'shared/person_table', person: person %>
           </td>
-          <td><%= number_to_currency person.sum_us, precision: 0 %></td>
+          <td><%= number_to_currency person.boxoffice_us_cache, precision: 0 %></td>
         </tr>  
       <% end %>
     </tbody>
@@ -26,7 +26,7 @@
           <td>
             <%= render 'shared/person_table', person: person %>
           </td>
-          <td><%= number_to_currency person.sum_us, precision: 0 %></td>
+          <td><%= number_to_currency person.boxoffice_worldwide_cache, precision: 0 %></td>
         </tr>  
       <% end %>
     </tbody>
