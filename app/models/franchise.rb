@@ -14,7 +14,8 @@ class Franchise < ApplicationRecord
   
   has_many :franchise_members
   has_many :movies, through: :franchise_members, source: :movie
-  has_many :appearances, -> { includes(:person) }, through: :movies, source: :appearances
+  has_many :appearances, through: :movies, source: :appearances
+  has_many :people, through: :appearances, source: :person
   
   validates :name,
     presence: true

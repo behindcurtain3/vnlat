@@ -38,7 +38,7 @@ class Appearance < ApplicationRecord
     
   scope :by_year, -> { includes(:movie).order('movies.released DESC') }
 
-  scope :distinct_by_count, -> { includes(:person).group("appearances.person_id").order("COUNT(appearances.person_id) DESC") }
+  scope :distinct_by_count, -> { group("appearances.person_id").order("COUNT(appearances.person_id) DESC") }
   
   # methods
   def display
