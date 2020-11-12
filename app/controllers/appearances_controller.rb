@@ -4,6 +4,7 @@ class AppearancesController < ApplicationController
   def create    
     @appearance = Appearance.new(appearance_params)
     if @appearance.save
+      UpdatePersonBoxofficeJob.perform_later @appearance.person.id
       redirect_to edit_movie_path(@appearance.movie), :flash => { :anchor => params['anchor'] }
     else
       redirect_to edit_movie_path(@appearance.movie), :flash => { :anchor => params['anchor'], :notice => "Unable to save the appearance" }
