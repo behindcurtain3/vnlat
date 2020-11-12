@@ -67,6 +67,9 @@ class MoviesController < ApplicationController
 
   def update
     if @movie.update(movie_params)
+      # update the people box office caches
+      UpdatePersonBoxofficeJob.perform_later @movie.actors.pluck(:id)
+
       redirect_to edit_movie_path(@movie), :flash => { :anchor => params['anchor'] }
     else
       render action: 'edit'
