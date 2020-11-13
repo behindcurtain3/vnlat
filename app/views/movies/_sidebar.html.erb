@@ -103,14 +103,18 @@
       <td>Position</td>
       <td class="col-xs-7 col-sm-7 text-right highlight"><%= (franchise_member.position.nil?) ? "Unknown" : franchise_member.position.ordinalize %> movie</td>
     </tr>
+    <% unless franchise_member.previous.nil? %>
     <tr>
       <td>Previous</td>
       <td class="col-xs-7 col-sm-7 text-right highlight"><%= (franchise_member.previous.nil?) ? "None" : link_to(franchise_member.previous.title, movie_path(franchise_member.previous)) %></td>
     </tr>
+    <% end %>
+    <% unless franchise_member.next.nil? %>
     <tr>
       <td>Next</td>
       <td class="col-xs-7 col-sm-7 text-right highlight"><%= (franchise_member.next.nil?) ? "None" : link_to(franchise_member.next.title, movie_path(franchise_member.next)) %></td>
     </tr>
+    <% end %>
   <table>
   <% end %>
   
