@@ -116,7 +116,7 @@ en:
     form:
       display_name: "Display As"
       new: "NEW"
-      edit: "EDIT"
+      edit: "Edit"
       resource: "PERSON"
       save: "Save"
     information:
