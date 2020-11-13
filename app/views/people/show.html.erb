@@ -31,10 +31,10 @@
     <% end %>
   </ul>
   <% end %>
-  
+  <% unless @person.biography.blank? %>
   <h4><%= t 'person.information.biography' %></h4>
   <p><%= @person.biography.blank? ? 'Currently Unavailable' : @person.biography %></p>
-  
+  <% end %>
   <% if @person.appearances.any? %>
   <h4 class="sidebar-header"><%= t 'person.information.filmography' %></h4>
   <table class="table table-hover table-responsive">
