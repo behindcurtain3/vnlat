@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_224839) do
+ActiveRecord::Schema.define(version: 2020_11_13_043417) do
 
   create_table "appearances", force: :cascade do |t|
     t.integer "movie_id"
@@ -62,8 +62,13 @@ ActiveRecord::Schema.define(version: 2020_11_12_224839) do
     t.integer "franchise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "position"
+    t.integer "previous_id"
+    t.integer "next_id"
     t.index ["franchise_id"], name: "index_franchise_members_on_franchise_id"
     t.index ["movie_id"], name: "index_franchise_members_on_movie_id"
+    t.index ["next_id"], name: "index_franchise_members_on_next_id"
+    t.index ["previous_id"], name: "index_franchise_members_on_previous_id"
   end
 
   create_table "franchises", force: :cascade do |t|

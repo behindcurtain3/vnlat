@@ -4,12 +4,22 @@
   <table class="table table-condensed">
     <tr>
       <th class="col-sm-3">Franchise</th>
+      <th class="col-sm-1">Position</th>
+      <th class="col-sm-2">Previous Movie</th>
+      <th class="col-sm-2">Next Movie</th>
       <th class="col-sm-1">Delete</th>
     </tr>
     <% @movie.franchise_members.each do |franchise_member| %>
       <%= f.fields_for :franchise_members, franchise_member do |franchises_form| %>
         <tr>
           <td><%= link_to franchise_member.franchise.name, franchise_path(franchise_member.franchise) %></td>
+          <td><%= franchises_form.number_field :position, :class => "form-control" %></td>
+          <td>
+            <%= franchises_form.select :previous_id, options_from_collection_for_select(franchise_member.franchise.movies, "id", "title", franchise_member.previous_id), { include_blank: "Select" }, { :class => "form-control" } %>
+          </td>
+          <td>
+            <%= franchises_form.select :next_id, options_from_collection_for_select(franchise_member.franchise.movies, "id", "title", franchise_member.next_id), { include_blank: "Select" }, { :class => "form-control" } %>
+          </td>
           <td class="text-center"><%= franchises_form.check_box :_destroy %></td>
         </tr>
       <% end %>

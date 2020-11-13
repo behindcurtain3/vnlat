@@ -12,4 +12,7 @@
 class FranchiseMember < ApplicationRecord
   belongs_to :movie
   belongs_to :franchise
+
+  belongs_to :previous, class_name: "Movie", foreign_key: "previous_id", optional: true
+  belongs_to :next, class_name: "Movie", foreign_key: "next_id", optional: true
 end

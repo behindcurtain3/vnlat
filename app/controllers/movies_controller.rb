@@ -108,7 +108,7 @@ class MoviesController < ApplicationController
         trailers_attributes: [:id, :movie_id, :code, :active, :_destroy],
         reviews_attributes: [:id, :movie_id, :code, :active, :_destroy],
         quotes_attributes: [:id, :movie_id, :character_id, :text, :_destroy],
-        franchise_members_attributes: [:id, :movie_id, :franchise_id, :_destroy],
+        franchise_members_attributes: [:id, :movie_id, :franchise_id, :position, :previous_id, :next_id, :_destroy],
         earnings_attributes: [:id, :movie_id, :domestic, :foreign, :date, :_destroy])
     end
 end
