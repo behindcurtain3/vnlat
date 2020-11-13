@@ -25,7 +25,7 @@ class UpdatePersonBoxofficeJob < ApplicationJob
 
       foreign_cache = result_fo.nil? || result_fo.sum_foreign.blank? ? 0 : result_fo.sum_foreign
 
-      puts "#{person.id} (#{us_cache}, #{foreign_cache})"
+      #puts "#{person.id} (#{us_cache}, #{foreign_cache})"
 
       person.boxoffice_us_cache         = us_cache
       person.boxoffice_foreign_cache    = foreign_cache
